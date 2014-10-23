@@ -7,6 +7,9 @@ nearby areas.
 
 ## Bacon Windshield
 
+Team members:
+Samson Svendsen
+
 Andrew Mutz ([@amutz](https://github.com/amutz))  
 ![amutz photo](https://avatars3.githubusercontent.com/u/919763?v=2&s=120)
 
