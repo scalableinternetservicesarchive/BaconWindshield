@@ -16,6 +16,7 @@ Simen Aakhus ([@simenva](https://github.com/simenva))
 ![simenva photo](https://avatars2.githubusercontent.com/u/3829893?v=2&s=460)
 
 Anders Kristiansen ([@anderskk](https://github.com/anderskk))
+![anderskk photo](https://avatars2.githubusercontent.com/u/9067277?v=2&u=cd1a814abc9a477c379029d1c08d71cbb1bccaa0&s=140)
 
 Eivind Kristoffersen ([@broflex](https://github.com/broflex))
 
