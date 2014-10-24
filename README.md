@@ -1,7 +1,6 @@
 # Bacon Windshield
 
-Bacon Windshield is the code name for our application that will give users the oppurtunity to find and compare surf waves in their
-nearby areas.
+Bacon Windshield is the code name for our application, that will give users the oppurtunity to find and compare surf waves in their nearby areas.
 
 [PivotalTracker](https://www.pivotaltracker.com/s/projects/1193860)
 
