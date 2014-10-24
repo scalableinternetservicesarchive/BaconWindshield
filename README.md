@@ -10,7 +10,8 @@ nearby areas.
 Team members:
 
 Samson Svendsen ([@samsoncs](https://github.com/samsoncs))
-![samsoncs photo](https://avatars2.githubusercontent.com/u/9067277?v=2&u=cd1a814abc9a477c379029d1c08d71cbb1bccaa0&s=140)
+
+![samsoncs photo](https://avatars2.githubusercontent.com/u/6703223?v=2&u=e08b9365cc0a8303786cf25035610951f88d6a6c&s=140)
 
 Simen Aakhus ([@simenva](https://github.com/simenva))
 
@@ -21,7 +22,6 @@ Anders Kristiansen ([@anderskk](https://github.com/anderskk))
 ![anderskk photo](https://avatars2.githubusercontent.com/u/9067277?v=2&u=cd1a814abc9a477c379029d1c08d71cbb1bccaa0&s=140)
 
 Eivind Kristoffersen ([@broflex](https://github.com/broflex))
-![broflex photo](http://i.gyazo.com/12b75458104d0e247a90c09a02ff4062.png)
 
 Andrew Mutz ([@amutz](https://github.com/amutz))  
 ![amutz photo](https://avatars3.githubusercontent.com/u/919763?v=2&s=120)
