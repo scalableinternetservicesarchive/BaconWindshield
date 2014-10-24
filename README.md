@@ -13,6 +13,8 @@ Samson Svendsen ([@samsoncs](https://github.com/samsoncs))
 
 Simen Aakhus ([@simenva](https://github.com/simenva))
 
+![simenva photo](https://avatars2.githubusercontent.com/u/3829893?v=2&s=460)
+
 Anders Kristiansen ([@anderskk](https://github.com/anderskk))
 
 Eivind Kristoffersen ([@broflex](https://github.com/broflex))
