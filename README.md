@@ -21,7 +21,7 @@ Anders Kristiansen ([@anderskk](https://github.com/anderskk))
 ![anderskk photo](https://avatars2.githubusercontent.com/u/9067277?v=2&u=cd1a814abc9a477c379029d1c08d71cbb1bccaa0&s=140)
 
 Eivind Kristoffersen ([@broflex](https://github.com/broflex))
-![broflex photo](http://i.gyazo.com/fea7625aeb37a482370101a5d3e08ded.png)
+![broflex photo](http://i.gyazo.com/12b75458104d0e247a90c09a02ff4062.png)
 
 Andrew Mutz ([@amutz](https://github.com/amutz))  
 ![amutz photo](https://avatars3.githubusercontent.com/u/919763?v=2&s=120)
