@@ -57,7 +57,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  #->Prelang (user_login:devise/stylized_paths)
   devise_scope :user do
     get    "login"   => "users/sessions#new",         as: :new_user_session
     post   "login"   => "users/sessions#create",      as: :user_session

@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
   
-  #->Prelang (user_login:devise/username_login_support)
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
