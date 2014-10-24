@@ -9,7 +9,7 @@ nearby areas.
 
 Team members:
 
-Samson Svendsen ([@samsonsc])
+Samson Svendsen ([@samsoncs](https://github.com/samsoncs))
 
 Simen Aakhus ([@simenva])
 
