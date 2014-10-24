@@ -10,6 +10,7 @@ nearby areas.
 Team members:
 
 Samson Svendsen ([@samsoncs](https://github.com/samsoncs))
+![samsoncs photo](https://avatars2.githubusercontent.com/u/9067277?v=2&u=cd1a814abc9a477c379029d1c08d71cbb1bccaa0&s=140)
 
 Simen Aakhus ([@simenva](https://github.com/simenva))
 
