@@ -11,11 +11,11 @@ Team members:
 
 Samson Svendsen ([@samsoncs](https://github.com/samsoncs))
 
-Simen Aakhus ([@simenva])
+Simen Aakhus ([@simenva](https://github.com/simenva)
 
-Anders Kristiansen ([@anderskk])
+Anders Kristiansen ([@anderskk]((https://github.com/anderskk))
 
-Eivind Kristoffersen ([@broflex])
+Eivind Kristoffersen ([@broflex]((https://github.com/broflex))
 
 Andrew Mutz ([@amutz](https://github.com/amutz))  
 ![amutz photo](https://avatars3.githubusercontent.com/u/919763?v=2&s=120)
