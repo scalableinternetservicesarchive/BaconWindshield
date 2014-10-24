@@ -40,9 +40,9 @@ gem 'spring',        group: :development
 
 gem 'bundler'
 
-gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'bootstrap-sass-extras'
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'validates_formatting_of'
