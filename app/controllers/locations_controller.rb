@@ -37,29 +37,11 @@ class LocationsController < ApplicationController
     respond_with(@location)
   end
   
-  # def get_json
-    # uri = URI.parse('http://api.spitcast.com/api/spot/forecast/181/')
-    # response = Net::HTTP.get_response(uri)
-    # data = response.body
-    # result = JSON.parse(data)
-    # result.each do |wave|
-      # if "#{wave['day']}" == 'Sat'
-        # puts "#{wave['spot_name']}\t #{wave['day']}\t #{wave['hour']}\t Quality: #{wave['shape_full']}\t Size: #{wave['size']}\t\n"
-      # end
-    # end
-    # return result    
-  # end
-  
-    def get_json(url)
+  def get_json(url)
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     data = response.body
     result = JSON.parse(data)
-    # result.each do |wave|
-      # if "#{wave['day']}" == 'Sat'
-        # puts "#{wave['spot_name']}\t #{wave['day']}\t #{wave['hour']}\t Quality: #{wave['shape_full']}\t Size: #{wave['size']}\t\n"
-      # end
-    # end
     return result    
   end
   
