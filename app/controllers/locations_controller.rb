@@ -1,7 +1,9 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
-
+  helper_method :get_swell_json_with_spot_id, :get_json
+  require 'net/http'
+  
   def index
     @locations = Location.all
     respond_with(@locations)
@@ -34,6 +36,36 @@ class LocationsController < ApplicationController
     @location.destroy
     respond_with(@location)
   end
+  
+  # def get_json
+    # uri = URI.parse('http://api.spitcast.com/api/spot/forecast/181/')
+    # response = Net::HTTP.get_response(uri)
+    # data = response.body
+    # result = JSON.parse(data)
+    # result.each do |wave|
+      # if "#{wave['day']}" == 'Sat'
+        # puts "#{wave['spot_name']}\t #{wave['day']}\t #{wave['hour']}\t Quality: #{wave['shape_full']}\t Size: #{wave['size']}\t\n"
+      # end
+    # end
+    # return result    
+  # end
+  
+    def get_json(url)
+    uri = URI.parse(url)
+    response = Net::HTTP.get_response(uri)
+    data = response.body
+    result = JSON.parse(data)
+    # result.each do |wave|
+      # if "#{wave['day']}" == 'Sat'
+        # puts "#{wave['spot_name']}\t #{wave['day']}\t #{wave['hour']}\t Quality: #{wave['shape_full']}\t Size: #{wave['size']}\t\n"
+      # end
+    # end
+    return result    
+  end
+  
+  def get_swell_json_with_spot_id(id)
+    get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
+  end  
 
   private
     def set_location
