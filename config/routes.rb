@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :counties
+
   resources :locations
 
   get 'landings/index'
