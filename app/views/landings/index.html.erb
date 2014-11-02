@@ -61,15 +61,18 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1
 	var waveImage = new google.maps.MarkerImage('http://cdn.flaticon.com/png/64/48043.png', new google.maps.Size(64, 64), new google.maps.Point(0, 0), new google.maps.Point(32, 32));
 
     for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-        title: locations[i][4],
-        icon:waveImage
-      })
-      	google.maps.event.addListener(marker, 'click', function() {
-      	window.location.href = "/locations";
-    });
+     	marker = new google.maps.Marker({
+        	position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        	map: map,
+        	title: locations[i][4],
+        	icon:waveImage
+      	})
+      	var locationURL = function (j) {
+      		return function () {
+      			window.location.href = "/locations/" + locations[j][3];
+      		}
+      	}
+      	google.maps.event.addListener(marker, 'click', locationURL(i));
       }
 
 		// Try to use geolocation
