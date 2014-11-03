@@ -50,7 +50,7 @@ class LocationsController < ApplicationController
     # return result    
   # end
   
-    def get_json(url)
+  def get_json(url)
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     data = response.body
