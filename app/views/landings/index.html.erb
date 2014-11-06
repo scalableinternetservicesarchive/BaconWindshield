@@ -1,6 +1,39 @@
+<div class="row">
+	<div class="col-md-4 col-md-offset-1">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Nearby surfing spots</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td>Soon to come!</td>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-4 col-md-offset-1">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Favorite spots</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if defined?(Devise)%>
+				<% if user_signed_in?%>
+				<td>Soon to come!</td>
+				<% else %>
+				<td>You need to log in to use this feature!</td>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <script type="text/javascript"
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps.js"></script>
 
-<div id="map-canvas" style="position: absolute; width:70%; height:70%; margin-left: 15%; margin-top: 3%"></div>
+<div class="google-maps-canvas" id="map-canvas"></div>

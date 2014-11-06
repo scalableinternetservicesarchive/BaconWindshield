@@ -47,7 +47,7 @@ class LocationsController < ApplicationController
   
   def get_swell_json_with_spot_id(id)
     get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
-  end  
+  end
 
   private
     def set_location
