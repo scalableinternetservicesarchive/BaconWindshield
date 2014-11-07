@@ -41,7 +41,11 @@ class LocationsController < ApplicationController
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     data = response.body
-    result = JSON.parse(data)
+    begin
+      result = JSON.parse(data)
+    rescue
+      result = "fail"
+    end
     return result    
   end
   
