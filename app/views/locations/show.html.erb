@@ -5,8 +5,17 @@
 <p>
 	<strong>Name:</strong>
 	<%= @location.name %>
+	<% if defined?(Devise)%>
+	<% if user_signed_in?%>
+		<button type= 'btn-button' class= 'btn btn-default'>
+			<span class="glyphicon glyphicon-star"></span>Add to favorites
+		</button>
+		<% current_user.locations.append @location %>
+	<%end%>
+	<%end%>
 
 	<% weather = get_swell_json_with_spot_id(@location.id) %>
+
 	<table class= "table table-striped">
 		<thead>
 			<th><strong>Day:</strong></th>
