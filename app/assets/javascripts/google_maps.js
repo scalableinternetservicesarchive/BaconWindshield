@@ -57,7 +57,7 @@ function initialize() {
 
 
 	var targetImage = new google.maps.MarkerImage('http://icons.iconarchive.com/icons/pixelkit/gentle-edges/32/Location-Map-icon.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(16, 16));
-	var waveImage1 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/32/48043.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(16, 16));
+	var waveImage1 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/64/48043.png', new google.maps.Size(64, 64), new google.maps.Point(0, 0), new google.maps.Point(32, 32));
 	var waveImage2 = new google.maps.MarkerImage('http://cdn.flaticon.com/png/16/48043.png', new google.maps.Size(16, 16), new google.maps.Point(0, 0), new google.maps.Point(8, 8));
 
 
@@ -65,14 +65,14 @@ function initialize() {
 	google.maps.event.addListener(map, 'zoom_changed', function() {
 		var zoomLevel = map.getZoom();
 	
-		if(zoomLevel < 13){
+		if(zoomLevel < 14){
 			markers2[0].setVisible(false);
 		}else{
 			markers2[0].setVisible(true);
 		}
 	
 		for ( i = 0; i < locations.length; i++) {
-			if (zoomLevel < 13) {
+			if (zoomLevel < 14) {
 				markers[i].setIcon(markers[i].waveImage2);
 			} else {
 				markers[i].setIcon(markers[i].waveImage1);
