@@ -15,25 +15,29 @@
 	<%end%>
 
 	<% weather = get_swell_json_with_spot_id(@location.id) %>
-
-	<table class= "table table-striped">
-		<thead>
-			<th><strong>Day:</strong></th>
-			<th><strong>Time:</strong></th>
-			<th><strong>Quality:</strong></th>
-			<th><strong>Size:</strong></th>
-		</thead>
-		<tbody>
-			<% weather.each do |wave| %>
-			<tr>
-				<td><%= "#{wave['day']}\n\n" %></td>
-				<td><%= "#{wave['hour']}\n\n" %></td>
-				<td><%= "#{wave['shape_full']}\n\n" %></td>
-				<td><%= "#{wave['size']}\n\n" %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	
+	<% if weather == "fail" %>
+		<br>Sorry, but there is no wave information for this spot!
+	<% else %>
+		<table class= "table table-striped">
+			<thead>
+				<th><strong>Day:</strong></th>
+				<th><strong>Time:</strong></th>
+				<th><strong>Quality:</strong></th>
+				<th><strong>Size:</strong></th>
+			</thead>
+			<tbody>
+				<% weather.each do |wave| %>
+				<tr>
+					<td><%= "#{wave['day']}\n\n" %></td>
+					<td><%= "#{wave['hour']}\n\n" %></td>
+					<td><%= "#{wave['shape_full']}\n\n" %></td>
+					<td><%= "#{wave['size']}\n\n" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
 </p>
 
 <%= link_to 'Back', locations_path %>
