@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106030312) do
+ActiveRecord::Schema.define(version: 20141108010209) do
 
   create_table "counties", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "location_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,7 +31,6 @@ ActiveRecord::Schema.define(version: 20141106030312) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "county_id"
-    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -41,7 +47,6 @@ ActiveRecord::Schema.define(version: 20141106030312) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.integer  "location_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

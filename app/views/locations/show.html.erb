@@ -7,10 +7,11 @@
 	<%= @location.name %>
 	<% if defined?(Devise)%>
 	<% if user_signed_in?%>
-		<button type= 'btn-button' class= 'btn btn-default'>
-			<span class="glyphicon glyphicon-star"></span>Add to favorites
-		</button>
-		<% current_user.locations.append @location %>
+		<% if !current_user.locations.include?(@location) %>
+			<%= button_to 'Add to favorites', favorites_path(location_id: @location.id) %>
+		<% else %>
+		<!-- add delete function  -->
+		<% end %>
 	<%end%>
 	<%end%>
 
