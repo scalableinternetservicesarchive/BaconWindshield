@@ -21,7 +21,7 @@
 			<tbody>
 				<% if defined?(Devise)%>
 				<% if user_signed_in?%>
-					<% current_user.favorites.each do |favorite| %>
+					<% current_user.favorites.limit(5).each do |favorite| %>
 						<tr>
 							<% location = Location.find(favorite.location_id) %>
 							<td><%= link_to location.name, location %></td>
