@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  You have added 
+  <%=Location.find(@favorite.location_id).name%>
+  to your favorites!
+</p>
+
+<%= link_to 'Back', favorites_path %>
