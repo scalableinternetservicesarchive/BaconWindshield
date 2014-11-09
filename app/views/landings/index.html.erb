@@ -25,6 +25,7 @@
 						<tr>
 							<% location = Location.find(favorite.location_id) %>
 							<td><%= link_to location.name, location %></td>
+							<td><%= link_to 'Manage',  favorites_path %></td>
 						</tr>
 					<% end %>
 				<% else %>

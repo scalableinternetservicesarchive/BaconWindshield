@@ -32,7 +32,10 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+
     @favorite.destroy
+    #favorite = Favorite.find_by_user_id_and_location_id()
+    #favorite.destroy
     respond_with(@favorite)
   end
 

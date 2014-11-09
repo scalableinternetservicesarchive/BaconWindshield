@@ -9,9 +9,7 @@
 	<% if user_signed_in?%>
 		<% if !current_user.locations.include?(@location) %>
 			<%= button_to 'Add to favorites', favorites_path(location_id: @location.id) %>
-		<% else %>
-		<!-- add delete function  -->
-		<% end %>
+		<%end%>
 	<%end%>
 	<%end%>
 
