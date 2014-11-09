@@ -10,12 +10,12 @@
   </thead>
 
   <tbody>
-    <% @favorites.each do |favorite| %>
-      <tr>
-        <td><%= favorite.location.name %></td>
-
-        <td><%= link_to 'Remove from favorites', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% current_user.favorites.each do |favorite| %>
+	      <tr>
+	        <td><%= favorite.location.name %></td>
+	
+	        <td><%= link_to 'Remove from favorites', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
     <% end %>
   </tbody>
 </table>
