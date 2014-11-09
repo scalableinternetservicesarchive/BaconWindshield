@@ -8,7 +8,7 @@
 	<% if defined?(Devise)%>
 	<% if user_signed_in?%>
 		<% if !current_user.locations.include?(@location) %>
-			<%= button_to 'Add to favorites', favorites_path(location_id: @location.id) %>
+			<br><%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
 		<%end%>
 	<%end%>
 	<%end%>
