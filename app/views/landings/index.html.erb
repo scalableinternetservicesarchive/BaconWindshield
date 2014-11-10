@@ -15,7 +15,7 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Favorite spots</th>
+					<th>Favorite spots <%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,7 +25,6 @@
 						<tr>
 							<% location = Location.find(favorite.location_id) %>
 							<td><%= link_to location.name, location %></td>
-							<td><%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs" %></td>
 						</tr>
 					<% end %>
 				<% else %>
