@@ -8,10 +8,8 @@
 	<% if defined?(Devise)%>
 	<% if user_signed_in?%>
 		<% if !current_user.locations.include?(@location) %>
-			<%= button_to 'Add to favorites', favorites_path(location_id: @location.id) %>
-		<% else %>
-		<!-- add delete function  -->
-		<% end %>
+			<br><%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+		<%end%>
 	<%end%>
 	<%end%>
 
@@ -24,8 +22,8 @@
 			<thead>
 				<th><strong>Day:</strong></th>
 				<th><strong>Time:</strong></th>
-				<th><strong>Quality:</strong></th>
-				<th><strong>Size:</strong></th>
+				<th><strong>Swell quality:</strong></th>
+				<th><strong>Swell size:</strong></th>
 			</thead>
 			<tbody>
 				<% weather.each do |wave| %>
