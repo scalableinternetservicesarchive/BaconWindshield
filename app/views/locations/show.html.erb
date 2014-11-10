@@ -1,43 +1,56 @@
-<p id="notice">
-	<%= notice %>
-</p>
-
-<p>
-	<strong>Name:</strong>
-	<%= @location.name %>
+<div align="center">
+	<font size="5"><strong><%= @location.name %></strong></font>
+	</br>
 	<% if defined?(Devise)%>
 	<% if user_signed_in?%>
-		<button type= 'btn-button' class= 'btn btn-default'>
-			<span class="glyphicon glyphicon-star"></span>Add to favorites
-		</button>
-		<% current_user.locations.append @location %>
+	<button type= 'btn-button' class= 'btn btn-default'>
+		<span class="glyphicon glyphicon-star"></span>Add to favorites
+	</button>
+	<% current_user.locations.append @location %>
 	<%end%>
 	<%end%>
 
-	<% weather = get_swell_json_with_spot_id(@location.id) %>
-	
-	<% if weather == "fail" %>
-		<br>Sorry, but there is no wave information for this spot!
-	<% else %>
-		<table class= "table table-striped">
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-2">
+		<table class="table table-hover table-striped">
 			<thead>
-				<th><strong>Day:</strong></th>
-				<th><strong>Time:</strong></th>
-				<th><strong>Quality:</strong></th>
-				<th><strong>Size:</strong></th>
+				<tr>
+					<th>Today</th>
+				</tr>
 			</thead>
 			<tbody>
-				<% weather.each do |wave| %>
-				<tr>
-					<td><%= "#{wave['day']}\n\n" %></td>
-					<td><%= "#{wave['hour']}\n\n" %></td>
-					<td><%= "#{wave['shape_full']}\n\n" %></td>
-					<td><%= "#{wave['size']}\n\n" %></td>
-				</tr>
-				<% end %>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="1" data-location=<%= @location.id%> data-duration="day" width="496" height="94"></canvas>
+				</div></td>
+
 			</tbody>
 		</table>
-	<% end %>
-</p>
+	</div>
 
-<%= link_to 'Back', locations_path %>
+	<div class="col-md-4">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>This week</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="2" data-location=<%= @location.id%> data-duration="week" width="496" height="94" ></canvas>
+				</div></td>
+			</tbody>
+	</div>
+
+</div>
+<!-- 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize"></script>
+
+<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+
+<div class="google-maps-canvas" id="map-canvas"</div> -->
