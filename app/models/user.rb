@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
   validates_presence_of :username
   validates_uniqueness_of :username
-  has_many :locations
+  has_many :favorites
+  has_many :locations, through: :favorites
   
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

@@ -3,10 +3,11 @@
 	</br>
 	<% if defined?(Devise)%>
 	<% if user_signed_in?%>
-	<button type= 'btn-button' class= 'btn btn-default'>
-		<span class="glyphicon glyphicon-star"></span>Add to favorites
-	</button>
-	<% current_user.locations.append @location %>
+
+	<% if !current_user.locations.include?(@location) %>
+	<br>
+	<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+	<%end%>
 	<%end%>
 	<%end%>
 
@@ -19,6 +20,7 @@
 				<tr>
 					<th>Today</th>
 				</tr>
+
 			</thead>
 			<tbody>
 				<td>
@@ -48,7 +50,7 @@
 	</div>
 
 </div>
-<!-- 
+<!--
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>

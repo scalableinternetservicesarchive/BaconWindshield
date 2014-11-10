@@ -15,14 +15,15 @@
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Favorite spots</th>
+					<th>Favorite spots <%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
 				</tr>
 			</thead>
 			<tbody>
 				<% if defined?(Devise)%>
 				<% if user_signed_in?%>
-					<% current_user.locations.each do |location| %>
+					<% current_user.favorites.limit(5).each do |favorite| %>
 						<tr>
+							<% location = Location.find(favorite.location_id) %>
 							<td><%= link_to location.name, location %></td>
 						</tr>
 					<% end %>
