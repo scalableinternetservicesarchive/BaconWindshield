@@ -504,7 +504,7 @@ var ready = function() {
 				}
 				context.strokeStyle = "rgba(81,81,81,1)";
 
-				context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[time_max].size_low) * height_scale + chartY_indent);
+				context.lineTo(time_max * time_scale, + chartX_indent, (height_max - data[time_max].size_low) * height_scale + chartY_indent);
 				context.stroke();
 
 			});
