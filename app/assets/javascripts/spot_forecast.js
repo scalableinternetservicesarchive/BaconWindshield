@@ -274,27 +274,50 @@ var ready = function() {
 					// Find min and max.
 					if (data[i].size_low < sizeMin) {
 						sizeMin = data[i].size_low;
+
 					}
 					if (data[i].size_high > sizeMax) {
-						sizeMax = data[i].size_high;
+						if (i == 91) {
+
+						} else {
+							sizeMax = data[i].size_high;
+						}
+
 					}
 				}
 
 				while (sizeMax > height_max) {
 					height_max += 3;
 				}
+
 				if (sizeMax > 6) {
-					if (sizeMax < 8){
-						height_scale = 7;
+					if (Math.ceil(sizeMax) < 12) {
+
+						switch(Math.ceil(sizeMax)) {
+						case 7:
+							height_scale = 8;
+							break;
+						case 8:
+							height_scale = 8;
+							break;
+						case 9:
+							height_scale = 7;
+							break;
+						case 10:
+							height_scale = 6;
+							break;
+						case 11:
+							height_scale = 6;
+							break;
+						}
+					} else {
+						if (sizeMax < 15) {
+							height_scale = 5;
+						} else {
+							height_scale = 3;
+						}
 					}
-					if (sizeMax < 12) {
-						height_scale = 6;
-					} if(sizeMax > 12){
-						height_scale = 3;
-					}
-					 else {
-						height_scale = 5;
-					}
+
 				}
 
 				$("canvas#spot_" + data[0].spot_id).attr('height', height_max * height_scale + 22);
