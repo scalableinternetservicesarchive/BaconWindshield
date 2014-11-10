@@ -61,12 +61,45 @@ var ready = function() {
 				while (sizeMax > height_max) {
 					height_max += 3;
 				}
+				// if (sizeMax > 6) {
+				// if (sizeMax > 10) {
+				// height_scale = 4;
+				// } else {
+				// height_scale = 8;
+				// }
+				// }
+				console.log(sizeMax);
 				if (sizeMax > 6) {
-					if (sizeMax > 10) {
-						height_scale = 4;
+					if (Math.ceil(sizeMax) < 13) {
+
+						switch(Math.ceil(sizeMax)) {
+						case 7:
+							height_scale = 8;
+							break;
+						case 8:
+							height_scale = 8;
+							break;
+						case 9:
+							height_scale = 7;
+							break;
+						case 10:
+							height_scale = 6;
+							break;
+						case 11:
+							height_scale = 6;
+							break;
+						case 12:
+							height_scale = 6;
+							break;
+						}
 					} else {
-						height_scale = 8;
+						if (sizeMax < 15) {
+							height_scale = 5;
+						} else {
+							height_scale = 3;
+						}
 					}
+
 				}
 
 				$("canvas#spot_" + data[0].spot_id).attr('height', height_max * height_scale + 22);
@@ -504,7 +537,7 @@ var ready = function() {
 				}
 				context.strokeStyle = "rgba(81,81,81,1)";
 
-				context.lineTo(time_max * time_scale, + chartX_indent, (height_max - data[time_max].size_low) * height_scale + chartY_indent);
+				context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[time_max].size_low) * height_scale + chartY_indent);
 				context.stroke();
 
 			});
