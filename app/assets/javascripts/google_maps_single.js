@@ -1,6 +1,6 @@
 var MY_MAPTYPE_ID = 'custom_style';
 
-function initialize() {
+function initialize2() {
 
 	$("canvas.spot_forecast").each(function(index) {
 		var spot_id = $(this).attr('data-location');
@@ -48,7 +48,7 @@ function initialize() {
 				},
 				mapTypeId : MY_MAPTYPE_ID
 			};
-			var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			var map = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
 			var styledMapOptions = {
 				name : 'Custom Style'
 			};

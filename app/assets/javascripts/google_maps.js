@@ -1,6 +1,6 @@
 var MY_MAPTYPE_ID = 'custom_style';
 
-function initialize() {
+function initialize1() {
 	var featureOpts = [{
 		"featureType" : "all",
 		"stylers" : [{
@@ -40,7 +40,7 @@ function initialize() {
 		},
 		mapTypeId : MY_MAPTYPE_ID
 	};
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	var map = new google.maps.Map(document.getElementById('map-canvas1'), mapOptions);
 	var styledMapOptions = {
 		name : 'Custom Style'
 	};
