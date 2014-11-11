@@ -3,7 +3,9 @@
 <p>
   
   <%=Location.find(@favorite.location_id).name%>
-  Is listed as one of your favorites!
+  is now listed as one of your favorites!
 </p>
 
-<%= link_to 'Back', favorites_path %>
+<%= link_to :back, class: "btn btn-primary" do%>
+	<span class= "glyphicon glyphicon-arrow-left"></span>
+<% end %>
