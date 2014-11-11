@@ -2,22 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .google-maps-canvas {
-  
-  
   position: absolute;
-  margin-left: -33.3%;
+  margin-left: -36.6%;
   margin-top: 10%;
-  width:60%; 
-  height: 50%;
+  width: 67%; 
+  height: 60%;
 }
 .leftColumn {
     float: left;
-      margin-left: 20%;
+      margin-left: 5%;
 
 }
 .rightColumn {
     float: right;
-      margin-right: 20%;
+      margin-right: 5%;
+
+}
+.image {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 20%;
 
 }
 
