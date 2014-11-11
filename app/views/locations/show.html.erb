@@ -4,9 +4,11 @@
 <% weather = get_swell_json_with_spot_id(@location.id) %>
 
 <% if weather == "fail" %>
+
 <div class="image">
 
-<%= image_tag "daisy.jpg" %>
+	<%= image_tag "daisy.jpg" %>
+
 </div>
 <% else %>
 
