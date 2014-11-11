@@ -1,59 +1,62 @@
-<p id="notice">
+<!-- <p id="notice">
 	<%= notice %>
-</p>
-<div align="center">
-	<font size="5"><strong><%= @location.name %></strong></font>
-	</br>
-	<% if defined?(Devise)%>
-	<% if user_signed_in?%>
+</p> -->
+<div class="jumbotron">
 
-	<% if !current_user.locations.include?(@location) %>
-	<br>
-	<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
-	<%end%>
-	<%end%>
-	<%end%>
+	<div align="center">
+		<font size="5"><strong><%= @location.name %></strong></font>
+		</br>
+		<% if defined?(Devise)%>
+		<% if user_signed_in?%>
 
-</div>
+		<% if !current_user.locations.include?(@location) %>
+		<br>
+		<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+		<%end%>
+		<%end%>
+		<%end%>
 
-<div class="leftColumn">
+	</div>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Today</th>
-			</tr>
+	<div class="leftColumn">
 
-		</thead>
-		<tbody>
-			<td>
-			<div align="center">
-				<canvas class="spot_forecast"
-				id="1" data-location=<%= @location.id%> data-duration="day" width="496" height="94"></canvas>
-			</div></td>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Today</th>
+				</tr>
 
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="1" data-location=<%= @location.id%> data-duration="day" width="496" height="94"></canvas>
+				</div></td>
 
-<div class="rightColumn">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>This week</th>
-			</tr>
-		</thead>
-		<tbody>
-			<td>
-			<div align="center">
-				<canvas class="spot_forecast"
-				id="2" data-location=<%= @location.id%> data-duration="week" width="496" height="94" ></canvas>
-			</div></td>
-		</tbody>
-</div>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="rightColumn">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>This week</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="2" data-location=<%= @location.id%> data-duration="week" width="496" height="94" ></canvas>
+				</div></td>
+			</tbody>
+	</div>
 <div class="google-maps-canvas" id="map-canvas2"</div>
-
 </div>
+</div>
+
 
 <!-- <% weather = get_swell_json_with_spot_id(@location.id) %>
 

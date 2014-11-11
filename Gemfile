@@ -8,6 +8,8 @@ gem 'sqlite3', group: :development
 #Use mysql2 as the production database for Active Record
 gem 'mysql2', group: :production
 
+gem 'gon'
+
 # Use SCSS for stylesheets
 
 gem 'sass-rails', '~> 4.0.3'

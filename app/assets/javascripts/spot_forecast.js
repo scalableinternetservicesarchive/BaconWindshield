@@ -68,7 +68,6 @@ var ready = function() {
 				// height_scale = 8;
 				// }
 				// }
-				console.log(sizeMax);
 				if (sizeMax > 6) {
 					if (Math.ceil(sizeMax) < 13) {
 

@@ -5,7 +5,7 @@ function initialize2() {
 	$("canvas.spot_forecast").each(function(index) {
 		var spot_id = $(this).attr('data-location');
 
-		$.getJSON('http://www.spitcast.com/api/spot/forecast/' + $(this).attr('data-location') + '/?dcat=' + duration_day + '&dval=' + $(this).attr('data-date') + '&format=json', function(data) {
+		$.getJSON('http://www.spitcast.com/api/spot/forecast/' + $(this).attr('data-location') + '/?dcat=' + '&format=json', function(data) {
 			var latitude = data[0].latitude;
 			var longitude = data[0].longitude;
 
@@ -57,8 +57,9 @@ function initialize2() {
 
 			map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
-			var marker;
+			var marker, marker2;
 			var waveImage = new google.maps.MarkerImage('http://cdn.flaticon.com/png/64/48043.png', new google.maps.Size(64, 64), new google.maps.Point(0, 0), new google.maps.Point(32, 32));
+			var targetImage = new google.maps.MarkerImage('http://icons.iconarchive.com/icons/pixelkit/gentle-edges/32/Location-Map-icon.png', new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(16, 16));
 
 			var pos = new google.maps.LatLng(latitude, longitude);
 			var marker = new google.maps.Marker({
@@ -67,6 +68,24 @@ function initialize2() {
 				icon : waveImage,
 			});
 			map.setCenter(pos);
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+					var marker = new google.maps.Marker({
+						position : pos,
+						map : map,
+						icon : targetImage,
+						title : 'You are here!'
+					});
+
+				}, function() {
+					handleNoGeolocation(true);
+				});
+			} else {
+				// Browser doesn't support Geolocation
+				handleNoGeolocation(false);
+			}
 
 		});
 
