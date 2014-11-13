@@ -61,13 +61,7 @@ var ready = function() {
 				while (sizeMax > height_max) {
 					height_max += 3;
 				}
-				// if (sizeMax > 6) {
-				// if (sizeMax > 10) {
-				// height_scale = 4;
-				// } else {
-				// height_scale = 8;
-				// }
-				// }
+
 				if (sizeMax > 6) {
 					if (Math.ceil(sizeMax) < 13) {
 
