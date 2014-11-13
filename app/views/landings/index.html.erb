@@ -10,7 +10,12 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>Favorite spots <%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
+						<th>Favorite spots
+						<% if defined?(Devise)%>
+						<% if user_signed_in?%>
+							<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
+						<%end%>
+						<%end%>
 					</tr>
 				</thead>
 				<tbody>
