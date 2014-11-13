@@ -11,7 +11,7 @@ var getLocation = function() {
 function callback(position) {
 	var nearestSpots = getNearestSpots(position.coords.latitude, position.coords.longitude);
 
-	var nearestTableString = '<table class="table table-hover table-striped inner margTop"><thead id="nearest-table-head"><tr><th>Nearby spots</th><th>Distance</th></tr></thead><tbody>';
+	var nearestTableString = '<table class="table table-hover table-striped inner margTop"><thead id="nearest-table-head"><tr><th>Nearest spots</th><th>Distance</th></tr></thead><tbody>';
 
 	for (var i = 0; i < nearestSpots.length; i++) {
 		nearestTableString += '<tr><td><a href=/locations/' + nearestSpots[i].id + '>' + nearestSpots[i].name + '</a>' + '</td>' + "<td>" + nearestSpots[i].distance.toFixed(2) + " miles" + "</td>" + '</tr>';
