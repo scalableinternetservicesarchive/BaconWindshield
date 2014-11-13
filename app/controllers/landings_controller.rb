@@ -1,6 +1,6 @@
 class LandingsController < ApplicationController
   def index
-    @locations = Location.all
-    gon.locations = @locations
+    gon.locations = Location.all
+    gon.counties = County.all
   end
 end
