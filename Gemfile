@@ -10,6 +10,8 @@ gem 'mysql2', group: :production
 
 gem 'gon'
 
+gem "font-awesome-rails"
+
 # Use SCSS for stylesheets
 
 gem 'sass-rails', '~> 4.0.3'
