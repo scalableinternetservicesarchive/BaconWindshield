@@ -1,18 +1,41 @@
-<!-- <p id="notice">
+<p id="notice">
 <%= notice %>
-</p> -->
+</p>
 <% weather = get_swell_json_with_spot_id(@location.id) %>
 
-<% if weather == "fail" %>
-
+<% if weather == "fail" %>z
 <div class="image">
 
 	<%= image_tag "daisy.jpg" %>
-
 </div>
 <% else %>
 
 <div class="jumbotron">
+	<div class="table_forecast">
+		<% weather = get_swell_json_with_spot_id(@location.id) %>
+
+		<table class= "table table-striped">
+			<thead>
+				<th><strong>Day:</strong></th>
+				<th><strong>Time:</strong></th>
+				<th><strong>Swell quality:</strong></th>
+				<th><strong>Swell size:</strong></th>
+			</thead>
+			<tbody>
+				<% weather.each_with_index do |wave, idx| %>
+				  <% if((idx) % 3 == 0) %>
+				  <tr>
+					<td><%= "#{wave['day']}\n\n" %></td>
+					<td><%= "#{wave['hour']}\n\n" %></td>
+					<td><%= "#{wave['shape_full']}\n\n" %></td>
+					<td><%= "#{wave['size']}\n\n" %></td>
+				</tr>
+				<% end %>				<% end %>
+
+
+			</tbody>
+		</table>
+	</div>
 
 	<div align="center">
 		<font size="5"><strong><%= @location.name %></strong></font>
@@ -65,36 +88,10 @@
 			</tbody>
 	</div>
 	<div class="google-maps-canvas" id="map-canvas2"</div>
-	</div>
+</div>
 
-	<!-- <% weather = get_swell_json_with_spot_id(@location.id) %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
-	<% if weather == "fail" %>
-	<br>
-	Sorry, but there is no wave information for this spot!
-	<% else %>
-	<table class= "table table-striped">
-	<thead>
-	<th><strong>Day:</strong></th>
-	<th><strong>Time:</strong></th>
-	<th><strong>Swell quality:</strong></th>
-	<th><strong>Swell size:</strong></th>
-	</thead>
-	<tbody>
-		<% weather.each do |wave| %>
-		<tr>
-			<td><%= "#{wave['day']}\n\n" %></td>
-			<td><%= "#{wave['hour']}\n\n" %></td>
-			<td><%= "#{wave['shape_full']}\n\n" %></td>
-			<td><%= "#{wave['size']}\n\n" %></td>
-		</tr>
-		<% end %>
-	</tbody>
-	</table>
-	<% end %> -->
-
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
-
-	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-	<% end %>
+<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+<% end %>
 

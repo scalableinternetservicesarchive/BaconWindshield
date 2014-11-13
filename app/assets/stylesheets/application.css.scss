@@ -63,6 +63,7 @@ html {
 .navbar{
   background-image: url(/assets/debut_dark.png);
   margin-bottom: 0;
+  overflow: hidden;
 }
 
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
