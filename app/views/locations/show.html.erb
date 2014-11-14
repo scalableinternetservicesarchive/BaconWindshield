@@ -17,18 +17,21 @@
 				<th><strong>Time:</strong></th>
 				<th><strong>Swell quality:</strong></th>
 				<th><strong>Swell size:</strong></th>
+				<th><strong>Tide:</strong></th>
+
 			</thead>
 			<tbody>
 				<% weather.each_with_index do |wave, idx| %>
-				  <% if((idx) % 3 == 0) %>
-				  <tr>
+				<% if((idx) % 3 == 0) %>
+				<tr>
 					<td><%= "#{wave['day']}\n\n" %></td>
 					<td><%= "#{wave['hour']}\n\n" %></td>
 					<td><%= "#{wave['shape_full']}\n\n" %></td>
-					<td><%= "#{wave['size']}\n\n" %></td>
+					<td><%= "#{wave['size']}\n\n" %> ft</td>
+					<td><%= "#{wave['tide']}\n\n" %>	</td>
+
 				</tr>
 				<% end %>				<% end %>
-
 
 			</tbody>
 		</table>
@@ -85,10 +88,10 @@
 			</tbody>
 	</div>
 	<div class="google-maps-canvas" id="map-canvas2"</div>
-</div>
+	</div>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
-<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-<% end %>
+	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+	<% end %>
 

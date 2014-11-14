@@ -315,7 +315,6 @@ var ready = function() {
 				while (sizeMax > height_max) {
 					height_max += 3;
 				}
-
 				if (sizeMax > 6) {
 					if (Math.ceil(sizeMax) < 12) {
 
@@ -340,7 +339,12 @@ var ready = function() {
 						if (sizeMax < 15) {
 							height_scale = 5;
 						} else {
-							height_scale = 3;
+
+							if (sizeMax > 22) {
+								height_scale = 2.8;
+							} else {
+								height_scale = 3;
+							}
 						}
 					}
 
@@ -568,4 +572,6 @@ function getFillColor(shape) {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+
 
