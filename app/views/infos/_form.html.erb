@@ -1,0 +1,45 @@
+<%= form_for(@info) do |f| %>
+  <% if @info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@info.errors.count, "error") %> prohibited this info from being saved:</h2>
+
+      <ul>
+      <% @info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :day %><br>
+    <%= f.text_field :day %>
+  </div>
+  <div class="field">
+    <%= f.label :hour %><br>
+    <%= f.text_field :hour %>
+  </div>
+  <div class="field">
+    <%= f.label :shape %><br>
+    <%= f.text_field :shape %>
+  </div>
+  <div class="field">
+    <%= f.label :shape_detail %><br>
+    <%= f.text_field :shape_detail %>
+  </div>
+  <div class="field">
+    <%= f.label :shape_full %><br>
+    <%= f.text_field :shape_full %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.number_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br>
+    <%= f.number_field :location_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

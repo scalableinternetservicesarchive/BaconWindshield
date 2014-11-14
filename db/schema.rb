@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111064142) do
+ActiveRecord::Schema.define(version: 20141114003022) do
 
   create_table "counties", force: true do |t|
     t.string   "name"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20141111064142) do
   create_table "favorites", force: true do |t|
     t.integer  "location_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "infos", force: true do |t|
+    t.string   "day"
+    t.string   "hour"
+    t.string   "shape"
+    t.string   "shape_detail"
+    t.string   "shape_full"
+    t.integer  "size"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

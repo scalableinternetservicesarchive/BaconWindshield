@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @info.day %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @info.hour %>
+</p>
+
+<p>
+  <strong>Shape:</strong>
+  <%= @info.shape %>
+</p>
+
+<p>
+  <strong>Shape detail:</strong>
+  <%= @info.shape_detail %>
+</p>
+
+<p>
+  <strong>Shape full:</strong>
+  <%= @info.shape_full %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @info.size %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @info.location_id %>
+</p>
+
+<%= link_to 'Edit', edit_info_path(@info) %> |
+<%= link_to 'Back', infos_path %>
