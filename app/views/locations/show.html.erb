@@ -1,16 +1,5 @@
-<% weather = get_swell_json_with_spot_id(@location.id) %>
-
-<% if weather == "fail" %>z
-<div class="image">
-
-	<%= image_tag "daisy.jpg" %>
-</div>
-<% else %>
-
 <div class="jumbotron">
 	<div class="table_forecast">
-		<% weather = get_swell_json_with_spot_id(@location.id) %>
-
 		<table class= "table table-striped">
 			<thead>
 				<th><strong>Day:</strong></th>
@@ -19,17 +8,16 @@
 				<th><strong>Swell size:</strong></th>
 			</thead>
 			<tbody>
-				<% weather.each_with_index do |wave, idx| %>
-				  <% if((idx) % 3 == 0) %>
-				  <tr>
-					<td><%= "#{wave['day']}\n\n" %></td>
-					<td><%= "#{wave['hour']}\n\n" %></td>
-					<td><%= "#{wave['shape_full']}\n\n" %></td>
-					<td><%= "#{wave['size']}\n\n" %></td>
-				</tr>
-				<% end %>				<% end %>
-
-
+				<% @location.infos.each_with_index do |wave, idx| %>
+					<% if((idx) % 3 == 0) %>
+						<tr>
+							<td><%= wave.day %></td>
+							<td><%= wave.hour %></td>
+							<td><%= wave.shape_full %></td>
+							<td><%= wave.size %></td>
+						</tr>
+					<% end %>
+				<% end %>
 			</tbody>
 		</table>
 	</div>
@@ -62,7 +50,7 @@
 				<td>
 				<div align="center">
 					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id%> data-duration="day" width="496" height="94"></canvas>
+					id="1" data-location=<%= @location.id %> data-duration="day" width="496" height="94"></canvas>
 				</div></td>
 
 			</tbody>
@@ -90,5 +78,3 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-<% end %>
-
