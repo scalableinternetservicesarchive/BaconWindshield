@@ -24,7 +24,24 @@
 					<% current_user.favorites.limit(5).each do |favorite| %>
 					<tr>
 						<% location = Location.find(favorite.location_id) %>
-						<td><%= link_to location.name, location %></td>
+						<% wave = location.infos %>
+						<td><%= link_to location.name, location %>
+								<% shape = wave[1].shape_full %>
+								<font color = "blue">
+									<% case shape %>
+									  	<% when "Poor" %>
+									  		<span class="fa fa-star"></span>
+									  	<% when "Poor-Fair" %>
+									  		<span class="fa fa-star"></span><span class="fa fa-star"></span>
+									  	<% when "Fair" %>
+										  	<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+									  	<% when "Fair-Good" %>
+									  		<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+									  	<% when "Good" %>
+									  	<% else %>	 									
+									<% end %>
+								</font>	
+						</td>
 					</tr>
 					<% end %>
 					<% else %>

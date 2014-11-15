@@ -2,8 +2,28 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  respond_to :js, :html
+  helper_method :get_swell_json_with_spot_id, :get_json
+  require 'net/http'
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  def get_json(url)
+    uri = URI.parse(url)
+    response = Net::HTTP.get_response(uri)
+    data = response.body
+    begin
+      result = JSON.parse(data)
+    rescue
+      result = "fail"
+    end
+    return result    
+  end
+  
+  def get_swell_json_with_spot_id(id)
+    get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
+  end
+
 
   protected
 

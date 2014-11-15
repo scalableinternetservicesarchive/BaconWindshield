@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: MyString
+  hour: MyString
+  shape: MyString
+  shape_detail: MyString
+  shape_full: MyString
+  size: 1
+  location_id: 1
+
+two:
+  day: MyString
+  hour: MyString
+  shape: MyString
+  shape_detail: MyString
+  shape_full: MyString
+  size: 1
+  location_id: 1
