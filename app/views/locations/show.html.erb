@@ -13,25 +13,30 @@
 
 		<table class= "table table-striped">
 			<thead>
-				<th><strong>Day:</strong></th>
-				<th><strong>Time:</strong></th>
-				<th><strong>Swell quality:</strong></th>
-				<th><strong>Swell size:</strong></th>
-				<th><strong>Tide:</strong></th>
+				<th><strong>Day</strong></th>
+				<th><strong>Swell Size</strong></th>
+				<th><strong>Seell Rating</strong></th>
+				<th><strong>Wind</strong></th>
+
 
 			</thead>
 			<tbody>
+
 				<% weather.each_with_index do |wave, idx| %>
-				<% if((idx) % 3 == 0) %>
+				<!-- <% if((idx) % 3 == 0) %> -->
 				<tr>
-					<td><%= "#{wave['day']}\n\n" %></td>
-					<td><%= "#{wave['hour']}\n\n" %></td>
-					<td><%= "#{wave['shape_full']}\n\n" %></td>
-					<td><%= "#{wave['size']}\n\n" %> ft</td>
-					<td><%= "#{wave['tide']}\n\n" %>	</td>
+					<td> <%@time = Time.at("#{wave['localTimestamp']}".to_i)%>
+						<%=@return = @time.to_s.chomp("-0800")%>
+					</td>
+					<td><%= "#{wave['swell']['minBreakingHeight']}"%>-<%="#{wave['swell']['maxBreakingHeight']}" %> ft</td>
+					<td><% @rating = "#{wave['solidRating']}".to_i - "#{wave['fadedRating']}".to_i %>
+						<%= @rating%></td>
+					<td><%= "#{wave['wind']['speed']}" %> mph</td>
+						
 
 				</tr>
-				<% end %>				<% end %>
+				<% end %>
+				<!-- <% end %> -->
 
 			</tbody>
 		</table>
@@ -87,10 +92,10 @@
 				</div></td>
 			</tbody>
 	</div>
-	<div class="google-maps-canvas" id="map-canvas2"</div>
+	<!-- <div class="google-maps-canvas" id="map-canvas2"</div> -->
 	</div>
-
+<!-- 
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
-	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script> -->
 	<% end %>
