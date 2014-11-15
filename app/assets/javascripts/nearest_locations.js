@@ -1,23 +1,11 @@
-
 var table = '<table class="table table-hover table-striped inner margTop"><thead id="nearest-table-head"><tr><th>Nearest spots</th></tr></thead><tbody>';
 
 function getAllCounties() {
-	if ( null !== gon.counties ) {
-		return gon.counties;
-	} else {
-		table += '<tr><td>You have to refresh the page!</td></tr>';
-		$(table).insertAfter(".inner");
-	};
-
+	return gon.counties;
 }
 
 function getAllLocations() {
-	if ( null !== gon.locations ) {
-		return gon.locations;
-	} else {
-		table += '<tr><td>You have to refresh the page!</td></tr>';
-		$(table).insertAfter(".inner");
-	};
+	return gon.locations;
 }
 
 var getLocation = function() {
@@ -61,20 +49,16 @@ function positionCallback(position) {
 }
 
 function discardFurthestLocation(geoLocations, newLoc) {
-	geoLocations.sort(compare);
+	// geoLocations.sort(compare);
 	if (newLoc.distance < geoLocations[geoLocations.length - 1].distance) {
 		geoLocations[geoLocations.length - 1] = newLoc;
 	}
 	return geoLocations;
 }
 
-function openPage() {
-	location.href = "/locations/" + finalNearestSpots[0][2];
-}
-
 function getNearestCounties(latitude, longitude) {
 	var counties = getAllCounties();
-	if ( null !== counties ) {
+	if (null !== counties) {
 		var nearestCounties = [];
 		for (var i = 0; i < counties.length; i++) {
 			var distance = calculateDistance(latitude, longitude, counties[i].latitude, counties[i].longitude);
@@ -98,7 +82,7 @@ function getNearestCounties(latitude, longitude) {
 
 function getNearestSpots(latitude, longitude) {
 	var locations = getAllLocations();
-	if ( null !== locations ) {
+	if (null !== locations) {
 		var nearestCounties = getNearestCounties(latitude, longitude);
 		var nearestSpots = [];
 
@@ -111,6 +95,7 @@ function getNearestSpots(latitude, longitude) {
 					id : locations[i].id
 				};
 				if (nearestSpots.length == 5) {
+					nearestSpots.sort(compare);
 					nearestSpots = discardFurthestLocation(nearestSpots, tempSpot);
 				} else {
 					nearestSpots.push(tempSpot);
@@ -151,5 +136,6 @@ function toRadians(num) {
 	return (num * Math.PI / 180);
 }
 
+
 $(document).ready(getLocation);
-$(document).on('page:load',getLocation);
+$(document).on('page:load', getLocation);
