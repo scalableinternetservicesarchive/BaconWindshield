@@ -36,23 +36,6 @@ class LocationsController < ApplicationController
     @location.destroy
     respond_with(@location)
   end
-  
-  def get_json(url)
-    uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri)
-    data = response.body
-    begin
-      result = JSON.parse(data)
-    rescue
-      result = "fail"
-    end
-    return result    
-  end
-  
-  def get_swell_json_with_spot_id(id)
-    get_json('http://magicseaweed.com/api/9g81Jsvjt2EaR7Xf3L5L7dIQd7c97EUI/forecast/?spot_id=' +id.to_s)
-    # get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
-  end
 
   private
     def set_location
