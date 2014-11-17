@@ -79,7 +79,7 @@ def get_json(url)
   end
   
   def get_swell_json_with_spot_id(id)
-    get_json('api.spitcast.com/api/spot/forecast/' + id.to_s + '/')
+    get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
   end
 
 Location.find_each do |loc|

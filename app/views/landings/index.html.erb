@@ -7,8 +7,7 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<table class="table table-hover table-striped">
-				
+			<table class="table table-hover table-striped">	
 					<thead>
 						<tr>
 							<th>Favorite spots
@@ -19,9 +18,7 @@
 							<%end%>
 						</tr>
 					</thead>
-					
 				<tbody>
-					<% cache("#{current_user.id}-panel") do %>
 						<% if defined?(Devise)%>
 						<% if user_signed_in?%>
 						<% current_user.favorites.limit(5).each do |favorite| %>
@@ -52,17 +49,19 @@
 						<td>You need to log in to use this feature!</td>
 						<% end %>
 						<% end %>
-					<% end %>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
-	<script type="text/javascript" href="/app/assets/javascripts/nearest_locations.js"></script>
 
+	<script type="text/javascript" href="/app/assets/javascripts/nearest_locations.js"></script>
+	<!-- <%= javascript_include_tag "nearest_locations", "data-turbolinks-track" => true %> -->
+	<!-- pipelining nearby_locations makes it being called 3 times instead of 1, so just leaving this here for future reference -->
+	
 	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize1"></script>
 
-	<script type="text/javascript" href="/app/assets/javascripts/google_maps.js"></script>
+	<!-- <script type="text/javascript" href="/app/assets/javascripts/google_maps.js"></script> -->
+	<%= javascript_include_tag "google_maps", "data-turbolinks-track" => true %>
 
 	<div class="google-maps-canvas1" id="map-canvas1"></div>
 </div>
