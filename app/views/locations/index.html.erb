@@ -10,7 +10,7 @@
 		</thead>
 
 		<tbody>
-			<% @locations.each do |location| %>
+			<% Location.all.each do |location| %>
 			<tr>
 				<td><%= link_to location.name, location %></td>
 			</tr>

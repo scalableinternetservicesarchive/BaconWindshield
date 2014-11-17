@@ -10,6 +10,10 @@ GEM
       activesupport (= 4.1.4)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    actionpack-action_caching (1.1.1)
+      actionpack (>= 4.0.0, < 5.0)
+    actionpack-page_caching (1.0.2)
+      actionpack (>= 4.0.0, < 5)
     actionview (4.1.4)
       activesupport (= 4.1.4)
       builder (~> 3.1)
@@ -41,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    dalli (2.7.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -165,10 +170,13 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  actionpack-action_caching
+  actionpack-page_caching
   bootstrap-sass (~> 3.2.0.2)
   bootstrap-sass-extras
   bundler
   coffee-rails (~> 4.0.0)
+  dalli
   devise
   font-awesome-rails
   gon

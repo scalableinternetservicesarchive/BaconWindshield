@@ -3,9 +3,11 @@ class LocationsController < ApplicationController
   respond_to :js, :html
   helper_method :get_swell_json_with_spot_id, :get_json
   require 'net/http'
+  #caches_page :index
+  caches_action :index
   
   def index
-    @locations = Location.all
+    #@locations = Location.all
     respond_with(@locations)
   end
 
