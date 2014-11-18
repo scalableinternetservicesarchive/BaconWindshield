@@ -1,15 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+# 
+# one:
+  # day: MyString
+  # size: 1
+  # swell_rating: 1
+  # wind: 1.5
+  # probability: 1.5
+# 
+# two:
+  # day: MyString
+  # size: 1
+  # swell_rating: 1
+  # wind: 1.5
+  # probability: 1.5
 one:
   day: MyString
   size: 1
   swell_rating: 1
-  wind: 1.5
-  probability: 1.5
+  wind: 1
+  probability: 1
 
 two:
   day: MyString
   size: 1
   swell_rating: 1
-  wind: 1.5
-  probability: 1.5
+  wind: 1
+  probability: 1

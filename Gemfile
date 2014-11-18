@@ -9,7 +9,7 @@ gem 'sqlite3', group: :development
 gem 'mysql2', group: :production
 
 gem 'gon'
-
+gem "typhoeus"
 gem "font-awesome-rails"
 
 # Use SCSS for stylesheets

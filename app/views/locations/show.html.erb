@@ -9,7 +9,7 @@
 
 <div class="jumbotron">
 	<div class="table_forecast">
-		# <% weather = get_swell_json_with_spot_id(@location.id) %>
+		<% weather = get_swell_json_with_spot_id(@location.id) %>
 
 		<table class= "table table-striped">
 			<thead>
@@ -27,17 +27,13 @@
 				<!-- <% weather.each_with_index do |wave, idx| %> -->
 				<% @location.infos.each do |wave| %>
 				<tr>
-					<td>wave.day</td>
-					<td>wave.size</td>
-					<td>wave.swell_rating</td>
-					<td>wave.wind</td>
-					<td>wave.probability</td>
+					<td><%=Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
+					<td><%=wave.size%></td>
+					<td><%=wave.swell_rating%></td>
+					<td><%=wave.wind%></td>
+					<td><%=wave.probability%></td>
 
-					<!-- <td> <%= Time.at("#{wave['localTimestamp']}".to_i).to_s.chomp("-0800")%></td>
-					<td><%= "#{wave['swell']['minBreakingHeight']}"%>-<%="#{wave['swell']['maxBreakingHeight']}" %> ft</td>
-					<td><% @rating = "#{wave['solidRating']}".to_i - "#{wave['fadedRating']}".to_i %>
-						<%= @rating%></td>
-					<td><%= "#{wave['wind']['speed']}" %> mph</td> -->
+					
 						
 
 				</tr>

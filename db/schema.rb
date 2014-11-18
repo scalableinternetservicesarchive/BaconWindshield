@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 20141116033526) do
   end
 
   create_table "infos", force: true do |t|
-    t.string   "day"
+    t.timestamp   "day"
     t.integer  "size"
     t.integer  "swell_rating"
-    t.float    "wind"
-    t.float    "probability"
+    t.integer    "wind"
+    t.integer    "probability"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
