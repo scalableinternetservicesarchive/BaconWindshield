@@ -1,6 +1,7 @@
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
+  caches_action :show, expires_in: 24.hour
 
   def index
     @counties = County.all
@@ -17,6 +18,7 @@ class CountiesController < ApplicationController
   end
 
   def edit
+    expire_action action: :show
   end
 
   def create

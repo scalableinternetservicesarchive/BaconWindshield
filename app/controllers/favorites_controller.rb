@@ -17,6 +17,7 @@ class FavoritesController < ApplicationController
   end
 
   def edit
+    expire_action action: :show
   end
 
   def create

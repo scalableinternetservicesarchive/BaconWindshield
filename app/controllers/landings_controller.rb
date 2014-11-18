@@ -1,7 +1,5 @@
 class LandingsController < ApplicationController
-  
-  #caches_action :index
-  
+   
   def index
     @locations = Location.all
     @counties = County.all

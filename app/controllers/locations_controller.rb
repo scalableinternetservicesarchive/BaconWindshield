@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   helper_method :get_swell_json_with_spot_id, :get_json
   require 'net/http'
   #caches_page :index
-  caches_action :index
+  caches_action :index, expires_in: 24.hour
   
   def index
     #@locations = Location.all
@@ -21,6 +21,7 @@ class LocationsController < ApplicationController
   end
 
   def edit
+    expire_action action: :index
   end
 
   def create
