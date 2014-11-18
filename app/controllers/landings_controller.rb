@@ -1,4 +1,5 @@
 class LandingsController < ApplicationController
+   
   def index
     @locations = Location.all
     @counties = County.all
