@@ -7,7 +7,6 @@ class CreateInfos < ActiveRecord::Migration
       t.float :wind
       t.float :probability
       t.integer :location_id
-
       t.timestamps
     end
   end
