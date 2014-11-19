@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   require 'net/http'
   #caches_page :index
   caches_action :index, expires_in: 24.hour
-  
+
   def index
     #@locations = Location.all
     respond_with(@locations)
@@ -41,11 +41,12 @@ class LocationsController < ApplicationController
   end
 
   private
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    def location_params
-      params.require(:location).permit(:name)
-    end
+  def set_location
+    @location = Location.find(params[:id])
   end
+
+  def location_params
+    params.require(:location).permit(:name)
+  end
+end

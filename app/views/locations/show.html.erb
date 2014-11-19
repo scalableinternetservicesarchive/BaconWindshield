@@ -1,4 +1,5 @@
 <% weather = get_swell_json_with_spot_id(@location.id) %>
+	
 
 <% if weather == "fail" %>z
 <div class="image">
@@ -55,7 +56,7 @@
 
 	</div>
 
-	<div class="leftColumn">
+	<!-- <div class="leftColumn">
 
 		<table class="table table-striped">
 			<thead>
@@ -86,15 +87,14 @@
 				<td>
 				<div align="center">
 					<canvas class="spot_forecast"
-					id="2" data-location=<%= @location.id%> data-duration="week" width="496" height="94" ></canvas>
+					id="2" data-location=<%= @location.id%> data-longitude="<%= @location.longitude%>" data-duration="week" width="496" height="94" ></canvas>
 				</div></td>
 			</tbody>
-	</div>
-	<!-- <div class="google-maps-canvas" id="map-canvas2"</div> -->
-	</div>
-<!-- 
+	</div> -->
+
+	<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div>	</div>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
-	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script> -->
+	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
 	<% end %>
 
