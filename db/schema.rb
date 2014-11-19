@@ -28,11 +28,18 @@ ActiveRecord::Schema.define(version: 20141116033526) do
   end
 
   create_table "infos", force: true do |t|
-    t.timestamp   "day"
-    t.integer  "size"
-    t.integer  "swell_rating"
-    t.integer    "wind"
-    t.integer    "probability"
+    t.timestamp "day"
+    t.integer   "size_max"
+    t.integer   "size_min"
+    t.integer   "wind_direction"
+    t.integer   "swell_rating"
+    t.integer   "wind_speed"
+    t.integer   "temperature"
+    t.integer   "weather"
+    t.string    "chart_swell"
+    t.string    "chart_period"
+    t.string    "chart_wind"
+    t.integer   "probability"
 
     t.integer  "location_id"
     t.datetime "created_at"
