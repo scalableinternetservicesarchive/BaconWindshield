@@ -2,7 +2,6 @@ class InfosController < ApplicationController
   before_action :set_info, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
 
-
   def index
     @infos = Info.all
     respond_with(@infos)

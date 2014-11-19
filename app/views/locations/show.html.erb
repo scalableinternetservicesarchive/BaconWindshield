@@ -1,16 +1,13 @@
-<!-- <% weather = get_swell_json_with_spot_id(@location.id) %>
+<% weather = get_swell_json_with_spot_id(@location.id) %>
 
 <% if weather == "fail" %>z
 <div class="image">
 
 	<%= image_tag "daisy.jpg" %>
 </div>
-<% else %> -->
-
+<% else %>
 <div class="jumbotron">
 	<div class="table_forecast">
-		<% weather = get_swell_json_with_spot_id(@location.id) %>
-
 		<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
@@ -23,7 +20,6 @@
 
 			</thead>
 			<tbody>
-
 				<!-- <% weather.each_with_index do |wave, idx| %> -->
 				<% @location.infos.each do |wave| %>
 				<tr>
@@ -72,7 +68,7 @@
 				<td>
 				<div align="center">
 					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id%> data-duration="day" width="496" height="94"></canvas>
+					id="1" data-location=<%= @location.id %> data-duration="day" width="496" height="94"></canvas>
 				</div></td>
 
 			</tbody>
@@ -101,3 +97,4 @@
 
 	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script> -->
 	<% end %>
+

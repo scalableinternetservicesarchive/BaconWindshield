@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   respond_to :js, :html
   helper_method :get_swell_json_with_spot_id, :get_json
   require 'net/http'
-  
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
   def get_json(url)
     uri = URI.parse(url)
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def get_swell_json_with_spot_id(id)
     get_json('http://magicseaweed.com/api/9g81Jsvjt2EaR7Xf3L5L7dIQd7c97EUI/forecast/?spot_id=' +id.to_s)
   end
-
+ 
   protected
 
   def configure_permitted_parameters
