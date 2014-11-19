@@ -12,6 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20141116033526) do
+
   create_table "counties", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -28,19 +29,18 @@ ActiveRecord::Schema.define(version: 20141116033526) do
   end
 
   create_table "infos", force: true do |t|
-    t.timestamp "day"
-    t.integer   "size_max"
-    t.integer   "size_min"
-    t.integer   "wind_direction"
-    t.integer   "swell_rating"
-    t.integer   "wind_speed"
-    t.integer   "temperature"
-    t.integer   "weather"
-    t.string    "chart_swell"
-    t.string    "chart_period"
-    t.string    "chart_wind"
-    t.integer   "probability"
-
+    t.string   "day"
+    t.integer  "size_min"
+    t.integer  "size_max"
+    t.integer  "wind_direction"
+    t.integer  "wind_speed"
+    t.integer  "temperature"
+    t.integer  "weather"
+    t.string   "chart_swell"
+    t.string   "chart_period"
+    t.string   "chart_wind"
+    t.integer  "swell_rating"
+    t.float    "probability"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"

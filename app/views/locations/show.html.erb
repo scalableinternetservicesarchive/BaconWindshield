@@ -1,7 +1,7 @@
 <% weather = get_swell_json_with_spot_id(@location.id) %>
 	
 
-<% if weather == "fail" %>z
+<% if weather == "fail" %>
 <div class="image">
 
 	<%= image_tag "daisy.jpg" %>
@@ -12,28 +12,39 @@
 		<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
+								<th><strong>idx</strong></th>
+
 				<th><strong>Swell Size</strong></th>
 				<th><strong>Seell Rating</strong></th>
-				<th><strong>Wind</strong></th>
-				<th><strong>Probability</strong></th>
+				<th><strong>Wind Speed</strong></th>
+				<th><strong>Wind Direction</strong></th>
+				<th><strong>Temperature</strong></th>
+				<th><strong>Weather</strong></th>
+				<th><strong>Chart Swell</strong></th>
+				<th><strong>Chart Period</strong></th>
+				<th><strong>Chart Wind</strong></th>
 				
-
 
 			</thead>
 			<tbody>
-				<!-- <% weather.each_with_index do |wave, idx| %> -->
-				<% @location.infos.each do |wave| %>
-				<tr>
-					<td><%=Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
-					<td><%=wave.size%></td>
-					<td><%=wave.swell_rating%></td>
-					<td><%=wave.wind%></td>
-					<td><%=wave.probability%></td>
-
-					
-						
-
-				</tr>
+				<!-- <%= will_paginate @waves %>
+				<% @waves.each do |wave| %> -->
+				<% @location.infos.each_with_index do |wave,idx| %>		
+					<% if idx < idx+1%>
+					<tr>
+						<td><%=Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
+						<td><%= idx%></td>
+						<td><%=wave.size_min%>-<%=wave.size_max%> ft</td>
+						<td><%=wave.swell_rating%></td>
+						<td><%=wave.wind_speed%></td>
+						<td><%=wave.wind_direction%></td>			
+						<td><%=wave.temperature%></td>			
+						<td><%=wave.weather%></td>			
+						<td><%=wave.chart_swell%></td>			
+						<td><%=wave.chart_period%></td>			
+						<td><%=wave.chart_wind%></td>			
+						</tr>
+					<%end%>
 				<% end %>
 				<!-- <% end %> -->
 
