@@ -1,3 +1,10 @@
+<% weather = get_swell_json_with_spot_id(@location.id) %>
+<% if weather == "fail" %>
+<div class="image">
+
+	<%= image_tag "daisy.jpg" %>
+</div>
+<% else %>
 <div class="jumbotron">
 	<div class="table_forecast">
 		<table class= "table table-striped">
@@ -8,6 +15,7 @@
 				<th><strong>Swell size:</strong></th>
 			</thead>
 			<tbody>
+				
 				<% @location.infos.each_with_index do |wave, idx| %>
 					<% if((idx) % 3 == 0) %>
 						<tr>
@@ -78,3 +86,5 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+
+<%end%>
