@@ -63,7 +63,7 @@
 							</div>
 						</div>
 					</div><a href="#myModal" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
-					<td>
+					<td align="center">
 						<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -71,7 +71,7 @@
 										<img src=<%= wave.chart_wind%> class="img-responsive">
 									</div>
 								</div>
-							</div></div><a href="#myModal" data-toggle="modal" > <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
+							</div></div><a href="#myModal" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
 				</tr>
 				<%end%>
 			</tbody>
@@ -106,7 +106,7 @@
 				<td>
 				<div align="center">
 					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id %> data-duration="day" width="496" height="94"></canvas>
+					id="1" data-location=<%= @location.id %> width="496" height="94"></canvas>
 				</div></td>
 
 			</tbody>

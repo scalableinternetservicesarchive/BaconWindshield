@@ -1,13 +1,29 @@
-var sf = new Array();
-var infos = gon.infos;
-// console.log(infos);
-var currentDate = new Date();
-currentDate.setHours(0,0,0,0);
-
+try {
+	var infosList = gon.infos;
+} catch(err) {
+}
 var ready = function() {
+	var sf = new Array();
+
+	var currentDate = new Date();
+	currentDate.setHours(0, 0, 0, 0);
 
 	// Create Spot Forecasts
 	$("canvas.spot_forecast").each(function(index) {
+
+		var location_id = $(this).attr('data-location');
+		for ( i = 0; i < infosList.length; i++) {
+			for ( j = 0; j < infosList[i].length; j++) {
+				if (infosList[i][j].location_id == location_id) {
+					// var index = i;
+					var infos = infosList[i];
+				}
+			}
+		}		
+		// var infos = [];
+		// for ( i = 0; i < infosList[index].length; i++) {
+			// infos.push(infosList[index][i]);
+		// }
 
 		// Define Variables
 
@@ -25,16 +41,20 @@ var ready = function() {
 		var time_scale = 19.5;
 		var time_max = 24;
 		var time_text_indent = 0;
-		var iterator_step = 1; 
+		var iterator_step = 1;
 		var sizeMin = 10;
 		var sizeMax = 0;
 		var data = [];
 		for (var i = 0; i < infos.length; i++) {
 			var tempDate = new Date(infos[i].day * 1000);
-			tempDate.setHours(0,0,0,0);
+			tempDate.setHours(0, 0, 0, 0);
 
-			if (tempDate.getTime() == currentDate.getTime()){
-				var tempData = {size_high: infos[i].size_max, size_low: infos[i].size_min, swell_rating: infos[i].swell_rating};
+			if (tempDate.getTime() == currentDate.getTime()) {
+				var tempData = {
+					size_high : infos[i].size_max,
+					size_low : infos[i].size_min,
+					swell_rating : infos[i].swell_rating
+				};
 				data.push(tempData);
 				if (infos[i].size_min < sizeMin) {
 					sizeMin = infos[i].size_min;
@@ -79,14 +99,6 @@ var ready = function() {
 				}
 			}
 		}
-
-		// // $("canvas#spot_" + data[0].spot_id).attr('height', height_max * height_scale + 22);
-		//
-		// // FORECAST SUMMARY
-		//
-		// var summaryText = (Math.round(sizeMin) == Math.round(sizeMax)) ? Math.round(sizeMin) + " ft" : Math.round(sizeMin) + "-" + Math.round(sizeMax) + " ft";
-		//
-		// $("div#forecast_summary_spot_" + data[0].spot_id).html(summaryText);
 
 		// GRID: Height Bars
 
@@ -140,37 +152,25 @@ var ready = function() {
 
 		context.beginPath();
 		context.moveTo(chartX_indent, (height_max - data[0].size_high) * height_scale + chartY_indent);
-		
+
 		for (var i = 0; i < data.length; i++) {
 			var x = i * time_scale + chartX_indent;
 			var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
-			if (i == data.length-1){
+			if (i == data.length - 1) {
 				var xPlusOne = (i) * time_scale + chartX_indent;
 				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
 
-			}else{
-			var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
+			} else {
+				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
 			}
 			var xc = (x + xPlusOne) / 2;
 			var yc = (y + yPlusOne) / 2;
 
 			context.quadraticCurveTo(x, y, xc, yc);
 		}
-		// for (var i = iterator_step; i <= time_max - iterator_step; i += iterator_step) {
-			// var x = i * time_scale + chartX_indent;
-			// var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
-// 
-			// var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			// var yPlusOne = (height_max - data[i + iterator_step].size_high) * height_scale + chartY_indent;
-// 
-			// var xc = (x + xPlusOne) / 2;
-			// var yc = (y + yPlusOne) / 2;
-// 
-			// context.quadraticCurveTo(x, y, xc, yc);
-		// }
 
-		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length-1].size_high) * height_scale + chartY_indent);
+		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_high) * height_scale + chartY_indent);
 
 		// Bottom
 
@@ -184,13 +184,13 @@ var ready = function() {
 		grd.addColorStop(0, getFillColor(data[0].swell_rating));
 		grd.addColorStop(0 + (1 / time_max) / 2, getFillColor(data[0].swell_rating));
 
-		for (var i = 1; i < data.length; i++) { //time_max
+		for (var i = 1; i < data.length; i++) {//time_max
 			grd.addColorStop(i / time_max - (1 / time_max) / 2, getFillColor(data[i].swell_rating));
 			grd.addColorStop(i / time_max + (1 / time_max) / 2, getFillColor(data[i].swell_rating));
 		}
 
-		grd.addColorStop(1 - (1 / time_max) / 2, getFillColor(data[data.length-1].swell_rating));
-		grd.addColorStop(1, getFillColor(data[data.length-1].swell_rating));
+		grd.addColorStop(1 - (1 / time_max) / 2, getFillColor(data[data.length - 1].swell_rating));
+		grd.addColorStop(1, getFillColor(data[data.length - 1].swell_rating));
 
 		context.fillStyle = grd;
 
@@ -212,75 +212,47 @@ var ready = function() {
 		for (var i = 0; i < data.length; i++) {
 			var x = i * time_scale + chartX_indent;
 			var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
-			if (i == data.length-1){
+			if (i == data.length - 1) {
 				var xPlusOne = (i) * time_scale + chartX_indent;
 				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
 
-			}else{
-			var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
+			} else {
+				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
 			}
 			var xc = (x + xPlusOne) / 2;
 			var yc = (y + yPlusOne) / 2;
 
 			context.quadraticCurveTo(x, y, xc, yc);
 		}
-		// for (var i = iterator_step; i <= time_max - iterator_step; i += iterator_step) {
-// 
-			// var x = i * time_scale + chartX_indent;
-			// var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
-// 
-			// var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			// var yPlusOne = (height_max - data[i + iterator_step].size_high) * height_scale + chartY_indent;
-// 
-			// var xc = (x + xPlusOne) / 2;
-			// var yc = (y + yPlusOne) / 2;
-// 
-			// context.quadraticCurveTo(x, y, xc, yc);
-// 
-		// }
-
-		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length-1].size_high) * height_scale + chartY_indent);
+		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_high) * height_scale + chartY_indent);
 		context.stroke();
 
 		// Low Curve
 
 		context.beginPath();
 		context.moveTo(chartX_indent, (height_max - data[0].size_low) * height_scale + chartY_indent);
-		
+
 		for (var i = 0; i < data.length; i++) {
 			var x = i * time_scale + chartX_indent;
 			var y = (height_max - data[i].size_low) * height_scale + chartY_indent;
-			if (i == data.length-1){
+			if (i == data.length - 1) {
 				var xPlusOne = (i) * time_scale + chartX_indent;
 				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
 
-			}else{
-			var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			var yPlusOne = (height_max - data[i + 1].size_low) * height_scale + chartY_indent;
+			} else {
+				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				var yPlusOne = (height_max - data[i + 1].size_low) * height_scale + chartY_indent;
 			}
 			var xc = (x + xPlusOne) / 2;
 			var yc = (y + yPlusOne) / 2;
 
 			context.quadraticCurveTo(x, y, xc, yc);
 		}
-		// for (var i = iterator_step; i <= time_max - iterator_step; i += iterator_step) {
-// 
-			// var x = i * time_scale + chartX_indent;
-			// var y = (height_max - data[i].size_low) * height_scale + chartY_indent;
-// 
-			// var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-			// var yPlusOne = (height_max - data[i + iterator_step].size_low) * height_scale + chartY_indent;
-// 
-			// var xc = (x + xPlusOne) / 2;
-			// var yc = (y + yPlusOne) / 2;
-// 
-			// context.quadraticCurveTo(x, y, xc, yc);
-// 
-		// }
+
 		context.strokeStyle = "rgba(81,81,81,1)";
 
-		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length-1].size_low) * height_scale + chartY_indent);
+		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_low) * height_scale + chartY_indent);
 		context.stroke();
 
 	});
@@ -288,24 +260,20 @@ var ready = function() {
 };
 
 function getFillColor(swell_rating) {
-	var theColor = "rgba(255, 255, 255, 0.45)";
-	//white
+	var theColor = "rgba(0,0,0, 0.45)";
 
 	if (swell_rating == '0') {
-		theColor = "rgba(203,36,36, 0.5)";
-		//red
+		theColor = "rgba(0,0,0, 0.5)";
 	} else if (swell_rating == '1') {
-		theColor = "rgba(223,123,123, .5)";
-		//orange
+		theColor = "rgba(16,51,64, .5)";
 	} else if (swell_rating == '2') {
-		theColor = "rgba(185,194,153, 0.5)";
-		//yellow
+		theColor = "rgba(24,74,92, 0.5)";
 	} else if (swell_rating == '3') {
-		theColor = "rgba(115,134,52, 0.5)";
-		//green
+		theColor = "rgba(36,112,139, 0.5)";
 	} else if (swell_rating == '4') {
-		theColor = "rgba(171,182,133, 0.5)";
-		//"lightgreen
+		theColor = "rgba(48,149,185, 0.5)";
+	} else if (swell_rating == '5') {
+		theColor = "rgba(160,187,232, 0.5)";
 	}
 
 	return theColor;

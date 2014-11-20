@@ -2,7 +2,6 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
   helper_method :get_swell_json_with_spot_id, :get_json
-  require 'net/http'
   #caches_page :index
   caches_action :index, expires_in: 24.hour
 

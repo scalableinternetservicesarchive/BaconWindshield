@@ -2,14 +2,22 @@ class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
   caches_action :show, expires_in: 24.hour
-
   def index
     @counties = County.all
     respond_with(@counties)
   end
 
   def show
+
+    @infosList = Array.new
+    Location.find_each do |loc|
+      if @county == loc.county
+      @infosList.push(loc.infos)
+      end
+    end
+    gon.watch.infos = @infosList
     respond_with(@county)
+
   end
 
   def new
@@ -38,11 +46,12 @@ class CountiesController < ApplicationController
   end
 
   private
-    def set_county
-      @county = County.find(params[:id])
-    end
 
-    def county_params
-      params.require(:county).permit(:name)
-    end
+  def set_county
+    @county = County.find(params[:id])
+  end
+
+  def county_params
+    params.require(:county).permit(:name)
+  end
 end
