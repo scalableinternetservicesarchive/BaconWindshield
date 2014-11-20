@@ -30,7 +30,7 @@
 				<!-- <%= will_paginate @waves %>
 				<% @waves.each do |wave| %> -->
 				<% @location.infos.each_with_index do |wave,idx| %>		
-					<% if idx < idx+1%>
+					<% if idx > (idx-1)%>
 					<tr>
 						<td><%=Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
 						<td><%= idx%></td>
