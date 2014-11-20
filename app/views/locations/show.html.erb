@@ -11,10 +11,8 @@
 		<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
-				<th><strong>idx</strong></th>
-
 				<th><strong>Swell Size</strong></th>
-				<th><strong>Seell Rating</strong></th>
+				<th><strong>Swell Rating</strong></th>
 				<th><strong>Wind Speed</strong></th>
 				<th><strong>Wind Direction</strong></th>
 				<th><strong>Temperature</strong></th>
@@ -22,30 +20,23 @@
 				<th><strong>Chart Swell</strong></th>
 				<th><strong>Chart Period</strong></th>
 				<th><strong>Chart Wind</strong></th>
-
 			</thead>
 			<tbody>
 				<%= will_paginate @waves %>
 				<% @waves.each do |wave| %>
-				<!-- <% @location.infos.each_with_index do |wave,idx| %> -->
-				<% if idx > (idx-1)%>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
-					<td><%= idx%></td>
-					<td><%= wave.size_min%>-<%= wave.size_max%> ft</td>
+					<td><%= wave.size_min%>-<%= wave.size_max%><small>ft</small></td>
 					<td><%= wave.swell_rating%></td>
-					<td><%= wave.wind_speed%></td>
-					<td><%= wave.wind_direction%></td>
-					<td><%= wave.temperature%></td>
-					<td><%= wave.weather%></td>
+					<td><%= wave.wind_speed%><small>mph</small></td>
+					<td class="sprite a<%= wave.wind_direction.to_s%>"></td>
+					<td><%= wave.temperature%><small>°F</small></td>
+					<td><img src="http://cdnimages.magicseaweed.com/30x30/<%= wave.weather%>.png" alt="" border=1 height=30 width=30></img></td>
 					<td><%= wave.chart_swell%></td>
 					<td><%= wave.chart_period%></td>
 					<td><%= wave.chart_wind%></td>
 				</tr>
 				<%end%>
-				<% end %>
-				<!-- <% end %> -->
-
 			</tbody>
 		</table>
 	</div>
@@ -65,45 +56,30 @@
 
 	</div>
 
-	<!-- <div class="leftColumn">
+	<div class="leftColumn">
 
-	<table class="table table-striped">
-	<thead>
-	<tr>
-	<th>Today</th>
-	</tr>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Today</th>
+				</tr>
 
-	</thead>
-	<tbody>
-	<td>
-	<div align="center">
-	<canvas class="spot_forecast"
-	id="1" data-location=<%= @location.id %> data-duration="day" width="496" height="94"></canvas>
-	</div></td>
+			</thead>
+			<tbody>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="1" data-location=<%= @location.id %> data-duration="day" width="496" height="94"></canvas>
+				</div></td>
 
-	</tbody>
-	</table>
+			</tbody>
+		</table>
 	</div>
 
-	<div class="rightColumn">
-	<table class="table table-striped">
-	<thead>
-	<tr>
-	<th>This week</th>
-	</tr>
-	</thead>
-	<tbody>
-	<td>
-	<div align="center">
-	<canvas class="spot_forecast"
-	id="2" data-location=<%= @location.id%> data-longitude="<%= @location.longitude%>" data-duration="week" width="496" height="94" ></canvas>
-	</div></td>
-	</tbody>
-	</div> -->
-
-	<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div>	</div>
+	<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"
+	</div>
+	</div>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-	<% end %>
-
+	<%end%>
