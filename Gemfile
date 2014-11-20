@@ -10,6 +10,8 @@ gem 'mysql2', group: :production
 
 gem 'gon'
 
+gem 'geocoder'
+
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'dalli'

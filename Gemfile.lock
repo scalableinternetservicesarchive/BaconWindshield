@@ -59,6 +59,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    geocoder (1.2.6)
     gon (5.2.3)
       actionpack (>= 2.3.0)
       json
@@ -179,6 +180,7 @@ DEPENDENCIES
   dalli
   devise
   font-awesome-rails
+  geocoder
   gon
   jbuilder (~> 2.0)
   jquery-rails

@@ -17,13 +17,12 @@ class ApplicationController < ActionController::Base
     rescue
       result = "fail"
     end
-    return result    
+    return result
   end
-  
+
   def get_swell_json_with_spot_id(id)
     get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
   end
-
 
   protected
 
@@ -33,9 +32,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
 
-
   private
-  
+
   def require_user_signed_in
     unless user_signed_in?
 
