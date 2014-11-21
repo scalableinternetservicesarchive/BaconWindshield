@@ -1,5 +1,4 @@
 <% weather = get_swell_json_with_spot_id(@location.id) %>
-
 <% if weather == "fail" %>
 <div class="image">
 
@@ -109,7 +108,7 @@
 				<%end%>
 			</tbody>
 		</table>					<div align="center">
-<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>
+		<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>
 
 	</div>
 	<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div> -->	

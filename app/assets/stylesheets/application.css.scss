@@ -45,16 +45,17 @@
 }
 
 .jumbotron{
-  width: 70%;
-  height: 108%;
+  width: 75%;
+  height: 120%;
   margin-left: auto;
   margin-right: auto;
 }
 
 body{
-  background-image: url(/assets/shattered.png);
-    // background-color: #A8A8A8;
-  background-repeat:  repeat;
+
+  // background-image: url(/assets/shattered.png);
+    background-color: #A8A8A8;
+  // background-repeat:  repeat;
   height: 100%;
   overflow-x:hidden;
 }
