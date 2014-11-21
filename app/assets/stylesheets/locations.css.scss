@@ -13,12 +13,23 @@ aside{
   // width: 40%;
   margin-right: 18%;
 }
-
-
+// .google-maps-canvas {
+  // position: relative;
+  // padding-bottom: 75%;
+  // height: 0;
+  // overflow: hidden;
+// }
+// .google-maps-canvas iframe, .google-maps-canvas object,.google-maps-canvas embed {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: 100%;
+// }
 
 .google-maps-canvas {
   position: absolute;
-  // margin-right: 3%;
+  margin-right: -18%;
   // margin-top: 10%;
   width:  20%; 
   height: 20%;

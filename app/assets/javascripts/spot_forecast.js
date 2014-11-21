@@ -229,30 +229,30 @@ var ready = function() {
 
 		// Low Curve
 
-		context.beginPath();
-		context.moveTo(chartX_indent, (height_max - data[0].size_low) * height_scale + chartY_indent);
-
-		for (var i = 0; i < data.length; i++) {
-			var x = i * time_scale + chartX_indent;
-			var y = (height_max - data[i].size_low) * height_scale + chartY_indent;
-			if (i == data.length - 1) {
-				var xPlusOne = (i) * time_scale + chartX_indent;
-				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
-
-			} else {
-				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-				var yPlusOne = (height_max - data[i + 1].size_low) * height_scale + chartY_indent;
-			}
-			var xc = (x + xPlusOne) / 2;
-			var yc = (y + yPlusOne) / 2;
-
-			context.quadraticCurveTo(x, y, xc, yc);
-		}
-
-		context.strokeStyle = "rgba(81,81,81,1)";
-
-		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_low) * height_scale + chartY_indent);
-		context.stroke();
+		// context.beginPath();
+		// context.moveTo(chartX_indent, (height_max - data[0].size_low) * height_scale + chartY_indent);
+// 
+		// for (var i = 0; i < data.length; i++) {
+			// var x = i * time_scale + chartX_indent;
+			// var y = (height_max - data[i].size_low) * height_scale + chartY_indent;
+			// if (i == data.length - 1) {
+				// var xPlusOne = (i) * time_scale + chartX_indent;
+				// var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
+// 
+			// } else {
+				// var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				// var yPlusOne = (height_max - data[i + 1].size_low) * height_scale + chartY_indent;
+			// }
+			// var xc = (x + xPlusOne) / 2;
+			// var yc = (y + yPlusOne) / 2;
+// 
+			// context.quadraticCurveTo(x, y, xc, yc);
+		// }
+// 
+		// context.strokeStyle = "rgba(81,81,81,1)";
+// 
+		// context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_low) * height_scale + chartY_indent);
+		// context.stroke();
 
 	});
 

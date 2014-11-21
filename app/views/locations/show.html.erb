@@ -35,9 +35,10 @@
 			</tbody>
 		</table>
 	</section>
-		<aside>
-			<canvas class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></canvas>
-		<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></div>  -->		
+	<aside>
+		<!-- <div class="google-maps-canvas"> -->			<!-- <iframe src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2" width="600" height="450" frameborder="0" style="border:0"></iframe> -->			
+			<!-- <canvas class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></canvas> -->
+		<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></div> 		<!-- </div> -->
 	</aside>
 	
 		<div class="table_forecast">

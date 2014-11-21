@@ -26,7 +26,7 @@
 							<% location = Location.find(favorite.location_id) %>
 							<% wave = location.infos %>
 							<td><%= link_to location.name, location %>
-									<% shape = wave[0].swell_rating %>
+									<!-- <% shape = wave[0].swell_rating %>
 									<font color = "blue">
 										<% case shape %>
 										  	<% when 1 %>
@@ -41,7 +41,7 @@
 										  	<% else %>	 									
 										<% end %>
 									</font>	
-									Swell height: <%= size = wave[0].size %>
+									Swell height: <%= size = wave[0].size_max %> -->
 							</td>
 						</tr>
 						<% end %>

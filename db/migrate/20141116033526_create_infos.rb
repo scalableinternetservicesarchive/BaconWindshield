@@ -12,7 +12,7 @@ class CreateInfos < ActiveRecord::Migration
       t.string  :chart_period
       t.string  :chart_wind
       t.integer :swell_rating
-      t.float :probability
+      t.integer :probability
       t.integer :location_id
       t.timestamps
 
