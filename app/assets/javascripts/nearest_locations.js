@@ -7,7 +7,6 @@ var getLocation = function() {
 	navigator.geolocation.getCurrentPosition(callback);
 };
 
-
 function callback(position) {
 	var nearestSpots = getNearestSpots(position.coords.latitude, position.coords.longitude);
 
@@ -98,6 +97,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function toRadians(num) {
 	return (num * Math.PI / 180);
 }
+
 
 $(document).ready(getLocation);
 $(document).on('page:load', getLocation);

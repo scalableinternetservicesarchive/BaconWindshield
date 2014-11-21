@@ -6,8 +6,41 @@
 	<%= image_tag "daisy.jpg" %>
 </div>
 <% else %>
-<div class="jumbotron">
-	<div class="table_forecast">
+	<div align="center" style="padding-top: 0.5%">
+		<% if defined?(Devise)%>
+			<% if user_signed_in?%>
+				<% if !current_user.locations.include?(@location) %>
+					<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+				<%end%>
+			<%end%>
+		<%end%>
+	</div>
+	<section>
+		<font size="5"><strong><%= @location.name %></strong></font>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Today</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				<td>
+				<div align="center">
+					<canvas class="spot_forecast"
+					id="1" data-location=<%= @location.id %>  data-type ="location_view" width="496" height="94"></canvas>
+				</div></td>
+
+			</tbody>
+		</table>
+	</section>
+		<aside>
+			<canvas class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></canvas>
+		<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></div>  -->		
+	</aside>
+	
+		<div class="table_forecast">
 		<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
@@ -21,7 +54,6 @@
 				<th><strong>Chart Wind</strong></th>
 			</thead>
 			<tbody>
-				<%= will_paginate @waves %>
 				<% @waves.each do |wave| %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
@@ -75,47 +107,11 @@
 				</tr>
 				<%end%>
 			</tbody>
-		</table>
-	</div>
-
-	<div align="center">
-		<font size="5"><strong><%= @location.name %></strong></font>
-		</br>
-		<% if defined?(Devise)%>
-		<% if user_signed_in?%>
-
-		<% if !current_user.locations.include?(@location) %>
-		<br>
-		<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
-		<%end%>
-		<%end%>
-		<%end%>
+		</table>					<div align="center">
+<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>
 
 	</div>
-
-	<div class="leftColumn">
-
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Today</th>
-				</tr>
-
-			</thead>
-			<tbody>
-				<td>
-				<div align="center">
-					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id %> width="496" height="94"></canvas>
-				</div></td>
-
-			</tbody>
-		</table>
-	</div>
-
-	<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"
-	</div>
-	</div>
+	<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div> -->	
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>

@@ -3,29 +3,28 @@ try {
 } catch(err) {
 }
 var ready = function() {
-	var sf = new Array();
 
+	var sf = new Array();
 	var currentDate = new Date();
 	currentDate.setHours(0, 0, 0, 0);
 
 	// Create Spot Forecasts
 	$("canvas.spot_forecast").each(function(index) {
-
-		var location_id = $(this).attr('data-location');
-		for ( i = 0; i < infosList.length; i++) {
-			for ( j = 0; j < infosList[i].length; j++) {
-				if (infosList[i][j].location_id == location_id) {
-					// var index = i;
-					var infos = infosList[i];
+		var view = $(this).attr('data-view');
+		
+		if (view == "county_view") {
+			var location_id = $(this).attr('data-location');
+			for ( i = 0; i < infosList.length; i++) {
+				for ( j = 0; j < infosList[i].length; j++) {
+					if (infosList[i][j].location_id == location_id) {
+						// var index = i;
+						var infos = infosList[i];
+					}
 				}
 			}
-		}		
-		// var infos = [];
-		// for ( i = 0; i < infosList[index].length; i++) {
-			// infos.push(infosList[index][i]);
-		// }
-
-		// Define Variables
+		} else {
+			var infos = infosList;
+		}
 
 		var canvas = $(this)[0];
 		var context = canvas.getContext("2d");

@@ -1,13 +1,29 @@
 // Place all the styles related to the Locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+section{
+  float: left;
+  // width: 40%;
+  
+  margin-left: 18%;
+
+}
+aside{
+  float: right;
+  // width: 40%;
+  margin-right: 18%;
+}
+
+
+
 .google-maps-canvas {
   position: absolute;
-  margin-left: 3%;
-  margin-top: 10%;
-  width: 61%; 
-  height: 40%;
+  // margin-right: 3%;
+  // margin-top: 10%;
+  width:  20%; 
+  height: 20%;
 }
+
 .leftColumn {
     float: left;
       margin-left: 5%;
@@ -16,7 +32,6 @@
 .rightColumn {
     float: right;
       margin-right: 5%;
-
 }
 .image {
     position: absolute;
@@ -27,7 +42,7 @@
 
 .table_forecast {
     position: absolute;
-    margin-top: 35%;
+    margin-top: 20%;
     margin-left: 3%;
     width: 61%; 
     overflow: hidden;

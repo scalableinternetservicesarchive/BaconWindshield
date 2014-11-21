@@ -154,13 +154,13 @@ function initialize1() {
 							title : spots[i].name,
 							icon : waveImage2
 						});
-						var tempID = spots[i].id;
-						var locationURL = function() {
+						// var tempID = spots[i].id;
+						var locationURL = function(j) {
 						return function() {
-						window.location.href = "/locations/" + tempID;
+							window.location.href = "/locations/" + spots[j].id;
 							};
 						};
-						google.maps.event.addListener(marker, 'click', locationURL());
+						google.maps.event.addListener(marker, 'click', locationURL(i));
 				}
 				}else {
 	      			
@@ -174,13 +174,13 @@ function initialize1() {
 							title : spots[i].name,
 							icon : waveImage2
 						});
-						var tempID = spots[i].id;
-						var locationURL = function() {
+						// var tempID = spots[i].id;
+						var locationURL = function(j) {
 						return function() {
-						window.location.href = "/locations/" + tempID;
+							window.location.href = "/locations/" + spots[j].id;
 							};
 						};
-						google.maps.event.addListener(marker, 'click', locationURL());
+						google.maps.event.addListener(marker, 'click', locationURL(i));
 					}}
 					map.setCenter(pos);
 			}}

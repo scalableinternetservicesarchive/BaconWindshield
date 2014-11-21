@@ -23,7 +23,7 @@
 						<td><%= link_to location.name, Location.find(location.id) %>
 						<div align="center">
 							<canvas class="spot_forecast"
-							id="1" data-location=<%= location.id %> width="496" height="94"></canvas>
+							id="1" data-location=<%= location.id %> data-view ="county_view" width="496" height="94"></canvas>
 						</div></td>
 					</tr>
 					<% end %>
