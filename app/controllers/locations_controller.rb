@@ -2,14 +2,17 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
   helper_method :get_swell_json_with_spot_id, :get_json
-  require 'net/http'
-  
+  #caches_page :index
+  caches_action :index, expires_in: 24.hour
+
   def index
-    @locations = Location.all
+    #@locations = Location.all
     respond_with(@locations)
   end
 
   def show
+    @waves = @location.infos.paginate(page: params[:page], per_page: 7)
+    gon.watch.infos = @location.infos
     respond_with(@location)
   end
 
@@ -19,6 +22,7 @@ class LocationsController < ApplicationController
   end
 
   def edit
+    expire_action action: :index
   end
 
   def create
@@ -36,29 +40,14 @@ class LocationsController < ApplicationController
     @location.destroy
     respond_with(@location)
   end
-  
-  def get_json(url)
-    uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri)
-    data = response.body
-    begin
-      result = JSON.parse(data)
-    rescue
-      result = "fail"
-    end
-    return result    
-  end
-  
-  def get_swell_json_with_spot_id(id)
-    get_json('http://www.spitcast.com/api/spot/forecast/' + id.to_s + '/')
-  end
 
   private
-    def set_location
-      @location = Location.find(params[:id])
-    end
 
-    def location_params
-      params.require(:location).permit(:name)
-    end
+  def set_location
+    @location = Location.find(params[:id])
   end
+
+  def location_params
+    params.require(:location).permit(:name)
+  end
+end
