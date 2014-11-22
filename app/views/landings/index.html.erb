@@ -2,11 +2,13 @@
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
 			<div class="col-md-6">
-					<table class="table table-hover table-striped" style="text-align: left">
+					<table class="table table-striped" >
 						<thead>
 							<tr>
 								<th>Nearby spots</th>
 								<th>Distance</th>
+								<th>Swell Rating</th>
+								<th>Swell Size</th>	
 							</tr>
 						</thead>
 
@@ -16,28 +18,60 @@
 								<td>There are no surf spots within 50 miles of your location!</td>
 							</tr>
 							<% else %>
-							<% for location in @nearbys.first(5) %>
-							<tr>
-								<td><%= link_to location.name, location %></td>
-								<td><%= location.distance.round(2) %> miles</td>
+								<% for location in @nearbys.first(5) %>
+								<tr>
+									<td><%= link_to location.name, location %></td>
+									<td><%= location.distance.round(2) %><small>miles</small></td>
+									<td>
+									<%shape = 0
+									  size_max = 0
+									  size_min = 0%>
+									<%location.infos.each do |wave|%>
+										<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
+											<%if Time.at(wave.day.to_i).hour == 13 %>
+												<% shape = wave.swell_rating %>
+												<% size_max = wave.size_max%>
+												<% size_min = wave.size_min%>
+											<%end%>
+										<%end%>
+									<%end%>
+								<% end %>
+
+									<% case shape %>
+										<% when 0 %>
+										<% when 1 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 2 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 3 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 4 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 5 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% end %>
+									</td>
+								<td><%=size_min%>-<%=size_max%><small>ft</small></td>
+							<% end %>
 							</tr>
-							<% end %>
-							<% end %>
 						</tbody>
 					</table>
 			</div>
 			<div class="col-md-6">
-				<table class="table table-hover table-striped">
+				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Favorite spots
-							<% if defined?(Devise)%>
+							<th>Favorite Spots
+							</th>
+							<th>Swell Rating</th>
+							<th>Swell Size<% if defined?(Devise)%>
 							<% if user_signed_in?%>
 							<% if !current_user.favorites.empty?%>
-								<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
+								<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> 
 							<%end%>
 							<%end%>
-							<%end%>
+							<%end%></th>
+
 						</tr>
 					</thead>
 					<tbody>
@@ -49,27 +83,40 @@
 							<% location = Location.find(favorite.location_id) %>
 
 							<td><%= link_to location.name, location %>
+								
+							</td>
+							<td>
 								<% if !location.infos.empty?%>
-								<% wave = location.infos %>
-								<% shape = wave[0].swell_rating %>
-								<font color = "black">
+								<%shape = 0
+								  size_max = 0
+								  size_min = 0%>
+								<%location.infos.each do |wave|%>
+									<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
+										<%if Time.at(wave.day.to_i).hour == 13 %>
+											<% shape = wave.swell_rating %>
+											<% size_max = wave.size_max%>
+											<% size_min = wave.size_min%>
+
+											<%end%>
+									<%end%>
+								<%end%>
 									<% case shape %>
 									<% when 0 %>
-									<span class="fa fa-star"></span>
 									<% when 1 %>
-									<span class="fa fa-star"></span>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 2 %>
-									<span class="fa fa-star"></span><span class="fa fa-star"></span>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 3 %>
-									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 4 %>
-									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 5 %>
-									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>	 									
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% end %>
-								</font>	
-								Swell height: <%= size = wave[0].size_max %>
 								<% end %>
+							</td>
+							<td>
+								<%=size_min%>-<%=size_max%><small>ft</small>
 							</td>
 						</tr>
 
@@ -83,14 +130,14 @@
 						<% end %>
 					</tbody>
 				</table>
-			</div>
+				</div>
 		<div id="map-canvas1" class="col-md-12"></div>
 		</div>
 
 	</div>
+</div>
 
 	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize1"></script>
 
 	<script type="text/javascript" href="/app/assets/javascripts/map_world_region.js"></script>
-</div>
 
