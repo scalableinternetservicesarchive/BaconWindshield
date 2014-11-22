@@ -18,7 +18,7 @@
 								<td>There are no surf spots within 50 miles of your location!</td>
 							</tr>
 							<% else %>
-								<% for location in @nearbys.first(5) %>
+								<% for location in @nearbys %>
 								<tr>
 									<td><%= link_to location.name, location %></td>
 									<td><%= location.distance.round(2) %><small> miles</small></td>
