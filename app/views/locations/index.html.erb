@@ -6,22 +6,58 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th><font size="5"><strong>Locations</strong></font></th>
+							<th><font size="5"><strong>Spots</strong></font></th>
+						<th>Swell Rating</th>
+							<th>Swell Size</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<% @entries.each do |location| %>
 						<tr>
-							<td><%= link_to location.name, location %></td>
+							<td><%= link_to location.name, location %></td><td>
+								<% if !location.infos.empty?%>
+								<%shape = 0
+								  size_max = 0
+								  size_min = 0%>
+								<%location.infos.each do |wave|%>
+									<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
+										<%if Time.at(wave.day.to_i).hour == 13 %>
+											<% shape = wave.swell_rating %>
+											<% size_max = wave.size_max%>
+											<% size_min = wave.size_min%>
+
+											<%end%>
+									<%end%>
+								<%end%>
+									<% case shape %>
+									<% when 0 %>
+										<span class="fa fa-trash" style="color:#3cbbe8"></span> - it's trash
+									<% when 1 %>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% when 2 %>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% when 3 %>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% when 4 %>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% when 5 %>
+										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+									<% end %>
+								<% end %>
+							</td>
+							<td>
+								<%=size_min%>-<%=size_max%><small> ft</small>
+							</td>
 						</tr>
 						<% end %>
 
 					</tbody>
 				</table>
-			</div>						<div align="center">
-							<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
-						</div>
+			</div>
+			<div align="center">
+				<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+			</div>
 		</div>
 	</div>
 </div>
