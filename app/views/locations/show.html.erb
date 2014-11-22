@@ -40,7 +40,7 @@
 				<th><strong>Chart Wind</strong></th>
 			</thead>
 			<tbody>
-				<% @waves.each do |wave| %>
+				<% @waves.each_with_index do |wave,idx| %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
 					<td><%= wave.size_min%>-<%= wave.size_max%><small>ft</small></td>
@@ -62,7 +62,7 @@
 					<td><%= wave.temperature%><small>°F</small></td>
 					<td><img src="http://cdnimages.magicseaweed.com/30x30/<%= wave.weather%>.png" alt="" border=1 height=30 width=30></img></td>
 					<td>
-					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="myModal1<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-body">
@@ -70,9 +70,9 @@
 								</div>
 							</div>
 						</div>
-					</div><a href="#myModal" data-toggle="modal"> <img src=<%= wave.chart_swell%> alt="" border=1 height=30 width=30></img> </a></td>
+					</div><a href="#myModal1<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_swell%> alt="" border=1 height=30 width=30></img> </a></td>
 					<td>
-					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="myModal2<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-body">
@@ -80,16 +80,16 @@
 								</div>
 							</div>
 						</div>
-					</div><a href="#myModal" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
-					<td align="center">
-						<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					</div><a href="#myModal2<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
+					<td>
+						<div id="myModal3<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-body">
 										<img src=<%= wave.chart_wind%> class="img-responsive">
 									</div>
 								</div>
-							</div></div><a href="#myModal" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
+							</div></div><a href="#myModal3<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img> </a></td>
 				</tr>
 				<%end%>
 			</tbody>
