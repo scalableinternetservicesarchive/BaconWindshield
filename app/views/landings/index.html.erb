@@ -26,7 +26,7 @@
 				</tbody>
 			</table>
 				<!-- <input type="button" value="Get nearest spots" onclick="getLocation()"/> -->
-				<!-- js created table inserted here -->
+				<!-- if html5 geolocation is used, the above line should be uncommented. js created table inserted here -->
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -36,7 +36,9 @@
 							<th>Favorite spots
 							<% if defined?(Devise)%>
 							<% if user_signed_in?%>
+							<% if !current_user.favorites.empty?%>
 								<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> </th>
+							<%end%>
 							<%end%>
 							<%end%>
 						</tr>
@@ -44,30 +46,38 @@
 				<tbody>
 						<% if defined?(Devise)%>
 						<% if user_signed_in?%>
+						<% if !current_user.favorites.empty?%>
 						<% current_user.favorites.limit(5).each do |favorite| %>
 						<tr>
 							<% location = Location.find(favorite.location_id) %>
-							<% wave = location.infos %>
 							<td><%= link_to location.name, location %>
-									<!-- <% shape = wave[0].swell_rating %>
-									<font color = "blue">
-										<% case shape %>
-										  	<% when 1 %>
-										  		<span class="fa fa-star"></span>
-										  	<% when 2 %>
-										  		<span class="fa fa-star"></span><span class="fa fa-star"></span>
-										  	<% when 3 %>
-											  	<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
-										  	<% when 4 %>
-										  		<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
-										  	<% when 5 %>
-										  	<% else %>	 									
-										<% end %>
-									</font>	
-									Swell height: <%= size = wave[0].size_max %> -->
+								<% if !location.infos.empty?%>
+								<% wave = location.infos %>
+								<% shape = wave[0].swell_rating %>
+								<font color = "black">
+									<% case shape %>
+									<% when 0 %>
+									<span class="fa fa-star"></span>
+									<% when 1 %>
+									<span class="fa fa-star"></span>
+									<% when 2 %>
+									<span class="fa fa-star"></span><span class="fa fa-star"></span>
+									<% when 3 %>
+									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+									<% when 4 %>
+									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
+									<% when 5 %>
+									<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>	 									
+									<% end %>
+								</font>	
+								Swell height: <%= size = wave[0].size_max %>
+								<% end %>
 							</td>
 						</tr>
 						<% end %>
+						<% else %>
+						<td>You don't have any favorite spots. Go to a location to add it!</td>
+						<%end%>
 						<% else %>
 						<td>You need to log in to use this feature!</td>
 						<% end %>
