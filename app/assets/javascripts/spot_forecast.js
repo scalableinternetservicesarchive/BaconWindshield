@@ -36,7 +36,7 @@ var ready = function() {
 		var height_max = 6;
 		// Feet
 		// Pixels
-
+		
 		var chartX_indent = 0.5;
 		var chartY_indent = 4.5;
 
@@ -66,14 +66,15 @@ var ready = function() {
 				}
 			}
 		}
-		while (sizeMax > height_max) {
+
+		while (sizeMax >= height_max) {
 			height_max += 3;
 		}
+		
+		if (sizeMax >= 6 && height_scale == 12) {
+			if (height_max < 13) {
 
-		if (sizeMax > 6) {
-			if (Math.ceil(sizeMax) < 13) {
-
-				switch(Math.ceil(sizeMax)) {
+				switch(height_max) {
 				case 7:
 					height_scale = 8;
 					break;
@@ -94,14 +95,46 @@ var ready = function() {
 					break;
 				}
 			} else {
-				if (sizeMax < 15) {
+				if (height_max <= 15) {
 					height_scale = 5;
 				} else {
 					height_scale = 3;
 				}
 			}
-		}
+		}		
 
+
+			if ((sizeMax >= 6) && (height_scale == 32)) {
+			if (height_max < 13) {
+				switch(height_max) {
+				case 7:
+					height_scale = 8;
+					break;
+				case 8:
+					height_scale = 8;
+					break;
+				case 9:
+					height_scale = 7;
+					break;
+				case 10:
+					height_scale = 6;
+					break;
+				case 11:
+					height_scale = 6;
+					break;
+				case 12:
+					height_scale = 6;
+					break;
+				}
+			} else {
+				if (height_max <= 15) {
+					height_scale = 5;
+				} else {
+					height_scale = 3;
+				}
+			}
+			height_scale = height_scale*2.5;
+		}
 		// GRID: Height Bars
 
 		for (var i = 0; i < (height_max + 1); i++) {
