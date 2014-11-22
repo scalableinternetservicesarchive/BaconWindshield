@@ -35,6 +35,10 @@
 
 }
 
+.flash.alert:empty {
+  display: none;
+}
+
 #map-outer {
   // position:relative;
   padding: 2%;
