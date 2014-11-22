@@ -10,6 +10,7 @@ class LandingsController < ApplicationController
       loc = Location.new(latitude: 34.42, longitude: -119.86)
       @nearbys = loc.nearbys(50)
     end
+
   end
 
 # def location
