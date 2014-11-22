@@ -41,6 +41,6 @@ class InfosController < ApplicationController
     end
 
     def info_params
-      params.require(:info).permit(:day, :hour, :shape, :shape_detail, :shape_full, :size, :location_id)
+      params.require(:info).permit(:day, :size_min, :size_max, :swell_rating, :wind_direction, :wind_speed, :weather, :temperature, :chart_swell, :chart_period, :chart_wind, :probability, :location_id)
     end
 end

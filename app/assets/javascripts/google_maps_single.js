@@ -2,12 +2,10 @@ var MY_MAPTYPE_ID = 'custom_style';
 
 function initialize2() {
 
-	$("canvas.spot_forecast").each(function(index) {
-		var spot_id = $(this).attr('data-location');
-
-		$.getJSON('http://www.spitcast.com/api/spot/forecast/' + $(this).attr('data-location') + '/?dcat=' + '&format=json', function(data) {
-			var latitude = data[0].latitude;
-			var longitude = data[0].longitude;
+		
+	$("div.google-maps-canvas").each(function(index) {
+		var longitude = $(this).attr('data-longitude');
+		var latitude = $(this).attr('data-latitude');
 
 			var featureOpts = [{
 				"featureType" : "all",
@@ -88,9 +86,6 @@ function initialize2() {
 			}
 
 		});
-
-	});
-
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -109,3 +104,4 @@ function handleNoGeolocation(errorFlag) {
 	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(options.position);
 }
+google.maps.event.addDomListener(window, 'resize', initialize);

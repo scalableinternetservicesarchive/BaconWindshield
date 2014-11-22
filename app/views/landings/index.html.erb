@@ -49,22 +49,22 @@
 							<% location = Location.find(favorite.location_id) %>
 							<% wave = location.infos %>
 							<td><%= link_to location.name, location %>
-									<% shape = wave[0].shape_full %>
+									<!-- <% shape = wave[0].swell_rating %>
 									<font color = "blue">
 										<% case shape %>
-										  	<% when "Poor" %>
+										  	<% when 1 %>
 										  		<span class="fa fa-star"></span>
-										  	<% when "Poor-Fair" %>
+										  	<% when 2 %>
 										  		<span class="fa fa-star"></span><span class="fa fa-star"></span>
-										  	<% when "Fair" %>
+										  	<% when 3 %>
 											  	<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
-										  	<% when "Fair-Good" %>
+										  	<% when 4 %>
 										  		<span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span><span class "fa fa-star"></span>
-										  	<% when "Good" %>
+										  	<% when 5 %>
 										  	<% else %>	 									
 										<% end %>
 									</font>	
-									Swell hight: <%= size = wave[0].size %>
+									Swell height: <%= size = wave[0].size_max %> -->
 							</td>
 						</tr>
 						<% end %>
@@ -76,11 +76,20 @@
 			</table>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+
+	<script type="text/javascript" href="/app/assets/javascripts/nearest_locations.js?$$REVISION$$"></script>
+	<!-- pipelining nearby_locations makes it being called 3 times instead of 1, so just leaving this here for future reference -->
+>>>>>>> 8215b29a3d521ed28d90516f849884afbff4995e
 	
 	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize1"></script>
 
-	<!-- <script type="text/javascript" href="/app/assets/javascripts/google_maps.js"></script> -->
-	<%= javascript_include_tag "google_maps", "data-turbolinks-track" => true %>
-
+	<script type="text/javascript" href="/app/assets/javascripts/map_world_region.js"></script>
 	<div class="google-maps-canvas1" id="map-canvas1"></div>
 </div>
+
+
+
+
+
