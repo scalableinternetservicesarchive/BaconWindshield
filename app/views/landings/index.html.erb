@@ -11,7 +11,7 @@
 								<th>Swell Size</th>	
 							</tr>
 						</thead>
-
+							
 						<tbody>
 							<% if @nearbys.empty? %>
 							<tr>
@@ -36,11 +36,10 @@
 											<%end%>
 										<%end%>
 									<%end%>
-								<% end %>
 
 									<% case shape %>
 										<% when 0 %>
-											<span class="fa fa-trash"></span> - it's trash
+											<span class="fa fa-trash"style="color:#3cbbe8"></span> - it's trash
 										<% when 1 %>
 											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 										<% when 2 %>
@@ -54,7 +53,8 @@
 									<% end %>
 									</td>
 								<td><%=size_min%>-<%=size_max%><small> ft</small></td>
-							<% end %>
+							<% end %>								<% end %>
+
 							</tr>
 						</tbody>
 					</table>
@@ -102,7 +102,7 @@
 								<%end%>
 									<% case shape %>
 									<% when 0 %>
-										<span class="fa fa-trash"></span> - it's trash
+										<span class="fa fa-trash" style="color:#3cbbe8"></span> - it's trash
 									<% when 1 %>
 										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 2 %>
@@ -126,7 +126,7 @@
 						<td>You don't have any favorite spots. Go to a location to add it!</td>
 						<%end%>
 						<% else %>
-						<td>You need to log in to use this feature!</td>
+						<td>You need to log in to use this feature!</td><td></td><td></td>
 						<% end %>
 						<% end %>
 					</tbody>
@@ -188,4 +188,3 @@
 <!-- Carousel -->
 							
 </div><br />
-		<div id="footer" class="col-md-12">@Instwaves no rights reserved</div> 
