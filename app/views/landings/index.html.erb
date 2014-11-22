@@ -12,7 +12,6 @@
 							</tr>
 						</thead>
 
-						<%=@nearbys[1].infos%>
 						<tbody>
 							<% if @nearbys.empty? %>
 							<tr>
@@ -22,7 +21,7 @@
 								<% for location in @nearbys.first(5) %>
 								<tr>
 									<td><%= link_to location.name, location %></td>
-									<td><%= location.distance.round(2) %><small>miles</small></td>
+									<td><%= location.distance.round(2) %><small> miles</small></td>
 									<td>
 									<%shape = 0
 									  size_max = 0
@@ -41,6 +40,7 @@
 
 									<% case shape %>
 										<% when 0 %>
+											<span class="fa fa-trash"></span> - it's trash
 										<% when 1 %>
 											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 										<% when 2 %>
@@ -53,7 +53,7 @@
 											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% end %>
 									</td>
-								<td><%=size_min%>-<%=size_max%><small>ft</small></td>
+								<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 							<% end %>
 							</tr>
 						</tbody>
@@ -84,9 +84,7 @@
 						<tr>
 							<% location = Location.find(favorite.location_id) %>
 
-							<td><%= link_to location.name, location %>
-								
-							</td>
+							<td><%= link_to location.name, location %></td>
 							<td>
 								<% if !location.infos.empty?%>
 								<%shape = 0
@@ -104,6 +102,7 @@
 								<%end%>
 									<% case shape %>
 									<% when 0 %>
+										<span class="fa fa-trash"></span> - it's trash
 									<% when 1 %>
 										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 2 %>
@@ -118,7 +117,7 @@
 								<% end %>
 							</td>
 							<td>
-								<%=size_min%>-<%=size_max%><small>ft</small>
+								<%=size_min%>-<%=size_max%><small> ft</small>
 							</td>
 						</tr>
 
@@ -140,53 +139,54 @@
 	</div>
 </div>
 
-	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize1"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize1"></script>
 
 	<script type="text/javascript" href="/app/assets/javascripts/map_world_region.js"></script>
 
 </div>
 <br />
-				<div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#carousel-slideshow" data-slide-to="0" class="active"></li>
-						<li data-target="#carousel-slideshow" data-slide-to="1"></li>
-						<li data-target="#carousel-slideshow" data-slide-to="2"></li>
-						<li data-target="#carousel-slideshow" data-slide-to="3"></li>
-						<li data-target="#carousel-slideshow" data-slide-to="4"></li>
-						<li data-target="#carousel-slideshow" data-slide-to="5"></li>
-					</ol>
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<img src="http://s2.postimg.org/5r688jyzb/carousel_5.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-						<div class="item">
-							<img src="http://s16.postimg.org/q4up6t3n7/carousel_6.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-						<div class="item">
-							<img src="http://s16.postimg.org/bx50i5qyb/carousel_7.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-						<div class="item">
-							<img src="http://s16.postimg.org/48866fqgj/carousel_9.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-						<div class="item">
-							<img src="http://s16.postimg.org/vlhyexmer/carousel_10.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-						<div class="item">
-							<img src="http://s17.postimg.org/5xu1602wt/carousel_11.jpg" alt="...">
-							<div class="carousel-caption"></div>
-						</div>
-					</div>
+<div id="carousel-slideshow" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#carousel-slideshow" data-slide-to="0" class="active"></li>
+		<li data-target="#carousel-slideshow" data-slide-to="1"></li>
+		<li data-target="#carousel-slideshow" data-slide-to="2"></li>
+		<li data-target="#carousel-slideshow" data-slide-to="3"></li>
+		<li data-target="#carousel-slideshow" data-slide-to="4"></li>
+		<li data-target="#carousel-slideshow" data-slide-to="5"></li>
+	</ol>
 
-					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-slideshow" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
-					<a class="right carousel-control" href="#carousel-slideshow" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-				</div>
-				<!-- Carousel -->
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="http://s2.postimg.org/5r688jyzb/carousel_5.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="http://s16.postimg.org/q4up6t3n7/carousel_6.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="http://s16.postimg.org/bx50i5qyb/carousel_7.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="http://s16.postimg.org/48866fqgj/carousel_9.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="http://s16.postimg.org/vlhyexmer/carousel_10.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="http://s17.postimg.org/5xu1602wt/carousel_11.jpg" alt="...">
+			<div class="carousel-caption"></div>
+		</div>
+	</div>
+
+	<!-- Controls -->
+	<a class="left carousel-control" href="#carousel-slideshow" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+	<a class="right carousel-control" href="#carousel-slideshow" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+</div>
+<!-- Carousel -->
 							
