@@ -12,6 +12,7 @@
 							</tr>
 						</thead>
 
+						<%=@nearbys[1].infos%>
 						<tbody>
 							<% if @nearbys.empty? %>
 							<tr>
@@ -26,7 +27,8 @@
 									<%shape = 0
 									  size_max = 0
 									  size_min = 0%>
-									<%location.infos.each do |wave|%>
+
+									<%location.infos.map do |wave|%>
 										<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
 											<%if Time.at(wave.day.to_i).hour == 13 %>
 												<% shape = wave.swell_rating %>
