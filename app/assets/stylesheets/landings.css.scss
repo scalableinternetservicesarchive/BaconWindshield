@@ -1,7 +1,21 @@
-// Place all the styles related to the Landings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.margTop {
-  margin-top: 2px;
+// 
+// #map-outer {
+  // // position:relative;
+  // padding: 2%; 
+  // border: 2px solid #CCC; 
+  // margin-bottom: 20px; 
+  // background-color:#FFF
+// }
+#map-canvas1 {
+   height:600px;
 }
+
+.table {
+  text-align: left;
+}
+
+// @media all and (max-width: 100%) {
+    // #map-outer  { 
+      // // height: 650px 
+      // }
+    // }
