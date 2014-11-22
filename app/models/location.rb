@@ -5,4 +5,10 @@ class Location < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode
+  
+  def self.search(query)
+    if query
+      where("name LIKE ?", "%#{query}%") 
+    end
+  end
 end
