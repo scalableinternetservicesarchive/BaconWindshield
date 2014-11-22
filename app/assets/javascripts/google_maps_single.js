@@ -3,7 +3,7 @@ var MY_MAPTYPE_ID = 'custom_style';
 function initialize2() {
 
 		
-	$("div.google-maps-canvas").each(function(index) {
+	$("canvas.spot_forecast").each(function(index) {
 		var longitude = $(this).attr('data-longitude');
 		var latitude = $(this).attr('data-latitude');
 
@@ -46,7 +46,7 @@ function initialize2() {
 				},
 				mapTypeId : MY_MAPTYPE_ID
 			};
-			var map = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
+			var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
 			var styledMapOptions = {
 				name : 'Custom Style'
 			};
@@ -104,4 +104,3 @@ function handleNoGeolocation(errorFlag) {
 	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(options.position);
 }
-google.maps.event.addDomListener(window, 'resize', initialize);

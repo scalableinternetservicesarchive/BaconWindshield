@@ -5,43 +5,30 @@
 	<%= image_tag "daisy.jpg" %>
 </div>
 <% else %>
-	<div align="center" style="padding-top: 0.5%">
-		<% if defined?(Devise)%>
+	
+<div class="container">	
+	<div class="row">
+	<div id="map-outer" class="col-md-12">
+				<div class="col-md-6">
+					<div align="center" style="padding: 2%">
+
+					<font size="5"><strong><%= @location.name %></strong></font>
+					<% if defined?(Devise)%>
 			<% if user_signed_in?%>
 				<% if !current_user.locations.include?(@location) %>
 					<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
 				<%end%>
 			<%end%>
-		<%end%>
-	</div>
-	<section>
-		<font size="5"><strong><%= @location.name %></strong></font>
-		
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Today</th>
-				</tr>
+		<%end%></div>
+							<div align="center" style="padding: 2%">
 
-			</thead>
-			<tbody>
-				<td>
-				<div align="center">
-					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id %>  data-type ="location_view" width="496" height="94"></canvas>
-				</div></td>
+					<canvas class="spot_forecast"  
+						id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas></div>
+				</div>
+				<div id="map-container" class="col-md-6"></div>
 
-			</tbody>
-		</table>
-	</section>
-	<aside>
-		<!-- <div class="google-maps-canvas"> -->			<!-- <iframe src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2" width="600" height="450" frameborder="0" style="border:0"></iframe> -->			
-			<!-- <canvas class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></canvas> -->
-		<div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"></div> 		<!-- </div> -->
-	</aside>
-	
-		<div class="table_forecast">
-		<table class= "table table-striped">
+			<div class="table_forecast">
+			<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
 				<th><strong>Swell Size</strong></th>
@@ -107,10 +94,15 @@
 				</tr>
 				<%end%>
 			</tbody>
-		</table>					<div align="center">
-		<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>
+		</table>	</div>				<div align="center">
+		<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>		
+	</div></div>
+</div>
 
-	</div>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 	<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div> -->	
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
