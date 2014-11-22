@@ -15,7 +15,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'dalli'
 gem 'will_paginate-bootstrap'
- 
+gem 'geocoder'
 gem "font-awesome-rails"
 
 # Use SCSS for stylesheets
