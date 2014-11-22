@@ -16,9 +16,12 @@
 							<td><%= link_to location.name, location %></td>
 						</tr>
 						<% end %>
+
 					</tbody>
 				</table>
-			</div>
+			</div>						<div align="center">
+							<%= will_paginate @entries, previous_label: "Previous", next_label: "Next", renderer: BootstrapPagination::Rails %>
+						</div>
 		</div>
 	</div>
 </div>
