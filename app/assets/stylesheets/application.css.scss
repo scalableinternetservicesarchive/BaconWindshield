@@ -42,11 +42,11 @@
    height:300px;
 }
 
-// @media all and (max-width: 100%) {
-    // #map-outer  { 
-      // // height: 650px 
-      // }
-// }
+@media all and (max-width: 100%) {
+    #map-outer  { 
+      // height: 650px 
+      }
+}
 // Constrain forms for models (scaffolded models) so they aren't full page width.
 .form-model {
   max-width: 750px;
