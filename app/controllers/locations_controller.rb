@@ -3,10 +3,15 @@ class LocationsController < ApplicationController
   respond_to :js, :html
   helper_method :get_swell_json_with_spot_id, :get_json
   #caches_page :index
-  caches_action :index, expires_in: 24.hour
+  #caches_action :index, expires_in: 24.hour
 
   def index
     #@locations = Location.all
+    if params[:search]
+      @locations = Location.search(params[:search]).order("created_at DESC")
+    else
+      @locations = Location.all.order('created_at DESC')
+    end
     respond_with(@locations)
   end
 
@@ -22,7 +27,7 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    expire_action action: :index
+    #expire_action action: :index
   end
 
   def create
