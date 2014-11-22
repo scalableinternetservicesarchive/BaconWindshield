@@ -26,6 +26,14 @@
 .yield {
   margin: 30px;
 }
+#footer{
+  position: fixed;
+
+  // background-color:#FFF;
+  text-align: center;
+  bottom: 0;
+
+}
 
 #map-outer {
   // position:relative;
@@ -43,11 +51,16 @@
    margin-bottom: 3%;
 }
 
-// @media all and (max-width: 100%) {
-    // #map-outer  { 
-      // height: 650px 
-      // }
+// .carousel-inner {
+    // height: 500px;
 // }
+
+
+@media all and (min-width: 1200px) {
+    #map-outer  { 
+      height: 940px 
+      }
+}
 // Constrain forms for models (scaffolded models) so they aren't full page width.
 .form-model {
   max-width: 750px;
