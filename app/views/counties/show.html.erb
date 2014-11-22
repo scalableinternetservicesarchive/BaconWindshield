@@ -1,39 +1,30 @@
-<!-- <div class="jumbotron"> -->
-<%=@array%>
-<div class="row">
-	<div class="col-md-4 col-md-offset-3">
-		<p id="notice">
-			<%= notice %>
-		</p>
+<div class="container">
+	<div class="row">
+		<div id="map-outer" class="col-md-12">
+			<div class="col-md-6 col-md-offset-3">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th><font size="5"><strong><%= @county.name %> Forecast</strong></font></th>
+						</tr>
 
-		<p>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th><%= @county.name %> Forecast</th>
-						<th colspan="3"></th>
-					</tr>
-				</thead>
+					</thead>
 
-				<tbody>
+					<tbody>
 
-					<% Location.find_each do |location| %>
-					<% if @county == location.county %>
-					<tr>
-						<td><%= link_to location.name, Location.find(location.id) %>
-						<div align="center">
-							<canvas class="spot_forecast"
-							id="1" data-location=<%= location.id %> data-view ="county_view" width="496" height="94"></canvas>
-						</div></td>
-					</tr>
-					<% end %>
-					<% end %>
+						<% Location.find_each do |location| %>
+						<% if @county == location.county %>
+						<tr>
+							<td><%= link_to location.name, Location.find(location.id) %> <canvas class="spot_forecast"
+							id="1" data-location=<%= location.id %> data-view ="county_view" width="496" height="94"></canvas></td>
+						</tr>
 
-				</tbody>
-			</table>
-		</p>
+						<% end %>
+						<% end %>
 
-		<%= link_to 'Back', counties_path %>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
-<!-- </div> -->

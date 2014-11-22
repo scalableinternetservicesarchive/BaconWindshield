@@ -1,5 +1,4 @@
-<% weather = get_swell_json_with_spot_id(@location.id) %>
-<% if weather == "fail" %>
+<% if @location.infos %>
 <div class="image">
 
 	<%= image_tag "daisy.jpg" %>
@@ -20,14 +19,14 @@
 				<%end%>
 			<%end%>
 		<%end%></div>
-							<div align="center" style="padding: 2%">
+							<div align="center" style="padding: 2%, margin-bottom: 5%">
 
 					<canvas class="spot_forecast"  
 						id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas></div>
 				</div>
 				<div id="map-container" class="col-md-6"></div>
-
-			<div class="table_forecast">
+	
+		<div class="table_forecast" class="col-md-12" >
 			<table class= "table table-striped">
 			<thead>
 				<th><strong>Day</strong></th>
@@ -99,11 +98,6 @@
 	</div></div>
 </div>
 
-
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-	<!-- <div class="google-maps-canvas" id="map-canvas2" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>"</div> -->	
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>

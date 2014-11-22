@@ -1,21 +1,4 @@
 
-#map-outer {
-  // position:relative;
-  padding: 2%; 
-  border: 2px solid #CCC; 
-  margin-bottom: 20px; 
-  background-color:#FFF
-}
-
-#map-container {
-   height:300px;
-}
-
-@media all and (max-width: 100%) {
-    #map-outer  { 
-      // height: 650px 
-      }
-    }
     
 .image {
     position: absolute;
