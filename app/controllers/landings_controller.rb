@@ -5,10 +5,10 @@ class LandingsController < ApplicationController
     #in dev and test environments, lat & long are 0.0
     if (result.latitude != 0.0 && result.latitude != 0.0)
       loc = Location.new(latitude: result.latitude, longitude: result.longitude)
-      @nearbys = loc.nearbys(50)
+      @nearbys = loc.nearbys(50).first(5)
     else
       loc = Location.new(latitude: 34.42, longitude: -119.86)
-      @nearbys = loc.nearbys(50)
+      @nearbys = loc.nearbys(50).first(5)
     end
 
   end
