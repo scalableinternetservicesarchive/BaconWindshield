@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
     else
       @locations = Location.all.order('created_at DESC')
     end
-      @entries = @locations.paginate(page: params[:page], per_page: 20)
+    @entries = @locations.paginate(page: params[:page], per_page: 20)
 
     respond_with(@locations)
   end
