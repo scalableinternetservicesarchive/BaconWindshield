@@ -26,15 +26,27 @@
 .yield {
   margin: 30px;
 }
-.google-maps-canvas1 {
-  position: absolute;
-  margin-right: 16%;
-  margin-top: 0%;
-  width:67%; 
-  height: 78%;
+
+#map-outer {
+  // position:relative;
+  padding: 2%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+ // margin-top:50%;
+ // margin-bottom:50%;
+  background-color:#FFF
 }
 
+#map-container {
+   height:300px;
+}
 
+// @media all and (max-width: 100%) {
+    // #map-outer  { 
+      // // height: 650px 
+      // }
+// }
 // Constrain forms for models (scaffolded models) so they aren't full page width.
 .form-model {
   max-width: 750px;
@@ -44,28 +56,24 @@
   max-width: 450px;
 }
 
-.jumbotron{
-  width: 75%;
-  height: 120%;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-body{
-
+html, body{
+    // margin: 0;
+    // padding: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
   // background-image: url(/assets/shattered.png);
     background-color: #CCC;
   // background-repeat:  repeat;
-  height: 100%;
-  overflow-x:hidden;
+    overflow-x:hidden;
 }
 
-html {
-    height: 100%
-}
+
 
 .navbar{
-  background-image: url(/assets/debut_dark.png);
+  // background-color: #0B486B;
+  // background-image: url(/assets/debut_dark.png);
   margin-bottom: 0;
 }
 

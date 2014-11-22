@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
     loc = Location.find(params[:location_id])
     @favorite = Favorite.new(location_id: loc.id, user_id: current_user.id)
     @favorite.save
-    respond_with(@favorite)
+    respond_with(loc)
   end
 
   def update
