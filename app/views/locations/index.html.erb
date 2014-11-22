@@ -11,7 +11,7 @@
 					</thead>
 
 					<tbody>
-						<% @locations.each do |location| %>
+						<% @entries.each do |location| %>
 						<tr>
 							<td><%= link_to location.name, location %></td>
 						</tr>
@@ -20,7 +20,7 @@
 					</tbody>
 				</table>
 			</div>						<div align="center">
-							<%= will_paginate @entries, previous_label: "Previous", next_label: "Next", renderer: BootstrapPagination::Rails %>
+							<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 						</div>
 		</div>
 	</div>
