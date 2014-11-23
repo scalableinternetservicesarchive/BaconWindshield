@@ -102,15 +102,17 @@ function initialize1() {
 			"saturation" : -60
 		}]
 	}];
-	var mapOptions = {
-		disableDefaultUI : true,
+		var mapOptions = {
+		disableDefaultUI : false,
+	
 		zoom : 4,
 
 		mapTypeControlOptions : {
-			mapTypeIds : [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+			mapTypeIds : [google.maps.MapTypeId.SATELLITE, MY_MAPTYPE_ID]
 		},
 		mapTypeId : MY_MAPTYPE_ID
 	};
+	
 	var map = new google.maps.Map(document.getElementById('map-canvas1'), mapOptions);
 	
  
@@ -171,6 +173,7 @@ function initialize1() {
 	      if (bol == true){
 	      	rectangle.setVisible(false);
 	      	if(bol2 == true){
+	      		
 	      			for (i = 0; i < spots.length; i++){
 	      				var tempspot = {id:spots[i].id,name:spots[i].name,lat:spots[i].lat,lon:spots[i].lon,region:spots[i].region};
 	      				spotsDraw.push(tempspot);
@@ -180,6 +183,7 @@ function initialize1() {
 							title : spots[i].name,
 							icon : waveImage2
 						});
+							
 							marker.waveImage1 = waveImage1;
 							marker.waveImage2 = waveImage2;
 							markers.push(marker);
