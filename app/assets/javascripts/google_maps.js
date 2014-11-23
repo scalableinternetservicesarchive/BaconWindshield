@@ -65,11 +65,11 @@
 	// google.maps.event.addListener(map, 'zoom_changed', function() {
 		// var zoomLevel = map.getZoom();
 // 	
-		// if(zoomLevel < 14){
-			// markers2[0].setVisible(false);
-		// }else{
-			// markers2[0].setVisible(true);
-		// }
+		// // if(zoomLevel < 14){
+			// // markers2[0].setVisible(false);
+		// // }else{
+			// // markers2[0].setVisible(true);
+		// // }
 // 	
 		// for ( i = 0; i < locations.length; i++) {
 			// if (zoomLevel < 14) {
