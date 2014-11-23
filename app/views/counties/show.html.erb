@@ -15,7 +15,7 @@
 
 					<tbody>
 
-						<% @entries.each do |location| %>
+						<%  @entries.includes(:infos).each do |location| %>
 						<tr>
 							<td><%= link_to location.name, Location.find(location.id) %></td>
 							<td>
@@ -56,6 +56,7 @@
 
 						<% end %>
 						<!-- <% Location.find_each do |location| %>
+>>>>>>> 0d31bd5e6f04e2b0c0309bea9d12fc40dbd80982
 						<% if @county == location.county %>
 						<tr>
 							<td><%= link_to location.name, Location.find(location.id) %> <canvas class="spot_forecast"
