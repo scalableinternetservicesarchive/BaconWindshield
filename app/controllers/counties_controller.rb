@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
@@ -12,10 +14,10 @@ class CountiesController < ApplicationController
     @infosList = Array.new
     Location.find_each do |loc|
       if @county == loc.county
-      @infosList.push(loc.infos)
+        @infosList.push(loc)
       end
     end
-    gon.watch.infos = @infosList
+    @entries = @infosList.paginate(page: params[:page], per_page: 20)
     respond_with(@county)
 
   end
