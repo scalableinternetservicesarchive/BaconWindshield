@@ -15,7 +15,8 @@
 					<tbody>
 						<% @entries.each do |location| %>
 						<tr>
-							<td><%= link_to location.name, location %></td><td>
+							<td><%= link_to location.name, location %></td>
+							<td>
 								<% if !location.infos.empty?%>
 								<%shape = 0
 								  size_max = 0
