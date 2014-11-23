@@ -11,8 +11,8 @@ class CountiesController < ApplicationController
 
   def show
     @infosList = Array.new 
-       
-    @locations = @county.locations    
+    
+    @locations = @county.locations 
     @entries = @locations.paginate(page: params[:page], per_page: 20)
     #@locations.includes(:infos).each do |loc|
     #@locations.each do |loc| Fixed N + 1 querries

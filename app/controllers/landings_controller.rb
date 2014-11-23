@@ -10,6 +10,15 @@ class LandingsController < ApplicationController
       loc = Location.new(latitude: 34.42, longitude: -119.86)
       @nearbys = loc.nearbys(50).first(5)
     end
+    
+    if defined?(Devise)
+      if user_signed_in?
+        @favorites = current_user.favorites.limit(5)
+      end
+    end
+    
+    fresh_when(etag: [@nearbys, @favorites, current_user])
+
   end
 
 # def location
