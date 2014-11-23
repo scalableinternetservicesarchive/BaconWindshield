@@ -23,7 +23,7 @@
 							<div align="center" style="padding: 2%, margin-bottom: 5%">
 
 					<canvas class="spot_forecast"  
-						id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas></div>
+						id="1" data-location=<%= @location.id %> data-page="<%= @waves.current_page%>" data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas></div>
 				</div>
 				<div id="map-container" class="col-md-6"></div>
 	
@@ -97,9 +97,11 @@
 				<%end%>
 			</tbody>
 		</table>	</div>				<div align="center">
-		<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>		
-	</div></div>
-</div>
+
+  <%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %>
+
+  </div>		 
+  </div></div> --></div>
 
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
