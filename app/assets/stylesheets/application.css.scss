@@ -12,7 +12,10 @@
 *
 *= require_tree .
 *= require_self
+*= require jquery-ui
+*= require jquery.modal
 *= require font-awesome
+ 
 
 */
 @import "bootstrap_configuration";
@@ -20,6 +23,7 @@
 @import "bootstrap-sprockets";
 
 @import "bootstrap";
+
 
 
 // Give everything in 'yield' margin to separate it.
