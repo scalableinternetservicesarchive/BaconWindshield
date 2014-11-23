@@ -1,7 +1,9 @@
+require 'will_paginate/array'
+
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
-  caches_action :show, expires_in: 24.hour
+  #caches_action :show, expires_in: 24.hour
   def index
     @counties = County.all
     respond_with(@counties)
@@ -10,12 +12,14 @@ class CountiesController < ApplicationController
   def show
     @infosList = Array.new 
        
-    @locations = @county.locations
-    @locations.includes(:infos).each do |loc|
+    @locations = @county.locations    
+    @entries = @locations.paginate(page: params[:page], per_page: 20)
+    #@locations.includes(:infos).each do |loc|
     #@locations.each do |loc| Fixed N + 1 querries
-    @infosList.push(loc.infos)
-    end
-    gon.watch.infos = @infosList
+    #@infosList.push(loc.infos)
+    #end
+    
+    #@entries = @locations.paginate(page: params[:page], per_page: 20)
     respond_with(@county)
 
   end
@@ -26,7 +30,7 @@ class CountiesController < ApplicationController
   end
 
   def edit
-    expire_action action: :show
+    #expire_action action: :show
   end
 
   def create
