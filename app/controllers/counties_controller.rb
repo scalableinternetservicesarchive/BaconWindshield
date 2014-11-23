@@ -8,12 +8,12 @@ class CountiesController < ApplicationController
   end
 
   def show
-
-    @infosList = Array.new
-    Location.find_each do |loc|
-      if @county == loc.county
-      @infosList.push(loc.infos)
-      end
+    @infosList = Array.new 
+       
+    @locations = @county.locations
+    @locations.includes(:infos).each do |loc|
+    #@locations.each do |loc| Fixed N + 1 querries
+    @infosList.push(loc.infos)
     end
     gon.watch.infos = @infosList
     respond_with(@county)

@@ -13,7 +13,7 @@
 					</thead>
 
 					<tbody>
-						<% @entries.each do |location| %>
+						<% @entries.includes(:infos).each do |location| %>
 						<tr>
 							<td><%= link_to location.name, location %></td><td>
 								<% if !location.infos.empty?%>
