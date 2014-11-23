@@ -103,7 +103,7 @@ function initialize1() {
 		}]
 	}];
 	var mapOptions = {
-		disableDefaultUI : true,
+		disableDefaultUI : false,
 		zoom : 4,
 
 		mapTypeControlOptions : {
