@@ -4,12 +4,10 @@ one:
   size: 1
   swell_rating: 1
   wind: 1
-  probability: 1
 
 two:
   day: MyString
   size: 1
   swell_rating: 1
   wind: 1
-  probability: 1
 

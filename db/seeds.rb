@@ -32,7 +32,7 @@ def get_json(url)
     begin
       result = JSON.parse(data)
     rescue
-      result = "fail"
+      retry
     end
     return result    
 end
@@ -45,6 +45,6 @@ Location.find_each do |loc|
   wave_list = get_swell_json_with_spot_id(loc.id)
   
   wave_list.each do |wave|
-    loc.infos.create(day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",probability:"#{wave['swell']['probability']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}",)
+    loc.infos.create(day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}",)
   end
 end
