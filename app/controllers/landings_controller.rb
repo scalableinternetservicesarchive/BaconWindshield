@@ -17,7 +17,7 @@ class LandingsController < ApplicationController
       end
     end
     
-    fresh_when(etag: [@nearbys, @favorites, current_user])
+    #fresh_when(etag: [@nearbys, @favorites, current_user])
 
   end
 
