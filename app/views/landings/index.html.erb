@@ -80,7 +80,7 @@
 						<% if !current_user.favorites.empty?%>
 						<% current_user.favorites.limit(5).each do |favorite| %>
 						<tr>
-							<% location = Location.find(favorite.location_id) %>
+							<% location = Location.includes(:infos).find(favorite.location_id) %>
 
 							<td><%= link_to location.name, location %></td>
 							<td>
@@ -88,11 +88,11 @@
 								<%shape = 0
 								  size_max = 0
 								  size_min = 0%>
-									<% wave = location.infos[1]%>
+								<% location.infos.each do |wave|%>
 									<% shape = wave.swell_rating %>
 									<% size_max = wave.size_max%>
 									<% size_min = wave.size_min%>
-									
+								<% end %>
 									<% case shape %>
 									<% when 0 %>
 										<span class="fa fa-trash" style="color:#48A5F0"></span> - it's trash
