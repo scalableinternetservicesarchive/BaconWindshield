@@ -18,7 +18,6 @@
 								<td>There are no surf spots within 50 miles of your location!</td>
 							</tr>
 							<% else %>
-								<%= @nearbys.inspect %>
 								<% @nearbys.each do |location| %>
 								<tr>
 									<td><%= link_to location.name, location %></td>
@@ -51,7 +50,8 @@
 									<% end %>
 									</td>
 								<td><%=size_min%>-<%=size_max%><small> ft</small></td>
-							<% end %>								<% end %>
+							<% end %>								
+							<% end %>
 
 							</tr>
 						</tbody>

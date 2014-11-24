@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite as the development database for Active Record
@@ -18,7 +17,6 @@ gem 'will_paginate-bootstrap'
 gem 'geocoder'
 gem "font-awesome-rails"
 gem "bullet", :group => "development"
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
