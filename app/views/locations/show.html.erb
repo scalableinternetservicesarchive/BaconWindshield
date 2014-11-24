@@ -1,45 +1,50 @@
 <% if !@location.infos %>
 <div class="image">
-
 	<%= image_tag "daisy.jpg" %>
 </div>
 <% else %>
 	
-<div class="container">	
+<div class="container">
 	<div class="row">
-	<div id="map-outer" class="col-md-12">
-				<div class="col-md-6">
-					<div align="center" style="padding: 2%">
+		<div id="map-outer" class="col-md-12">
+			<div class="col-md-6">
+				<div align="center" style="padding: 2%">
 
 					<font size="5"><strong><%= @location.name %></strong></font>
 					<% if defined?(Devise)%>
-			<% if user_signed_in?%>
-				<% if !current_user.locations.include?(@location) %>
+					<% if user_signed_in?%>
+					<% if !current_user.locations.include?(@location) %>
 					<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
-				<%end%>
-			<%end%>
-		<%end%></div>
-							<div align="center" style="padding: 2%, margin-bottom: 5%">
-
-					<canvas class="spot_forecast"  
-						id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas></div>
+					<%end%>
+					<%end%>
+					<%end%>
 				</div>
-				<div id="map-container" class="col-md-6"></div>
-	
-		<div class="table_forecast" class="col-md-12" >
-			<table class= "table table-striped">
-			<thead>
-				<th><strong>Day</strong></th>
-				<th><strong>Swell Size</strong></th>
-				<th><strong>Swell Rating</strong></th>
-				<th><strong>Wind Speed</strong></th>
-				<th><strong>Temperature</strong></th>
-				<th><strong>Weather</strong></th>
-				<th><strong>Chart Swell</strong></th>
-				<th><strong>Chart Period</strong></th>
-				<th><strong>Chart Wind</strong></th>
-			</thead>
-			<tbody>
+				<div align="center" style="padding: 2%">
+					<strong>Today</strong>
+				</div>
+				<div align="center" style="padding: 2%, margin-bottom: 5%">
+
+					<canvas class="spot_forecast"
+					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas>
+				</div>
+			</div>
+			<div id="map-container" class="col-md-6"></div>
+
+			<div class="table_forecast" class="col-md-12">
+				<table class= "table table-striped">
+					<thead>
+						<th><strong>Day</strong></th>
+						<th><strong>Swell Size</strong></th>
+						<th><strong>Swell Rating</strong></th>
+						<th><strong>Wind Speed</strong></th>
+						<th><strong>Temperature</strong></th>
+						<th><strong>Weather</strong></th>
+						<th><strong>Chart Swell</strong></th>
+						<th><strong>Chart Period</strong></th>
+						<th><strong>Chart Wind</strong></th>
+					</thead>
+					<tbody>
+
 				<% @waves.each_with_index do |wave,idx| %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
@@ -47,7 +52,7 @@
 					<td><% swell = wave.swell_rating %>
 					<% case swell %>
 						<% when 0 %>
-							<span class="fa fa-trash"style="color:#3cbbe8"></span> - it's trash
+							<span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small>
 						<% when 1 %> 
 							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
 						<% when 2 %> 
@@ -91,17 +96,21 @@
 										<img src=<%= wave.chart_wind%> class="img-responsive">
 									</div>
 								</div>
-							</div></div><a href="#myModal3<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img> </a></td>
-				</tr>
-				<%end%>
-			</tbody>
-		</table>	</div>				<div align="center">
-		<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %></div>		
-	</div></div>
+							</div></div><a href="#myModal3<%= idx%>" data-toggle="modal"> <img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img> </a></td>
+						</tr>
+						<%end%>
+					</tbody>
+				</table>	
+			</div>
+			<div align="center">
+				<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %>
+			</div>		
+		</div>
+	</div>
 </div>
 
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
-	<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-	<%end%>		
+<script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
+<%end%>		
 

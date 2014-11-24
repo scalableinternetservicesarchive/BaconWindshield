@@ -15,7 +15,7 @@
 
 					<tbody>
 
-						<% @entries.each do |location| %>
+						<%  @entries.includes(:infos).each do |location| %>
 						<tr>
 							<td><%= link_to location.name, Location.find(location.id) %></td>
 							<td>
@@ -35,7 +35,7 @@
 								<%end%>
 									<% case shape %>
 									<% when 0 %>
-										<span class="fa fa-trash" style="color:#3cbbe8"></span> - it's trash
+										<span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small>
 									<% when 1 %>
 										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
 									<% when 2 %>
@@ -56,6 +56,7 @@
 
 						<% end %>
 						<!-- <% Location.find_each do |location| %>
+>>>>>>> 0d31bd5e6f04e2b0c0309bea9d12fc40dbd80982
 						<% if @county == location.county %>
 						<tr>
 							<td><%= link_to location.name, Location.find(location.id) %> <canvas class="spot_forecast"
@@ -67,10 +68,10 @@
 
 					</tbody>
 				</table>
+			</div>
 				<div align="center">
 					<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>

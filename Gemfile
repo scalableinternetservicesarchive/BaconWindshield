@@ -16,8 +16,7 @@ gem 'dalli'
 gem 'will_paginate-bootstrap'
 gem 'geocoder'
 gem "font-awesome-rails"
-gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
+gem "bullet", :group => "development"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
