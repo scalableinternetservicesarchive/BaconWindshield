@@ -10,25 +10,9 @@ var ready = function() {
 
 	// Create Spot Forecasts
 	$("canvas.spot_forecast").each(function(index) {
-		var view = $(this).attr('data-view');
-
-		if (view == "county_view") {
-			var height_scale = 12;
-
-			var location_id = $(this).attr('data-location');
-			for ( i = 0; i < infosList.length; i++) {
-				for ( j = 0; j < infosList[i].length; j++) {
-					if (infosList[i][j].location_id == location_id) {
-						// var index = i;
-						var infos = infosList[i];
-					}
-				}
-			}
-		} else {
-			var infos = infosList;
-			var height_scale = 32;
-
-		}
+		var page = $(this).attr('data-page');
+		var infos = infosList;
+		var height_scale = 32;
 
 		var canvas = $(this)[0];
 		var context = canvas.getContext("2d");
@@ -36,7 +20,7 @@ var ready = function() {
 		var height_max = 6;
 		// Feet
 		// Pixels
-		
+
 		var chartX_indent = 0.5;
 		var chartY_indent = 4.5;
 
@@ -47,6 +31,13 @@ var ready = function() {
 		var sizeMin = 10;
 		var sizeMax = 0;
 		var data = [];
+
+		console.log("days to be added: " + page);
+		page = page - 1;
+		console.log("date before edit: " + currentDate);
+		currentDate.setDate(currentDate.getDate() + page);
+		console.log("date after edit: " + currentDate);
+
 		for (var i = 0; i < infos.length; i++) {
 			var tempDate = new Date(infos[i].day * 1000);
 			tempDate.setHours(0, 0, 0, 0);
@@ -70,41 +61,8 @@ var ready = function() {
 		while (sizeMax >= height_max) {
 			height_max += 3;
 		}
-		
-		if (sizeMax >= 6 && height_scale == 12) {
-			if (height_max < 13) {
 
-				switch(height_max) {
-				case 7:
-					height_scale = 8;
-					break;
-				case 8:
-					height_scale = 8;
-					break;
-				case 9:
-					height_scale = 7;
-					break;
-				case 10:
-					height_scale = 6;
-					break;
-				case 11:
-					height_scale = 6;
-					break;
-				case 12:
-					height_scale = 6;
-					break;
-				}
-			} else {
-				if (height_max <= 15) {
-					height_scale = 5;
-				} else {
-					height_scale = 3;
-				}
-			}
-		}		
-
-
-			if ((sizeMax >= 6) && (height_scale == 32)) {
+		if ((sizeMax >= 6)) {
 			if (height_max < 13) {
 				switch(height_max) {
 				case 7:
@@ -133,7 +91,7 @@ var ready = function() {
 					height_scale = 3;
 				}
 			}
-			height_scale = height_scale*2.5;
+			height_scale = height_scale * 2.5;
 		}
 		// GRID: Height Bars
 
