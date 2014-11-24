@@ -18,7 +18,9 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @waves = @location.infos.paginate(page: params[:page], per_page: 8)
+    #@waves = @location.infos.paginate(page: params[:page], per_page: 8)
+    @waves = @location.infos.paginate(page: params[:page], per_page: 8, total_entries: 40)
+    #@waves = @location.infos
     gon.watch.infos = @location.infos
     respond_with(@location)
   end
