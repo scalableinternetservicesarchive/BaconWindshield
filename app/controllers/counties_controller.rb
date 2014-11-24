@@ -3,6 +3,7 @@ require 'will_paginate/array'
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
+  helper_method :cache_key_for_counties, :cache_key2
   #caches_action :show, expires_in: 24.hour
   def index
     @counties = County.all
@@ -23,7 +24,13 @@ class CountiesController < ApplicationController
     respond_with(@county)
 
   end
-
+  
+  def cache_key_for_counties
+    counties_key = @county.cache_key
+    first_entry_key = @entries.first.cache_key
+    "#{counties_key}-#{first_entry_key}"
+  end
+  
   def new
     @county = County.new
     respond_with(@county)

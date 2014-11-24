@@ -1,68 +1,71 @@
-<div class="container">
-	<div class="row">
-		<div id="map-outer" class="col-md-12">
-			<div class="col-md-6 col-md-offset-3">
-				<table class="table table-striped">
-					<thead>
-						<font size="5"><strong><%= @county.name %> Forecast</strong></font>
-						<tr>
-							<th>Spots</th>
-							<th>Swell Rating</th>
-							<th>Swell Size</th>
-						</tr>
+<% cache cache_key_for_counties do %>
 
-					</thead>
-
-					<tbody>
-
-						<%  @entries.includes(:infos).each do |location| %>
-						<tr>
-							<td><%= link_to location.name, Location.find(location.id) %></td>
-							<td>
-								<% if !location.infos.empty?%>
-								<%shape = 0
-								  size_max = 0
-								  size_min = 0%>
-								<%location.infos.each do |wave|%>
-									<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
-										<%if Time.at(wave.day.to_i).hour == 13 %>
-											<% shape = wave.swell_rating %>
-											<% size_max = wave.size_max%>
-											<% size_min = wave.size_min%>
-
-											<%end%>
+	<div class="container">
+		<div class="row">
+			<div id="map-outer" class="col-md-12">
+				<div class="col-md-6 col-md-offset-3">
+					<table class="table table-striped">
+						<thead>
+							<font size="5"><strong><%= @county.name %> Forecast</strong></font>
+							<tr>
+								<th>Spots</th>
+								<th>Swell Rating</th>
+								<th>Swell Size</th>
+							</tr>
+	
+						</thead>
+	
+						<tbody>
+	
+							<%  @entries.includes(:infos).each do |location| %>
+							<tr>
+								<td><%= link_to location.name, Location.find(location.id) %></td>
+								<td>
+									<% if !location.infos.empty?%>
+									<%shape = 0
+									  size_max = 0
+									  size_min = 0%>
+									<%location.infos.each do |wave|%>
+										<%if Time.at(wave.day.to_i).to_date == Time.now.to_date%>
+											<%if Time.at(wave.day.to_i).hour == 13 %>
+												<% shape = wave.swell_rating %>
+												<% size_max = wave.size_max%>
+												<% size_min = wave.size_min%>
+	
+												<%end%>
+										<%end%>
 									<%end%>
-								<%end%>
-									<% case shape %>
-									<% when 0 %>
-										<span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small>
-									<% when 1 %>
-										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
-									<% when 2 %>
-										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
-									<% when 3 %>
-										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
-									<% when 4 %>
-										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
-									<% when 5 %>
-										<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% case shape %>
+										<% when 0 %>
+											<span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small>
+										<% when 1 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 2 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 3 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 4 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% when 5 %>
+											<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span>
+										<% end %>
 									<% end %>
-								<% end %>
-							</td>
-							<td>
-								<%=size_min%>-<%=size_max%><small> ft</small>
-							</td>
-						</tr>
-
-						<% end %>
-
-					</tbody>
-				</table>
-			</div>
-				<div align="center">
-					<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+								</td>
+								<td>
+									<%=size_min%>-<%=size_max%><small> ft</small>
+								</td>
+							</tr>
+	
+							<% end %>
+	
+						</tbody>
+					</table>
 				</div>
+					<div align="center">
+						<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+					</div>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>
 
