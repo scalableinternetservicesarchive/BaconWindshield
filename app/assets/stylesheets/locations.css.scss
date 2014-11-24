@@ -13,3 +13,57 @@
    // background-color: #00FF00;
    text-align: center;   
 }
+
+div.modal_container {
+  display: none;
+}
+
+div.modal_container#spot_forecast_help div.dimmer {
+  background: rgba(0, 0, 0, .4);
+  height: 150%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+div.modal_container#spot_forecast_help div.modal {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+  font-size: 12px;
+  left: 50%;
+  line-height: 18px;
+  margin-left: -225px;
+  position: absolute;
+  text-align: center;
+  top: 100px;
+  width: 550px;
+  z-index: 1;
+}
+
+div.modal_container#spot_forecast_help div.modal h1 {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+div.modal_container#spot_forecast_help div.modal p {
+  margin: 12px 0 12px 22px;
+  text-align: justify;
+  width: 504px;
+}
+
+div.modal_container#spot_forecast_help div.modal img {
+  margin: 12px 0 0 0;
+
+}
+
+div.modal_container#spot_forecast_help div.modal a {
+  cursor: pointer;
+  display: block;
+  margin: 12px;
+  text-decoration: underline;
+}

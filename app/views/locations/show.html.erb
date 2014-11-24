@@ -1,7 +1,7 @@
-<% if !@location.infos %>
-<div class="image">
-	<%= image_tag "daisy.jpg" %>
-</div>
+<% if @fail %>
+	<div class="image">
+		<%= image_tag "daisy.jpg" %>
+	</div>
 <% else %>
 	
 <div class="container">
@@ -35,7 +35,7 @@
 					<thead>
 						<th><strong>Day</strong></th>
 						<th><strong>Swell Size</strong></th>
-						<th><strong>Swell Rating</strong></th>
+						<th><strong>Swell Rating </strong><a href="#aboutForecast" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a></th>
 						<th><strong>Wind Speed</strong></th>
 						<th><strong>Temperature</strong></th>
 						<th><strong>Weather</strong></th>
@@ -69,35 +69,48 @@
 					<td><%= wave.temperature%><small>°F</small></td>
 					<td><img src="http://cdnimages.magicseaweed.com/30x30/<%= wave.weather%>.png" alt="" border=1 height=30 width=30></img></td>
 					<td>
-					<div id="myModal1<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-body">
-									<img src=<%= wave.chart_swell%> class="img-responsive">
+						<div id="myModal1<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<img src=<%= wave.chart_swell%> class="img-responsive">
+										<br/>
+										<%= image_tag("chart_swell_rating.png", :class => "img-responsive") %>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div><a href="#myModal1<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_swell%> alt="" border=1 height=30 width=30></img> </a></td>
+						<a href="#myModal1<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_swell%> alt="" border=1 height=30 width=30></img></a>
+					</td>
 					<td>
-					<div id="myModal2<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-body">
-									<img src=<%= wave.chart_period%> class="img-responsive">
+						<div id="myModal2<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<img src=<%= wave.chart_period%> class="img-responsive">
+										<br/>
+										<%= image_tag("chart_period_rating.png", :class => "img-responsive") %>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div><a href="#myModal2<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img> </a></td>
+						<a href="#myModal2<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img></a>
+						</td>
 					<td>
 						<div id="myModal3<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-body">
 										<img src=<%= wave.chart_wind%> class="img-responsive">
+										<br/>
+										<%= image_tag("chart_wind_rating.png", :class => "img-responsive") %>
 									</div>
 								</div>
-							</div></div><a href="#myModal3<%= idx%>" data-toggle="modal"> <img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img> </a></td>
-						</tr>
+							</div>
+						</div>
+						<a href="#myModal3<%= idx%>" data-toggle="modal"><img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img></a>
+					</td>
+					</tr>
 						<%end%>
 					</tbody>
 				</table>	
@@ -108,6 +121,40 @@
 		</div>
 	</div>
 </div>
+
+<div id="aboutForecast" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        		<h4 class="modal-title">Our swell rating works like this</h4>
+        		<hr/>
+			<div class="modal-body">
+				<p><span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small></p>
+				<p>You guessed it - it's trash. <a href="https://i.imgflip.com/ei7nc.jpg" target="_blank">Don't go surfing, or&hellip;</a></p>
+				<hr/>
+				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p>Don't go surfing, dude, it's not worth it!</p>
+				<hr/>
+				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p>Well I guess if you have nothing else to do&hellip;</p>
+				<hr/>
+				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p>Yeah okay, there are probably some good waves out there.</p>
+				<hr/>
+				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p>Surf's definitely up! Let's go!</p>
+				<hr/>
+				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p>Why are you even reading this?? Get your lazy ass off the couch and go surf!</p>
+			</div>
+			<div class="modal-footer">
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
