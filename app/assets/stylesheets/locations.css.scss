@@ -67,3 +67,27 @@ div.modal_container#spot_forecast_help div.modal a {
   margin: 12px;
   text-decoration: underline;
 }
+
+.modal-vertical-centered {
+  transform: translate(0, 30%) !important;
+  -ms-transform: translate(0, 30%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 30%) !important; /* Safari and Chrome */
+}
+
+.modal-vertical-centered2 {
+  transform: translate(0, 10%) !important;
+  -ms-transform: translate(0, 10%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 10%) !important; /* Safari and Chrome */
+}
+
+.modal-vertical-centered3 {
+  transform: translate(0, 50%) !important;
+  -ms-transform: translate(0, 50%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
+}
+
+.badtime {
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
+}
