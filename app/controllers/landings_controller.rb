@@ -9,6 +9,7 @@ class LandingsController < ApplicationController
     else
       loc = Location.new(latitude: 34.42, longitude: -119.86)
       @nearbys = loc.nearbys(50).first(5)
+      # @nearbys = Location.near(loc, 50, select: "locations.*, infos.*").joins(:infos).first(5)
     end
     
     if defined?(Devise)

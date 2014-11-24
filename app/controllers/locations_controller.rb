@@ -18,11 +18,13 @@ class LocationsController < ApplicationController
   end
 
   def show
-    #@waves = @location.infos.paginate(page: params[:page], per_page: 8)
-    @waves = @location.infos.paginate(page: params[:page], per_page: 8, total_entries: 40)
-    #@waves = @location.infos
-    gon.watch.infos = @location.infos
-    respond_with(@location)
+    begin
+      @waves = @location.infos.paginate(page: params[:page], per_page: 8, total_entries: 40)
+      gon.watch.infos = @location.infos
+      respond_with(@location)
+    rescue Exception => msg
+      puts msg
+    end
   end
 
   def new
@@ -53,7 +55,11 @@ class LocationsController < ApplicationController
   private
 
   def set_location
-    @location = Location.find(params[:id])
+    begin
+      @location = Location.find(params[:id])
+    rescue
+      @fail = true
+    end
   end
 
   def location_params
