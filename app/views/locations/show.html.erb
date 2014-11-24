@@ -14,16 +14,11 @@
 					<% if defined?(Devise)%>
 					<% if user_signed_in?%>
 					<% if !current_user.locations.include?(@location) %>
-					<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
-					<%end%>
-					<%end%>
-					<%end%>
-				</div>
-				<div align="center" style="padding: 2%">
-					<strong>Today</strong>
-				</div>
-				<div align="center" style="padding: 2%, margin-bottom: 5%">
-
+						<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+					<% end %>
+					<% end %>
+					<% end %>
+					
 					<canvas class="spot_forecast"
 					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>" data-latitude="<%= @location.latitude%>" data-type ="location_view" width="496" height="210"></canvas>
 				</div>
