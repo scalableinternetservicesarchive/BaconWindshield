@@ -12,11 +12,15 @@
 
 					<font size="5"><strong><%= @location.name %></strong></font>
 					<% if defined?(Devise)%>
-					<% if user_signed_in?%>
-					<% if !current_user.locations.include?(@location) %>
-						<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
-					<% end %>
-					<% end %>
+						<% if user_signed_in?%>
+							<% if !current_user.locations.include?(@location) %>
+								<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
+							<%else%>
+								<br><br>
+							<% end %>
+						<%else%>
+							<br><br>					
+						<% end %>
 					<% end %>
 					
 					<canvas class="spot_forecast"
@@ -47,17 +51,17 @@
 					<td><% swell = wave.swell_rating %>
 					<% case swell %>
 						<% when 0 %>
-							<span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small>
+							<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
 						<% when 1 %> 
-							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
+							<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span> 
 						<% when 2 %> 
-							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
+							<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span> 
 						<% when 3 %> 
-							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
+							<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span> 
 						<% when 4 %> 
-							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
+							<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span> 
 						<% when 5 %> 
-							<span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span> 
+							<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span> 
 						<% else %>
 					<% end %> 
 					<td><%= wave.wind_speed%><small>mph</small></td>
@@ -125,22 +129,22 @@
         		<h4 class="modal-title">Our swell rating works like this</h4>
         		<hr/>
 			<div class="modal-body">
-				<p><span class="fa fa-trash" style="color:#3cbbe8"></span><small> - it's trash</small></p>
+				<p><span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small></p>
 				<p>You guessed it - it's trash. <a href="https://i.imgflip.com/ei7nc.jpg" target="_blank">Don't go surfing, or&hellip;</a></p>
 				<hr/>
-				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Don't go surfing, dude, it's not worth it!</p>
 				<hr/>
-				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Well I guess if you have nothing else to do&hellip;</p>
 				<hr/>
-				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Yeah okay, there are probably some good waves out there.</p>
 				<hr/>
-				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Surf's definitely up! Let's go!</p>
 				<hr/>
-				<p><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span><span class="glyphicon glyphicon-star" style="color:#3cbbe8"></span></p>
+				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Why are you even reading this?? Get your lazy ass off the couch and go surf!</p>
 			</div>
 			<div class="modal-footer">
