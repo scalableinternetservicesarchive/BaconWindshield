@@ -80,7 +80,7 @@
 						<% if !current_user.favorites.empty?%>
 						<% current_user.favorites.limit(5).each do |favorite| %>
 						<tr>
-							<% location = Location.includes(:infos).find(favorite.location_id) %>
+							<% location = Location.find(favorite.location_id) %>
 
 							<td><%= link_to location.name, location %></td>
 							<td>
