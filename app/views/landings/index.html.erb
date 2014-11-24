@@ -84,10 +84,11 @@
 
 							<td><%= link_to location.name, location %></td>
 							<td>
-								<% if !location.infos.empty?%>
 								<%shape = 0
 								  size_max = 0
 								  size_min = 0%>
+								<% if !location.infos.empty?%>
+	
 									<% wave = location.infos[1]%>
 									<% shape = wave.swell_rating %>
 									<% size_max = wave.size_max%>
@@ -95,7 +96,7 @@
 									
 									<% case shape %>
 									<% when 0 %>
-										<span class="fa fa-trash" style="color:#48A5F0"></span> - it's trash
+										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
 									<% when 1 %>
 										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
 									<% when 2 %>
@@ -107,8 +108,10 @@
 									<% when 5 %>
 										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
 									<% end %>
+								<%else%>
+									<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
 								<% end %>
-							</td>
+								</td>
 							<td>
 								<%=size_min%>-<%=size_max%><small> ft</small>
 							</td>
