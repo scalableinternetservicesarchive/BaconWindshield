@@ -3,7 +3,6 @@ class LandingsController < ApplicationController
   
   def index
     result = request.location
-  
     #in dev and test environments, lat & long are 0.0
     if (result.latitude != 0.0 && result.latitude != 0.0)
       loc = Location.new(latitude: result.latitude, longitude: result.longitude)

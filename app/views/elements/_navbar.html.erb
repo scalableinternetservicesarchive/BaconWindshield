@@ -1,4 +1,3 @@
-<% cache(current_user) do %>
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
@@ -16,19 +15,21 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<button class="btn btn-inverse dropdown-toggle navbar-btn" type="button" id="dropdownMenu2" data-toggle="dropdown">
-								Select a region
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
-								<% County.find_each do |county| %>
-								<li>
-									<%= link_to county.name, County.find(county.id) %>
-								</li>
-								<% end %>
-							</ul>
-						</li>
+						<% cache County.first do %>
+							<li class="dropdown">
+								<button class="btn btn-inverse dropdown-toggle navbar-btn" type="button" id="dropdownMenu2" data-toggle="dropdown">
+									Select a region
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
+									<% County.find_each do |county| %>
+									<li>
+										<%= link_to county.name, County.find(county.id) %>
+									</li>
+									<% end %>
+								</ul>
+							</li>
+						<% end %>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 											<li>
@@ -66,4 +67,3 @@
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</nav>
-<% end %>
