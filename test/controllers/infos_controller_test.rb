@@ -18,7 +18,7 @@ class InfosControllerTest < ActionController::TestCase
 
   test "should create info" do
     assert_difference('Info.count') do
-      post :create, info: { day: @info.day, probability: @info.probability, size: @info.size, swell_rating: @info.swell_rating, wind: @info.wind }
+      post :create, info: { day: @info.day, size: @info.size, swell_rating: @info.swell_rating, wind: @info.wind }
 
     end
 

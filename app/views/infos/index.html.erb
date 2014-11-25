@@ -7,7 +7,6 @@
       <th>Size</th>
       <th>Swell rating</th>
       <th>Wind</th>
-      <th>Probability</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +18,6 @@
         <td><%= info.size %></td>
         <td><%= info.swell_rating %></td>
         <td><%= info.wind %></td>
-        <td><%= info.probability %></td>
         <td><%= link_to 'Show', info %></td>
         <td><%= link_to 'Edit', edit_info_path(info) %></td>
         <td><%= link_to 'Destroy', info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
