@@ -6,9 +6,9 @@
 						<thead>
 							<tr>
 								<th>Nearby spots</th>
-								<th>Distance</th>
 								<th>Swell Rating</th>
 								<th>Swell Size</th>	
+								<th>Distance</th>
 							</tr>
 						</thead>
 							
@@ -19,37 +19,39 @@
 							</tr>
 							<% else %>
 								<% @nearbys.each do |location| %>
-								<tr>
-									<td><%= link_to location.name, location %></td>
+									<% cache location do %>
+										<tr>
+											<td><%= link_to location.name, location %></td>
+											<td>
+											<% shape = 0 %>
+											<% size_max = 0 %>
+											<% size_min = 0 %>
+											
+		
+											<% location.infos.each do |wave| %>
+												<% shape = wave.swell_rating %>
+												<% size_max = wave.size_max %>
+												<% size_min = wave.size_min %>
+											<% end %>
+		
+											<% case shape %>
+												<% when 0 %>
+												<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+												<% when 1 %>
+													<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+												<% when 2 %>
+													<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+												<% when 3 %>
+													<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+												<% when 4 %>
+													<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+												<% when 5 %>
+													<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+											<% end %>
+											</td>
+										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
+									<% end %>
 									<td><%= location.distance.round(2) %><small> miles</small></td>
-									<td>
-									<% shape = 0 %>
-									<% size_max = 0 %>
-									<% size_min = 0 %>
-									
-
-									<% location.infos.each do |wave| %>
-										<% shape = wave.swell_rating %>
-										<% size_max = wave.size_max %>
-										<% size_min = wave.size_min %>
-									<% end %>
-
-									<% case shape %>
-										<% when 0 %>
-										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
-										<% when 1 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 2 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 3 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 4 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 5 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% end %>
-									</td>
-								<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 							<% end %>								
 							<% end %>
 
@@ -78,44 +80,46 @@
 						<% if defined?(Devise)%>
 						<% if user_signed_in?%>
 						<% if !current_user.favorites.empty?%>
-						<% current_user.favorites.limit(5).each do |favorite| %>
-						<tr>
-							<% location = Location.find(favorite.location_id) %>
-
-							<td><%= link_to location.name, location %></td>
-							<td>
-								<%shape = 0
-								  size_max = 0
-								  size_min = 0%>
-								<% if !location.infos.empty?%>
-
-								<% location.infos.each do |wave|%>
-									<% shape = wave.swell_rating %>
-									<% size_max = wave.size_max%>
-									<% size_min = wave.size_min%>
-								<% end %>
-									<% case shape %>
-									<% when 0 %>
-										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
-									<% when 1 %>
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% when 2 %>
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% when 3 %>
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% when 4 %>
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% when 5 %>
-										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+						<% @favorites.each do |favorite| %>
+						<% cache(favorite.location) do %>
+							<tr>
+								<% location = Location.find(favorite.location_id) %>
+	
+								<td><%= link_to location.name, location %></td>
+								<td>
+									<%shape = 0
+									  size_max = 0
+									  size_min = 0%>
+									<% if !location.infos.empty?%>
+	
+									<% location.infos.each do |wave|%>
+										<% shape = wave.swell_rating %>
+										<% size_max = wave.size_max%>
+										<% size_min = wave.size_min%>
 									<% end %>
-								<%else%>
-									<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
-								<% end %>
+										<% case shape %>
+										<% when 0 %>
+											<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+										<% when 1 %>
+											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+										<% when 2 %>
+											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+										<% when 3 %>
+											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+										<% when 4 %>
+											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+										<% when 5 %>
+											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+										<% end %>
+									<%else%>
+										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+									<% end %>
+									</td>
+								<td>
+									<%=size_min%>-<%=size_max%><small> ft</small>
 								</td>
-							<td>
-								<%=size_min%>-<%=size_max%><small> ft</small>
-							</td>
-						</tr>
+							</tr>
+						<% end %>
 
 						<% end %>
 						<% else %>
