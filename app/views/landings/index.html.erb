@@ -1,62 +1,137 @@
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
-			<div class="col-md-6">
-					<table class="table table-striped" >
-						<thead>
+				<% form_tag(controller: "landings", method: 'post') %>
+				<%= range_field_tag(:distance, params[:distance], in: 10..100, step: 5, id: "slider1") %>
+				<%= submit_tag "Update" %>
+			<button type="button" class="btn btn-primary switchbtn switchelement">Sort by best</button>
+			<button type="button" class="btn btn-primary switchbtn switchelement" style="display: none">Sort by distance</button>
+			<div class="col-md-6 switchelement">
+				<table class="table table-striped" >
+					<thead>
+						<tr>
+							<th data-toggle="tooltip" data-placement="top" title="Within 50 miles">Nearby spots</th>
+							<th>Distance</th>
+							<th>Swell Rating</th>
+							<th>Swell Size</th>	
+						</tr>
+					</thead>
+						
+					<tbody>
+						<% if @nearbys.empty? %>
+						<tr>
+							<td>There are no surf spots within 50 miles of your location!</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<% else %>
+							<% @nearbys.each do |location| %>
 							<tr>
-								<th>Nearby spots</th>
-								<th>Distance</th>
-								<th>Swell Rating</th>
-								<th>Swell Size</th>	
-							</tr>
-						</thead>
-							
-						<tbody>
-							<% if @nearbys.empty? %>
-							<tr>
-								<td>There are no surf spots within 50 miles of your location!</td>
-							</tr>
-							<% else %>
-								<% @nearbys.each do |location| %>
-								<tr>
-									<td><%= link_to location.name, location %></td>
-									<td><%= location.distance.round(2) %><small> miles</small></td>
-									<td>
-									<% shape = 0 %>
-									<% size_max = 0 %>
-									<% size_min = 0 %>
-									
+								<td><%= link_to location.name, location %></td>
+								<td><%= location.distance.round(2) %><small> miles</small></td>
+								<td>
+								<% shape = 0 %>
+								<% size_max = 0 %>
+								<% size_min = 0 %>
+								
 
-									<% location.infos.each do |wave| %>
-										<% shape = wave.swell_rating %>
-										<% size_max = wave.size_max %>
-										<% size_min = wave.size_min %>
-									<% end %>
+								<% location.infos.each do |wave| %>
+									<% shape = wave.swell_rating %>
+									<% size_max = wave.size_max %>
+									<% size_min = wave.size_min %>
+								<% end %>
+								
 
-									<% case shape %>
-										<% when 0 %>
-										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
-										<% when 1 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 2 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 3 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 4 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-										<% when 5 %>
-											<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
-									<% end %>
-									</td>
-								<td><%=size_min%>-<%=size_max%><small> ft</small></td>
-							<% end %>								
-							<% end %>
+								<% case shape %>
+									<% when 0 %>
+									<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+									<% when 1 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 2 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 3 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 4 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 5 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+								<% end %>
+								</td>
+							<td><%=size_min%>-<%=size_max%><small> ft</small></td>
+						<% end %>								
+						<% end %>
 
-							</tr>
-						</tbody>
-					</table>
+						</tr>
+					</tbody>
+				</table>
 			</div>
+			<div class="col-md-6 switchelement" style="display: none">
+				<table class="table table-striped" >
+					<thead>
+						<tr>
+							<th>Best nearby spots</th>
+							<th>Distance</th>
+							<th>Swell Rating</th>
+							<th>Swell Size</th>	
+						</tr>
+					</thead>
+						
+					<tbody>
+						<% if @bestspots.empty? %>
+						<tr>
+							<td>There are no surf spots within 50 miles of your location!</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<% else %>
+							<% @bestspots.each do |location| %>
+							<tr>
+								<td><%= link_to location.name, location %></td>
+								<td><%= location.distance.round(2) %><small> miles</small></td>
+								<td>
+								<% shape = 0 %>
+								<% size_max = 0 %>
+								<% size_min = 0 %>
+								
+
+								<% location.infos.each do |wave| %>
+									<% shape = wave.swell_rating %>
+									<% size_max = wave.size_max %>
+									<% size_min = wave.size_min %>
+								<% end %>
+
+								<% case shape %>
+									<% when 0 %>
+									<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+									<% when 1 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 2 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 3 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 4 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 5 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+								<% end %>
+								</td>
+							<td><%=size_min%>-<%=size_max%><small> ft</small></td>
+						<% end %>								
+						<% end %>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<script>
+				$( ".switchbtn" ).click(function() {
+			  		$( ".switchelement" ).toggle();
+				});
+			</script>
+			
 			<div class="col-md-6">
 				<table class="table table-striped">
 					<thead>

@@ -5,12 +5,25 @@ class LandingsController < ApplicationController
     #in dev and test environments, lat & long are 0.0
     if (result.latitude != 0.0 && result.latitude != 0.0)
       loc = Location.new(latitude: result.latitude, longitude: result.longitude)
-      @nearbys = loc.nearbys(50).first(5)
+      nearest = loc.nearbys(50)
+      @nearbys = nearest.first(5)
+      
+      allbest = nearest
+      allbest.sort_by { |a| a.name }
+      @bestspots = allbest.first(5)
+      
     else
       loc = Location.new(latitude: 34.42, longitude: -119.86)
-      @nearbys = loc.nearbys(50).first(5)
+      nearest = loc.nearbys(50)
+      @nearbys = nearest.first(5)
+      
+      allbest = nearest
+      # allbest.sort_by { |a| a.infos.swell_rating }
+      @bestspots = allbest.first(5)
       # @nearbys = Location.near(loc, 50, select: "locations.*, infos.*").joins(:infos).first(5)
     end
+    
+    
     
     if defined?(Devise)
       if user_signed_in?
