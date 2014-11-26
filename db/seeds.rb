@@ -25,15 +25,17 @@ end
 
 def get_json(url)
     # uri = URI.parse(url)
-    response = Typhoeus.get(url)
-    # response = Net::HTTP.get_response(uri)
-    data = response.body
-    # puts response.body
     begin
-      result = JSON.parse(data)
+    response = Typhoeus.get(url)
     rescue
       retry
     end
+    # response = Net::HTTP.get_response(uri)
+    data = response.body
+    # puts response.body
+    
+      result = JSON.parse(data)
+    
     return result    
 end
   
