@@ -25,6 +25,8 @@ GEM
       activemodel (= 4.1.4)
       activesupport (= 4.1.4)
       arel (~> 5.0.0)
+    activerecord-import (0.6.0)
+      activerecord (>= 3.0)
     activesupport (4.1.4)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -183,6 +185,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
+  activerecord-import (~> 0.6.0)
   bootstrap-sass (~> 3.2.0.2)
   bootstrap-sass-extras
   bullet
