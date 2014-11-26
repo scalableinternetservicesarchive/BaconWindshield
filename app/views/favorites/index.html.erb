@@ -10,6 +10,7 @@
 					</thead>
 
 					<tbody>
+						<% if user_signed_in? %>
 						<% current_user.favorites.includes(:location).each do |favorite| %>
 						<tr>
 
@@ -17,6 +18,7 @@
 							<td><%= link_to favorite, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %> <font size="6"><span class="fa fa-trash fa-spin"></span></font></td>
 							<% end %>
 						</tr>
+						<% end %>
 						<% end %>
 					</tbody>
 				</table>

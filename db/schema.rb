@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116033526) do
+ActiveRecord::Schema.define(version: 20141126181155) do
 
   create_table "counties", force: true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20141116033526) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "latitude2"
+    t.float    "longitude2"
   end
 
   create_table "favorites", force: true do |t|
@@ -40,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141116033526) do
     t.string   "chart_period"
     t.string   "chart_wind"
     t.integer  "swell_rating"
+    t.integer  "probability"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
