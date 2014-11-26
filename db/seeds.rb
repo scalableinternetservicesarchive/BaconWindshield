@@ -28,7 +28,8 @@ def get_json(url)
     # response = Net::HTTP.get_response(uri)
     data = response.body
     # puts response.body
-      result = JSON.parse(data)
+    result = JSON.parse(data)
+
     return result    
 end
   
