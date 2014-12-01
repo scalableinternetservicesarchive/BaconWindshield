@@ -41,10 +41,26 @@ infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :wind_
 infos_insert_list = []
 Location.find_each do |location|
   locid = location.id
+  schart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
+  pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
+  wchart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
+  
   puts locid
-  wave_list = get_swell_json_with_spot_id(locid)
-  wave_list.each do |wave|
-    infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}")
+  #wave_list = get_swell_json_with_spot_id(locid)
+  #wave_list.each do |wave|
+  #  infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}")
+  #end
+  
+  8.times do |i|
+    rating = Random.new.rand(0..5)
+    wspeed = Random.new.rand(0..15)
+    wdir = Random.new.rand(0..360)
+    temp = Random.new.rand(50..90)
+    w = Random.new.rand(0..22)
+    min = Random.new.rand(0..3) 
+    max = Random.new.rand(4..7) 
+    d = 1417392000
+    infos_insert_list << Info.new(location_id: locid, day: d, size_min: min, size_max: max ,swell_rating: rating, wind_speed: wspeed, wind_direction:wdir, temperature:temp ,weather: w, chart_swell: schart, chart_period:pchart,chart_wind: wchart)
   end
 end
 Info.import(infos_columns, infos_insert_list, validate: false)
