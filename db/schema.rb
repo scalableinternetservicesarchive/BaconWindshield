@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20141126181155) do
     t.string   "chart_period"
     t.string   "chart_wind"
     t.integer  "swell_rating"
-    t.integer  "probability"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
