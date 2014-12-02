@@ -1,19 +1,32 @@
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
-				<% form_tag(controller: "landings", method: 'post') %>
-				<%= range_field_tag(:distance, params[:distance], in: 10..100, step: 5, id: "slider1") %>
-				<%= submit_tag "Update" %>
-			<button type="button" class="btn btn-primary switchbtn switchelement">Sort by best</button>
-			<button type="button" class="btn btn-primary switchbtn switchelement" style="display: none">Sort by distance</button>
+				<!-- <% form_tag(controller: "landings", method: 'post') %>
+				<%= range_field_tag(:distance, params[:distance], in: 10..100, step: 1, id: "slider1") %>
+				<%= submit_tag "Update" %> -->
+			<p class="col-md-6">
+				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement">Sort by best</button>
+				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement" style="display: none">Sort by distance</button>
+			</p>
+			<p class="col-md-6">
+				<% if defined?(Devise)%>
+				<% if user_signed_in?%>
+				<% if !current_user.favorites.empty?%>
+					<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> 
+				<%end%>
+				<% else %>
+				<button class="btn btn-primary btn-xs disabled pull-right" disabled>Manage favorites</button>
+				<%end%>
+				<%end%>
+			</p>
 			<div class="col-md-6 switchelement">
 				<table class="table table-striped" >
 					<thead>
 						<tr>
-							<th data-toggle="tooltip" data-placement="top" title="Within 50 miles">Nearby spots</th>
-							<th>Distance</th>
-							<th>Swell Rating</th>
-							<th>Swell Size</th>	
+							<th class="col-md-4">Nearby spots</th>
+							<th class="col-md-3">Distance</th>
+							<th class="col-md-3">Swell Rating</th>
+							<th class="col-md-2">Swell Size</th>	
 						</tr>
 					</thead>
 						
@@ -70,15 +83,15 @@
 				<table class="table table-striped" >
 					<thead>
 						<tr>
-							<th>Best nearby spots</th>
-							<th>Distance</th>
-							<th>Swell Rating</th>
-							<th>Swell Size</th>	
+							<th class="col-md-4">Best nearby spots</th>
+							<th class="col-md-3">Distance</th>
+							<th class="col-md-3">Swell Rating</th>
+							<th class="col-md-2">Swell Size</th>	
 						</tr>
 					</thead>
 						
 					<tbody>
-						<% if @bestspots.empty? %>
+						<% if @nearbys.empty? %>
 						<tr>
 							<td>There are no surf spots within 50 miles of your location!</td>
 							<td></td>
@@ -86,7 +99,7 @@
 							<td></td>
 						</tr>
 						<% else %>
-							<% @bestspots.each do |location| %>
+							<% @bestnearbys.each do |location| %>
 							<tr>
 								<td><%= link_to location.name, location %></td>
 								<td><%= location.distance.round(2) %><small> miles</small></td>
@@ -101,6 +114,7 @@
 									<% size_max = wave.size_max %>
 									<% size_min = wave.size_min %>
 								<% end %>
+								
 
 								<% case shape %>
 									<% when 0 %>
@@ -122,6 +136,7 @@
 						<% end %>
 
 						</tr>
+
 					</tbody>
 				</table>
 			</div>
@@ -139,13 +154,7 @@
 							<th>Favorite Spots
 							</th>
 							<th>Swell Rating</th>
-							<th>Swell Size<% if defined?(Devise)%>
-							<% if user_signed_in?%>
-							<% if !current_user.favorites.empty?%>
-								<%= link_to 'Manage favorites',  favorites_path, class: "btn btn-primary btn-xs pull-right" %> 
-							<%end%>
-							<%end%>
-							<%end%></th>
+							<th>Swell Size</th>
 
 						</tr>
 					</thead>
