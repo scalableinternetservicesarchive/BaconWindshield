@@ -17,6 +17,7 @@ gem 'will_paginate-bootstrap'
 gem 'geocoder'
 gem "font-awesome-rails"
 gem "bullet", :group => "development"
+gem 'activerecord-import', '~> 0.6.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

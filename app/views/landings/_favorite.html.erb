@@ -1,0 +1,41 @@
+						
+						<% cache favorite do%>
+						<tr>
+							<% location = Location.find(favorite.location_id) %>
+							<% location = favorite.location %>
+
+							<td><%= link_to location.name, location %></td>
+							<td>
+								<%shape = 0
+								  size_max = 0
+								  size_min = 0%>
+								<% if !location.infos.empty?%>
+
+								<% location.infos.each do |wave|%>
+									<% shape = wave.swell_rating %>
+									<% size_max = wave.size_max%>
+									<% size_min = wave.size_min%>
+								<% end %>
+									<% case shape %>
+									<% when 0 %>
+										<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+									<% when 1 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 2 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 3 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 4 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% when 5 %>
+										<span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span>
+									<% end %>
+								<%else%>
+									<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
+								<% end %>
+								</td>
+							<td>
+								<%=size_min%>-<%=size_max%><small> ft</small>
+							</td>
+						</tr>
+						<%end%>
