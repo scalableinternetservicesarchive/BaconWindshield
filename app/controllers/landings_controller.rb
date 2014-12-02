@@ -7,6 +7,7 @@ class LandingsController < ApplicationController
       #in dev and test environments, lat & long are 0.0
       if (result.latitude != 0.0 && result.longitude != 0.0)
         loc = Location.new(latitude: result.latitude, longitude: result.longitude)
+        nearest = loc.nearbys(50)
 
         # @nearbys = Location.near(loc, 50, select: "locations.*, infos.*").joins(:infos).first(5)
 
