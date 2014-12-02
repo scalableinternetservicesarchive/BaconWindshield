@@ -7,23 +7,23 @@ class LandingsController < ApplicationController
       #in dev and test environments, lat & long are 0.0
       if (result.latitude != 0.0 && result.longitude != 0.0)
         loc = Location.new(latitude: result.latitude, longitude: result.longitude)
-        nearest = loc.nearbys(50)
+        nearest = loc.nearbys(30)
 
         # @nearbys = Location.near(loc, 50, select: "locations.*, infos.*").joins(:infos).first(5)
 
         @nearbys = nearest.first(5)
-
-        allbest = nearest.sort_by { |a| (a.infos.last.swell_rating*(a.infos.last.size_max+a.infos.last.size_min)/2) }
-        @bestnearbys = allbest.last(5)
+        
+        allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
+        @bestnearbys = allbest.first(5)
 
       else
         loc = Location.new(latitude: 34.42, longitude: -119.86)
-        nearest = loc.nearbys(50)
+        nearest = loc.nearbys(30)
 
         @nearbys = nearest.first(5)
 
-        allbest = nearest.sort_by { |a| (a.infos.last.swell_rating*(a.infos.last.size_max+a.infos.last.size_min)/2) }
-        @bestnearbys = allbest.last(5)
+        allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
+        @bestnearbys = allbest.first(5)
       end
     end
 
