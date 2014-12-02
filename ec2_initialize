@@ -1,3 +1,2 @@
-echo "export SEED_SIZE=mini" >> /home/ec2-user/.bashrc
-source /home/ec2-user/.bashrc
+
 rake db:seed
