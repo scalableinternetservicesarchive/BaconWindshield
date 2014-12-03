@@ -6,6 +6,7 @@ var spots = [{"id":1398,"name":"Bacton","lat":52.8557,"lon":1.4771,"region":1},{
 var spotsDraw = [];
 var bol = false;
 var bol2 = false;
+var pos;
 
 var region_id;
 var region_id_temp;
@@ -257,7 +258,7 @@ function initialize1() {
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 			var marker = new google.maps.Marker({
 				position : pos,
@@ -270,7 +271,9 @@ function initialize1() {
 			markers2.waveImage1 = targetImage1;
 			markers2.waveImage2 = targetImage2;
 			markers2.push(marker);
-			map.setCenter(pos);
+			if(bol == false || (bol == true && bol2 == true)){
+				map.setCenter(pos);
+			}
 		}, function() {
 			handleNoGeolocation(true);
 		});
