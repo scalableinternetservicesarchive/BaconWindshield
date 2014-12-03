@@ -86,6 +86,10 @@ div.modal_container#spot_forecast_help div.modal a {
   -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
 }
 
+.outline {
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
 .badtime {
   display: block; 
   margin-left: auto; 
