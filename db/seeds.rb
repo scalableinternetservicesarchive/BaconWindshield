@@ -59,7 +59,7 @@ Location.find_each do |location|
     w = Random.new.rand(1..22)
     min = Random.new.rand(0..3) 
     max = Random.new.rand(4..7) 
-    d = 1417392000
+    d = 1417658858
     infos_insert_list << Info.new(location_id: locid, day: d, size_min: min, size_max: max ,swell_rating: rating, wind_speed: wspeed, wind_direction:wdir, temperature:temp ,weather: w, chart_swell: schart, chart_period:pchart,chart_wind: wchart)
   end
 end
