@@ -21,7 +21,7 @@ gem 'activerecord-import', '~> 0.6.0'
 
 
 
-
+gem "rails-erd"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
