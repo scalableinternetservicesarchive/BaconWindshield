@@ -1,9 +1,9 @@
-require 'will_paginate/array'
+#require 'will_paginate/array'
 
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
-  helper_method :cache_key_for_counties, :cache_key2
+  helper_method :cache_key_for_counties
   #caches_action :show, expires_in: 24.hour
   def index
     @counties = County.all
@@ -13,8 +13,8 @@ class CountiesController < ApplicationController
   def show
     @infosList = Array.new 
     
-    @locations = @county.locations 
-    @entries = @locations.paginate(page: params[:page], per_page: 20)
+    @entries = @county.locations 
+    #@entries = @locations.paginate(page: params[:page], per_page: 20)
     #@locations.includes(:infos).each do |loc|
     #@locations.each do |loc| Fixed N + 1 querries
     #@infosList.push(loc.infos)

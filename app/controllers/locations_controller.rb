@@ -8,18 +8,19 @@ class LocationsController < ApplicationController
   def index
     #@locations = Location.all
     if params[:search]
-      @locations = Location.search(params[:search]).order("created_at ASC")
+      @entries = Location.search(params[:search]).order("created_at ASC")
     else
-      @locations = Location.all.order('created_at ASC')
+      @entries = Location.all.order('created_at ASC')
     end
-    @entries = @locations.paginate(page: params[:page], per_page: 20)
+    #@entries = @locations.paginate(page: params[:page], per_page: 20)
 
     respond_with(@locations)
   end
 
   def show
     begin
-      @waves = @location.infos.paginate(page: params[:page], per_page: 8, total_entries: 40)
+      #@waves = @location.infos.paginate(page: params[:page], per_page: 8, total_entries: 40)
+      @waves = @location.infos
       gon.watch.infos = @location.infos
       respond_with(@location)
     rescue Exception => msg

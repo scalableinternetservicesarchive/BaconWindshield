@@ -24,7 +24,7 @@
 					<% end %>
 					
 					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.current_page%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
+					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.first(8)%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
 				</div>
 			</div>
 			<div id="map-container" class="col-md-6"></div>
@@ -144,7 +144,6 @@
 				</table>	
 			</div>
 			<div align="center">
-				<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %>
 			</div>		
 		</div>
 	</div>
