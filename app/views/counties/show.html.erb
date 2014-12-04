@@ -1,3 +1,4 @@
+<% cache cache_key_for_counties do %>
 
 	<div class="container">
 		<div class="row">
@@ -56,9 +57,12 @@
 				</div>
 				<div class="col-md-12">
 					<div align="center">
+						<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
+<% end %>
+
