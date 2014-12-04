@@ -21,7 +21,6 @@ gem 'activerecord-import', '~> 0.6.0'
 
 
 
-gem 'newrelic_rpm'
 
 
 # Use SCSS for stylesheets
