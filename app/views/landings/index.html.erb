@@ -117,6 +117,7 @@
 												<% shape = wave.swell_rating %>
 												<% size_max = wave.size_max %>
 												<% size_min = wave.size_min %>
+												<% break %>
 											<% end %>
 		
 											<% case shape %>
@@ -178,11 +179,11 @@
 									  size_min = 0%>
 									<% if !location.infos.empty?%>
 	
-									<% location.infos.each do |wave|%>
-										<% shape = wave.swell_rating %>
-										<% size_max = wave.size_max%>
-										<% size_min = wave.size_min%>
-									<% end %>
+									<% wave = location.infos.first %>
+									<% shape = wave.swell_rating %>
+									<% size_max = wave.size_max%>
+									<% size_min = wave.size_min%>
+										
 										<% case shape %>
 										<% when 0 %>
 											<span class="fa fa-trash" style="color:#48A5F0"></span><small> - it's trash</small>
