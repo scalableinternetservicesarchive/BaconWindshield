@@ -1,4 +1,3 @@
-<% cache cache_key_for_counties do %>
 
 	<div class="container">
 		<div class="row">
@@ -17,7 +16,7 @@
 	
 						<tbody>
 	
-							<%  @entries.includes(:infos).each do |location| %>
+							<%  @entries.each do |location| %>
 							<tr>
 								<td><%= link_to location.name, Location.find(location.id) %></td>
 								<td>
@@ -57,12 +56,9 @@
 				</div>
 				<div class="col-md-12">
 					<div align="center">
-						<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
-<% end %>
-
