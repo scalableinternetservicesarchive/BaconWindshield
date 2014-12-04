@@ -56,7 +56,7 @@ Location.find_each do |location|
     wspeed = Random.new.rand(0..15)
     wdir = Random.new.rand(0..360)
     temp = Random.new.rand(50..90)
-    w = Random.new.rand(0..22)
+    w = Random.new.rand(1..22)
     min = Random.new.rand(0..3) 
     max = Random.new.rand(4..7) 
     d = 1417392000
