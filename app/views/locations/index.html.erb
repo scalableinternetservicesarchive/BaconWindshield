@@ -13,9 +13,10 @@
 					</thead>
 
 					<tbody>
-						<% @entries.each do |location| %>
+						<% @entries.each_with_index do |location| %>
 						<tr>
 							<td><%= link_to location.name, location %></td>
+							<>
 							<td>
 								<% if !location.infos.empty?%>
 								<%shape = 0
