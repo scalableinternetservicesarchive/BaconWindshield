@@ -11,7 +11,7 @@
 
 					<tbody>
 						<% if user_signed_in? %>
-						<% current_user.favorites.each do |favorite| %>
+						<% current_user.favorites.includes(:location).each do |favorite| %>
 						<tr>
 
 							<td><big><%= favorite.location.name %></big></td>
