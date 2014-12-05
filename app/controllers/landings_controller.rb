@@ -2,6 +2,7 @@ class LandingsController < ApplicationController
   helper_method :cache_key_for_nearbys
   
   def index
+    begin
     result = request.location
     if(result!=nil)
       #in dev and test environments, lat & long are 0.0
@@ -31,6 +32,7 @@ class LandingsController < ApplicationController
       @nearbys = nearest.first(5)
       allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.last.size_max+a.infos.last.size_min)/2) }
       @bestnearbys = allbest.first(5)
+    end
     end
     
 
