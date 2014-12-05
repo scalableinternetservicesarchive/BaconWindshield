@@ -28,8 +28,6 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
 
-  config.assets.css_compressor = :yui
-  config.assets.js_compressor = :uglify
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
