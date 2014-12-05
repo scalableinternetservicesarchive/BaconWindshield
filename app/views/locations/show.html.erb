@@ -3,13 +3,11 @@
 		<%= image_tag "daisy.jpg" %>
 	</div>
 <% else %>
-	
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
 			<div class="col-md-6">
 				<div align="center" style="padding: 2%">
-
 					<font size="5"><strong><%= @location.name %></strong></font>
 					<% if defined?(Devise)%>
 						<% if user_signed_in?%>
@@ -121,12 +119,12 @@
 										<%= image_tag("chart_wind_rating.png", :class => "img-responsive") %>
 										<hr/>
 										<div class="row">
-											<div class="col-md-3 col-md-offset-3 outline" style="text-align: left">
+											<div class="col-md-3 col-md-offset-3" style="text-align: left">
 											<% @windValues1.each do |w| %>
 												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
 											<% end %>
 											</div>
-											<div class="col-md-3 outline" style="text-align: left">
+											<div class="col-md-3" style="text-align: left">
 											<% @windValues2.each do |w| %>
 												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
 											<% end %>
@@ -144,7 +142,6 @@
 				</table>	
 			</div>
 			<div align="center">
-				<%= will_paginate @waves, previous_label: "Previous day", next_label: "Next day", renderer: BootstrapPagination::Rails %>
 			</div>		
 		</div>
 	</div>
@@ -194,5 +191,5 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-<%end%>		
+<%end%>
 

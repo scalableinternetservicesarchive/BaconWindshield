@@ -13,7 +13,7 @@
 					</thead>
 
 					<tbody>
-						<% @entries.includes(:infos).each do |location| %>
+						<% @entries.each do |location| %>
 						<tr>
 							<td><%= link_to location.name, location %></td>
 							<td>
@@ -52,7 +52,6 @@
 			</div>
 				<div class="col-md-12">
 					<div align="center">
-						<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 					</div>
 				</div>
 		</div>
