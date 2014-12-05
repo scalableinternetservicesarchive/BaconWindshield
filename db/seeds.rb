@@ -51,7 +51,7 @@ Location.find_each do |location|
   #  infos_insert_list << Info.new(location_id: locid, day:"#{wave['localTimestamp']}",size_min:"#{wave['swell']['minBreakingHeight']}",size_max:"#{wave['swell']['maxBreakingHeight']}",swell_rating:"#{wave['solidRating']}",wind_speed:"#{wave['wind']['speed']}",wind_direction:"#{wave['wind']['direction']}", temperature:"#{wave['condition']['temperature']}",weather:"#{wave['condition']['weather']}",chart_swell:"#{wave['charts']['swell']}",chart_period:"#{wave['charts']['period']}",chart_wind:"#{wave['charts']['wind']}")
   #end
   
-  24.times do |i|
+  16.times do |i|
     rating = Random.new.rand(0..5)
     wspeed = Random.new.rand(0..15)
     wdir = Random.new.rand(0..360)
