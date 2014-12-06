@@ -14,8 +14,8 @@ class CountiesController < ApplicationController
     @infosList = Array.new 
     
     @locations = @county.locations 
-    @entries = @county.locations
-    #@entries = @locations.paginate(page: params[:page], per_page: 20)   
+    #@entries = @county.locations
+    @entries = @locations.paginate(page: params[:page], per_page: 20)   
     
     respond_with(@county)
 
