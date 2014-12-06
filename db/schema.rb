@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126181155) do
+ActiveRecord::Schema.define(version: 20141205232354) do
 
   create_table "counties", force: true do |t|
     t.string   "name"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20141126181155) do
     t.datetime "updated_at"
   end
 
+  add_index "favorites", ["location_id"], name: "index_favorites_on_location_id"
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
   create_table "infos", force: true do |t|
     t.string   "day"
     t.integer  "size_min"
@@ -47,6 +50,8 @@ ActiveRecord::Schema.define(version: 20141126181155) do
     t.datetime "updated_at"
   end
 
+  add_index "infos", ["location_id"], name: "index_infos_on_location_id"
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -55,6 +60,9 @@ ActiveRecord::Schema.define(version: 20141126181155) do
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  add_index "locations", ["county_id"], name: "index_locations_on_county_id"
+  add_index "locations", ["name"], name: "index_locations_on_name"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

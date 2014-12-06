@@ -14,13 +14,9 @@ class CountiesController < ApplicationController
     @infosList = Array.new 
     
     @locations = @county.locations 
-    @entries = @locations.paginate(page: params[:page], per_page: 20)
-    #@locations.includes(:infos).each do |loc|
-    #@locations.each do |loc| Fixed N + 1 querries
-    #@infosList.push(loc.infos)
-    #end
+    #@entries = @county.locations
+    @entries = @locations.paginate(page: params[:page], per_page: 20)   
     
-    #@entries = @locations.paginate(page: params[:page], per_page: 20)
     respond_with(@county)
 
   end

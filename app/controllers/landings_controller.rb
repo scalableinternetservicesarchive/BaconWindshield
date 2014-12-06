@@ -2,7 +2,13 @@ class LandingsController < ApplicationController
   helper_method :cache_key_for_nearbys
   
   def index
-    result = request.location
+    begin
+      result = request.location
+      puts request.location.inspect
+    rescue
+      result = [0,0]
+    end
+    
     if(result!=nil)
       #in dev and test environments, lat & long are 0.0
       if (result.latitude != 0.0 && result.longitude != 0.0)
