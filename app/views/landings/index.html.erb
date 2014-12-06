@@ -6,8 +6,11 @@
 				<%= submit_tag "Update" %> -->
 				
 			<p class="col-md-6">
-				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement">Sort by best</button>
+				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement" tooltip="within 30 miles of your location">Sort by best</button>
 				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement" style="display: none">Sort by distance</button>
+			<a data-toggle="tooltip" title="within 30 miles of your location">
+		        <i class="glyphicon glyphicon-info-sign"></i>
+		    </a>
 			</p>
 			<p class="col-md-6">
 				<% if defined?(Devise)%>
@@ -147,11 +150,6 @@
 				</table>
 			</div>
 			
-			<script>
-				$( ".switchbtn" ).click(function() {
-			  		$( ".switchelement" ).toggle();
-				});
-			</script>
 			
 			<div class="col-md-6">
 				<table class="table table-striped">
@@ -228,3 +226,14 @@
 	<script type="text/javascript" href="/app/assets/javascripts/map_world_region.js"></script>
 
 <br />
+
+<script>
+	$( ".switchbtn" ).click(function() {
+  		$( ".switchelement" ).toggle();
+	});
+	
+	$('a[data-toggle="tooltip"]').tooltip({
+	    animated: 'fade',
+	    placement: 'right',
+	});
+</script>
