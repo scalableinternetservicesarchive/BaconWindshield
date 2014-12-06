@@ -21,10 +21,12 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
-									<% County.find_each do |county| %>
-									<li>
-										<%= link_to county.name, County.find(county.id) %>
-									</li>
+									<% cache "counties_nav" do %>
+										<% County.find_each do |county| %>
+										<li>
+											<%= link_to county.name, County.find(county.id) %>
+										</li>
+										<% end %>
 									<% end %>
 								</ul>
 							</li>

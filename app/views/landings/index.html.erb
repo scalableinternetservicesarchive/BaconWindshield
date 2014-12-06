@@ -43,6 +43,7 @@
 						</tr>
 						<% else %>
 								<% @nearbys.each do |location| %>
+									<% cache location do %>
 										<tr>
 											<td><%= link_to location.name, location %></td>
 											<td>
@@ -74,6 +75,7 @@
 											<% end %>
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
+										<% end %>
 									<td><%= location.distance.round(2) %><small> miles</small></td>
 								<% end %>								
 							<% end %>
@@ -102,6 +104,7 @@
 						</tr>
 						<% else %>
 								<% @bestnearbys.each do |location| %>
+									<%cache location do %>
 										<tr>
 											<td><%= link_to location.name, location %></td>
 											<td>
@@ -133,6 +136,7 @@
 											<% end %>
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
+										<%end%>
 									<td><%= location.distance.round(2) %><small> miles</small></td>
 								<% end %>								
 							<% end %>
@@ -166,7 +170,7 @@
 						<% @favorites.each do |favorite| %>
 							<tr>
 								<% location = Location.find(favorite.location_id) %>
-	
+								<% cache location do %>	
 								<td><%= link_to location.name, location %></td>
 								<td>
 									<%shape = 0
@@ -201,6 +205,7 @@
 									<%=size_min%>-<%=size_max%><small> ft</small>
 								</td>
 							</tr>
+							<%end%>
 
 						<% end %>
 						<% else %>

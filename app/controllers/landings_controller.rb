@@ -4,7 +4,6 @@ class LandingsController < ApplicationController
   def index
     begin
       result = request.location
-      puts request.location.inspect
     rescue
       result = [0,0]
     end
@@ -46,7 +45,7 @@ class LandingsController < ApplicationController
       end
     end
 
-  #fresh_when(etag: [@nearbys, @favorites, current_user])
+  #fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
 
   end
 

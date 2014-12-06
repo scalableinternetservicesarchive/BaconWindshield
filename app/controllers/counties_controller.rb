@@ -16,15 +16,14 @@ class CountiesController < ApplicationController
     @locations = @county.locations 
     #@entries = @county.locations
     @entries = @locations.paginate(page: params[:page], per_page: 20)   
-    
-    respond_with(@county)
 
+    #fresh_when(etag: [@entries, current_user])
   end
   
   def cache_key_for_counties
-    counties_key = @county.cache_key
-    first_entry_key = @entries.first.cache_key
-    "#{counties_key}-#{first_entry_key}"
+    max_updated_at = County.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    page = params[:page]
+   "counties/#{page}-#{max_updated_at}"
   end
   
   def new
