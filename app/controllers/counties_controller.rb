@@ -17,7 +17,7 @@ class CountiesController < ApplicationController
     #@entries = @county.locations
     @entries = @locations.paginate(page: params[:page], per_page: 20)   
 
-    #fresh_when(etag: [@entries, current_user])
+    fresh_when(etag: [@entries, current_user])
   end
   
   def cache_key_for_counties

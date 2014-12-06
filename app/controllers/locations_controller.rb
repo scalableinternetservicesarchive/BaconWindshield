@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     end
     @entries = @locations.paginate(page: params[:page], per_page: 20)
 
-    #fresh_when(etag: [@entries, current_user])
+    fresh_when(etag: [@entries, current_user])
 
     #respond_with(@locations)
   end

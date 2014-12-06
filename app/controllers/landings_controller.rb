@@ -45,7 +45,7 @@ class LandingsController < ApplicationController
       end
     end
 
-  #fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
+  fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
 
   end
 
