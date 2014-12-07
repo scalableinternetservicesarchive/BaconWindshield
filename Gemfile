@@ -18,6 +18,7 @@ gem 'geocoder'
 gem "font-awesome-rails"
 gem "bullet", :group => "development"
 gem 'activerecord-import', '~> 0.6.0'
+gem 'rack-cache'
 
 
 

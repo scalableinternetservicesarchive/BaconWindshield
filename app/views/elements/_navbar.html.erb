@@ -2,6 +2,7 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<!-- Brand and toggle get grouped for better mobile display -->
+				<% cache do %>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span>
@@ -40,6 +41,7 @@
 							<% end %>
 							</div>
 						</li>
+						<%end%>
 						<% if defined?(Devise) %>
 						<% if user_signed_in? %>
 						<li class="dropdown">

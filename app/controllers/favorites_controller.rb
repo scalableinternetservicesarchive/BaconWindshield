@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
     #respond_with(@favorites)
-    fresh_when(etag: [@favorites, current_user])
+    #fresh_when(etag: [@favorites, current_user])
   end
 
   def show

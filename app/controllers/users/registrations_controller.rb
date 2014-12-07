@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     super
+    #fresh_when(etag: true)
   end
 
   def edit

@@ -2,6 +2,7 @@ class LandingsController < ApplicationController
   helper_method :cache_key_for_nearbys
   
   def index
+    
     begin
       result = request.location
     rescue
@@ -45,16 +46,15 @@ class LandingsController < ApplicationController
       end
     end
 
-  fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
+  #fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
 
   end
 
-  def cache_key_for_nearbys
-    first_counties_key = @nearbys.first.cache_key
-    last_counties_key = @nearbys.last.cache_key
-    first_distance = @nearbys.first.distance
-    last_distance = @nearbys.last.distance
-    "#{first_counties_key}-#{first_distance}-#{last_counties_key}-#{last_distance}"
+  def cache_key_for_landings
+    max_updated_at1 = @nearbys.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    max_updated_at2 = @bestnearbys.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    max_updated_at3 = @favorites.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "landings/#{max_updated_at}-#{max_updated_at2}-#{max_updated_at3}"
   end
 
   def cache_key_for_favorites
