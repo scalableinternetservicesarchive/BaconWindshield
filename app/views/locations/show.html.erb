@@ -3,7 +3,7 @@
 		<%= image_tag "daisy.jpg" %>
 	</div>
 <% else %>
-<%cache params[:page] do %>
+<%cache cache_key_for_location do %>
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
