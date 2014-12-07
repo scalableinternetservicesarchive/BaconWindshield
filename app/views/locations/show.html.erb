@@ -3,7 +3,6 @@
 		<%= image_tag "daisy.jpg" %>
 	</div>
 <% else %>
-<%cache cache_key_for_location do %>
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
@@ -15,13 +14,15 @@
 							<% if !current_user.locations.include?(@location) %>
 								<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
 							<%else%>
+							
 								<br><br>
 							<% end %>
 						<%else%>
 							<br><br>	 				
 						<% end %>
 					<% end %>
-					
+					<%cache cache_key_for_location do %>
+
 					<canvas class="spot_forecast"
 					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.first%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
 				</div>
