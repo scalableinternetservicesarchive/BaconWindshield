@@ -236,8 +236,7 @@ function initialize1() {
 	         	region_id = region_id_temp;
 		   		bol = true;
 	         	initialize1;
-	         });
-// 	        
+	         });        
 			google.maps.event.addListener(rectangle, 'click',initialize1);
 
 	}
@@ -253,7 +252,10 @@ function initialize1() {
 
   	homeControlDiv2.index = 1;
   	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv2);
-  	
+  		
+  		
+  	var mc = new MarkerClusterer(map, markers);
+
 	// Try to use geolocation
 
 	if (navigator.geolocation) {
