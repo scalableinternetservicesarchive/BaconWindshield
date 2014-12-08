@@ -3,61 +3,6 @@
 // @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3_3.js
 // ==/ClosureCompiler==
 
-/**
- * @name MarkerClusterer for Google Maps v3
- * @version version 1.0.1
- * @author Luke Mahe
- * @fileoverview
- * The library creates and manages per-zoom-level clusters for large amounts of
- * markers.
- * <br/>
- * This is a v3 implementation of the
- * <a href="http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/"
- * >v2 MarkerClusterer</a>.
- */
-
-/**
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * A Marker Clusterer that clusters markers.
- *
- * @param {google.maps.Map} map The Google map to attach to.
- * @param {Array.<google.maps.Marker>=} opt_markers Optional markers to add to
- *   the cluster.
- * @param {Object=} opt_options support the following options:
- *     'gridSize': (number) The grid size of a cluster in pixels.
- *     'maxZoom': (number) The maximum zoom level that a marker can be part of a
- *                cluster.
- *     'zoomOnClick': (boolean) Whether the default behaviour of clicking on a
- *                    cluster is to zoom into it.
- *     'averageCenter': (boolean) Wether the center of each cluster should be
- *                      the average of all markers in the cluster.
- *     'minimumClusterSize': (number) The minimum number of markers to be in a
- *                           cluster before the markers are hidden and a count
- *                           is shown.
- *     'styles': (object) An object that has style properties:
- *       'url': (string) The image url.
- *       'height': (number) The image height.
- *       'width': (number) The image width.
- *       'anchor': (Array) The anchor position of the label text.
- *       'textColor': (string) The text color.
- *       'textSize': (number) The text size.
- *       'backgroundPosition': (string) The position of the backgound x, y.
- * @constructor
- * @extends google.maps.OverlayView
- */
 function MarkerClusterer(map, opt_markers, opt_options) {
 	// MarkerClusterer implements google.maps.OverlayView interface. We use the
 	// extend function to extend MarkerClusterer with google.maps.OverlayView
@@ -238,8 +183,16 @@ MarkerClusterer.prototype.setupStyles_ = function() {
 	}
 
 	for (var i = 0, size; size = this.sizes[i]; i++) {
+		if (i == 0) { var image_path = "http://i.imgur.com/vg3uCql.png"; //images: http://imgur.com/vg3uCql,i6THYTm,nFOffK0,bZIQKxl#3
+		}
+		if (i == 1) { var image_path = "http://i.imgur.com/i6THYTm.png";
+		}
+		if (i == 2) { var image_path = "http://i.imgur.com/nFOffK0.png";
+		}
+		if (i == 43) { var image_path = "http://i.imgur.com/bZIQKxl.png";
+		}
 		this.styles_.push({
-			url : this.imagePath_ + (i + 1) + '.' + this.imageExtension_,
+			url : image_path,
 			height : size,
 			width : size
 		});
@@ -1215,4 +1168,4 @@ function(o) {
 			result.push(name);
 	}
 	return result;
-}; 
+};

@@ -253,8 +253,9 @@ function initialize1() {
   	homeControlDiv2.index = 1;
   	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv2);
   		
-  		
-  	var mc = new MarkerClusterer(map, markers);
+  	var mcOptions = {gridSize: 50, maxZoom: 9};
+
+  	var mc = new MarkerClusterer(map, markers, mcOptions);
 
 	// Try to use geolocation
 
