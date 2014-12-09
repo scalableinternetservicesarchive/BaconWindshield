@@ -41,9 +41,9 @@ infos_columns = [:location_id, :day, :size_min, :size_max, :swell_rating, :wind_
 infos_insert_list = []
 Location.find_each do |location|
   locid = location.id
-  schart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
-  pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
-  wchart = "http:\/\/hist-2.msw.ms\/wave\/750\/1-1417413600-1.gif"
+  schart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-1.gif"
+  pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-2.gif"
+  wchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-4.gif"
   
   puts locid
   #wave_list = get_swell_json_with_spot_id(locid)
