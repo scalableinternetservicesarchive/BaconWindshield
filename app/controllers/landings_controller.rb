@@ -1,5 +1,5 @@
 class LandingsController < ApplicationController
-  helper_method :cache_key_for_nearbys
+  helper_method :cache_key_for_landings
   
   def index
     
@@ -19,8 +19,10 @@ class LandingsController < ApplicationController
 
         @nearbys = nearest.first(5)
         
+        Rails.cache.fetch 'expensive-query' do
         allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
         @bestnearbys = allbest.first(5)
+        end
 
       else
         loc = Location.new(latitude: 34.42, longitude: -119.86)
@@ -46,14 +48,11 @@ class LandingsController < ApplicationController
       end
     end
 
-  #fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
+  fresh_when(etag: [@nearbys.first.infos.first.day, @nearbys, @bestnearbys ,@favorites, current_user])
 
   end
 
   def cache_key_for_landings
-    max_updated_at1 = @nearbys.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    max_updated_at2 = @bestnearbys.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    max_updated_at3 = @favorites.maximum(:updated_at).try(:utc).try(:to_s, :number)
     "landings/#{max_updated_at}-#{max_updated_at2}-#{max_updated_at3}"
   end
 

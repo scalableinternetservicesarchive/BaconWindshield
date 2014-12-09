@@ -21,7 +21,7 @@
 							<br><br>	 				
 						<% end %>
 					<% end %>
-					<%cache cache_key_for_location do %>
+					<%cache [@location, params[:page]] do %>
 
 					<canvas class="spot_forecast"
 					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.first%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
@@ -45,6 +45,7 @@
 					<tbody>
 
 				<% @waves.each_with_index do |wave,idx| %>
+					<% cache wave do %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
 					<td><%= wave.size_min%>-<%= wave.size_max%><small>ft</small></td>
@@ -139,6 +140,7 @@
 						<a href="#myModal3<%= idx%>" data-toggle="modal"><img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img></a>
 					</td>
 					</tr>
+						<%end%>
 						<%end%>
 					</tbody>
 				</table>	
