@@ -183,13 +183,13 @@ MarkerClusterer.prototype.setupStyles_ = function() {
 	}
 
 	for (var i = 0, size; size = this.sizes[i]; i++) {
-		if (i == 0) { var image_path = "http://i.imgur.com/vg3uCql.png"; //images: http://imgur.com/vg3uCql,i6THYTm,nFOffK0,bZIQKxl#3
+		if (i == 0) { var image_path = "http://i.imgur.com/UAWAAYw.png"; //images: http://imgur.com/vg3uCql,i6THYTm,nFOffK0,bZIQKxl#3
 		}
-		if (i == 1) { var image_path = "http://i.imgur.com/i6THYTm.png";
+		if (i == 1) { var image_path = "http://i.imgur.com/VD0CdGq.png";
 		}
-		if (i == 2) { var image_path = "http://i.imgur.com/nFOffK0.png";
+		if (i == 2) { var image_path = "http://i.imgur.com/Gs4qzKB.png";
 		}
-		if (i == 43) { var image_path = "http://i.imgur.com/bZIQKxl.png";
+		if (i == 3) { var image_path = "http://i.imgur.com/ngCFjEO.png";
 		}
 		this.styles_.push({
 			url : image_path,
