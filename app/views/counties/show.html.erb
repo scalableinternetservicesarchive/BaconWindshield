@@ -3,6 +3,7 @@
 			<div id="map-outer" class="col-md-12">
 				<div class="col-md-6 col-md-offset-3">
 					<% cache cache_key_for_counties do %>
+					<% counties_show %>
 						<table class="table table-striped">
 							<thead>
 								<font size="5"><strong><%= @county.name %> Forecast</strong></font>

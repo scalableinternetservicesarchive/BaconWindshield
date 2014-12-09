@@ -22,6 +22,7 @@
 						<% end %>
 					<% end %>
 					<%cache [@location, params[:page]] do %>
+					<% location_show %>
 
 					<canvas class="spot_forecast"
 					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.first%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>

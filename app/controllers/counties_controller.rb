@@ -11,13 +11,13 @@ class CountiesController < ApplicationController
   end
 
   def show
-    #if !fragment_exist? cache_key_for_counties    
-    @locations = @county.locations 
-    #@entries = @county.locations
-    @entries = @locations.paginate(page: params[:page], per_page: 20)
+    # #if !fragment_exist? cache_key_for_counties    
+    # @locations = @county.locations 
+    # #@entries = @county.locations
+    # @entries = @locations.paginate(page: params[:page], per_page: 20)
     #end   
 
-    fresh_when(etag: [@entries, current_user])
+    #fresh_when(etag: [@entries, current_user])
   end
   
   def cache_key_for_counties
