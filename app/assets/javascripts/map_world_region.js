@@ -114,7 +114,7 @@ function initialize1() {
 	}
 
 	var mcOptions = {
-		gridSize : 50,
+		// gridSize : 50,
 		maxZoom : 9
 	};
 

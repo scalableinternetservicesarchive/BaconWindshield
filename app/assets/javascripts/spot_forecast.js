@@ -32,11 +32,8 @@ var ready = function() {
 		var sizeMax = 0;
 		var data = [];
 
-		console.log("days to be added: " + page);
 		page = page - 1;
-		console.log("date before edit: " + currentDate);
 		currentDate.setDate(currentDate.getDate() + page);
-		console.log("date after edit: " + currentDate);
 
 		for (var i = 0; i < infos.length; i++) {
 			var tempDate = new Date(infos[i].day * 1000);
@@ -147,14 +144,14 @@ var ready = function() {
 		context.moveTo(chartX_indent, (height_max - data[0].size_high) * height_scale + chartY_indent);
 
 		for (var i = 0; i < data.length; i++) {
-			var x = i * time_scale + chartX_indent;
+			var x = i * 58.5 + chartX_indent;
 			var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
 			if (i == data.length - 1) {
-				var xPlusOne = (i) * time_scale + chartX_indent;
+				var xPlusOne = (i+1) * 58.5 + chartX_indent;
 				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
 
 			} else {
-				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				var xPlusOne = (i + iterator_step) * 58.5 + chartX_indent;
 				var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
 			}
 			var xc = (x + xPlusOne) / 2;
@@ -172,12 +169,12 @@ var ready = function() {
 
 		// Fill
 
-		var grd = context.createLinearGradient(0, 0, time_max * time_scale, 0);
+		var grd = context.createLinearGradient(0, 0, time_max * 58.5, 0);
 
 		grd.addColorStop(0, getFillColor(data[0].swell_rating));
 		grd.addColorStop(0 + (1 / time_max) / 2, getFillColor(data[0].swell_rating));
 
-		for (var i = 1; i < data.length; i++) {//time_max
+		for (var i = 1; i < data.length; i++) {
 			grd.addColorStop(i / time_max - (1 / time_max) / 2, getFillColor(data[i].swell_rating));
 			grd.addColorStop(i / time_max + (1 / time_max) / 2, getFillColor(data[i].swell_rating));
 		}
@@ -201,16 +198,16 @@ var ready = function() {
 
 		context.beginPath();
 		context.moveTo(chartX_indent, (height_max - data[0].size_high) * height_scale + chartY_indent);
-
+						
 		for (var i = 0; i < data.length; i++) {
-			var x = i * time_scale + chartX_indent;
+			var x = i * 58.5 + chartX_indent;
 			var y = (height_max - data[i].size_high) * height_scale + chartY_indent;
 			if (i == data.length - 1) {
-				var xPlusOne = (i) * time_scale + chartX_indent;
+				var xPlusOne = (i+1) * 58.5 + chartX_indent;
 				var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
 
 			} else {
-				var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
+				var xPlusOne = (i + iterator_step) * 58.5 + chartX_indent;
 				var yPlusOne = (height_max - data[i + 1].size_high) * height_scale + chartY_indent;
 			}
 			var xc = (x + xPlusOne) / 2;
@@ -221,33 +218,6 @@ var ready = function() {
 		context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_high) * height_scale + chartY_indent);
 		context.stroke();
 
-		// Low Curve
-
-		// context.beginPath();
-		// context.moveTo(chartX_indent, (height_max - data[0].size_low) * height_scale + chartY_indent);
-		//
-		// for (var i = 0; i < data.length; i++) {
-		// var x = i * time_scale + chartX_indent;
-		// var y = (height_max - data[i].size_low) * height_scale + chartY_indent;
-		// if (i == data.length - 1) {
-		// var xPlusOne = (i) * time_scale + chartX_indent;
-		// var yPlusOne = (height_max - data[i].size_high) * height_scale + chartY_indent;
-		//
-		// } else {
-		// var xPlusOne = (i + iterator_step) * time_scale + chartX_indent;
-		// var yPlusOne = (height_max - data[i + 1].size_low) * height_scale + chartY_indent;
-		// }
-		// var xc = (x + xPlusOne) / 2;
-		// var yc = (y + yPlusOne) / 2;
-		//
-		// context.quadraticCurveTo(x, y, xc, yc);
-		// }
-		//
-		// context.strokeStyle = "rgba(81,81,81,1)";
-		//
-		// context.lineTo(time_max * time_scale + chartX_indent, (height_max - data[data.length - 1].size_low) * height_scale + chartY_indent);
-		// context.stroke();
-
 	});
 
 };
@@ -256,17 +226,17 @@ function getFillColor(swell_rating) {
 	var theColor = "rgba(0,0,0, 0.45)";
 
 	if (swell_rating == '0') {
-		theColor = "rgba(0,0,0, 0.5)";
+		theColor = "rgba(0,0,0, 0.8)";
 	} else if (swell_rating == '1') {
-		theColor = "rgba(16,51,64, .5)";
+		theColor = "rgba(94,94,94, 0.8)";
 	} else if (swell_rating == '2') {
-		theColor = "rgba(24,74,92, 0.5)";
+		theColor = "rgba(197,213,219, 0.8)";
 	} else if (swell_rating == '3') {
-		theColor = "rgba(36,112,139, 0.5)";
+		theColor = "rgba(154,202,219, 0.8)";
 	} else if (swell_rating == '4') {
-		theColor = "rgba(48,149,185, 0.5)";
+		theColor = "rgba(88,184,219, 0.8)";
 	} else if (swell_rating == '5') {
-		theColor = "rgba(160,187,232, 0.5)";
+		theColor = "rgba(0,161,219, 0.8)";
 	}
 
 	return theColor;
