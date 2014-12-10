@@ -1,40 +1,43 @@
 module LandingsHelper
   def landings_init
     begin
-      result = request.location
+      #result = request.location
+      result = Location.first(20)
     rescue
       result = [0,0]
     end
     
     if(result!=nil)
       #in dev and test environments, lat & long are 0.0
-      if (result.latitude != 0.0 && result.longitude != 0.0)
-        loc = Location.new(latitude: result.latitude, longitude: result.longitude)
-        nearest = loc.nearbys(30)
+      #if (result.latitude != 0.0 && result.longitude != 0.0)
+        #loc = Location.new(latitude: result.latitude, longitude: result.longitude)
+        #nearest = loc.nearbys(30)
 
         # @nearbys = Location.near(loc, 50, select: "locations.*, infos.*").joins(:infos).first(5)
+        #@nearbys = nearest.first(5)
 
-        @nearbys = nearest.first(5)
+        @nearbys = result.first(5)
         
-        Rails.cache.fetch 'expensive-query' do
-        allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
+        allbest = result.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
         @bestnearbys = allbest.first(5)
-        end
 
-      else
-        loc = Location.new(latitude: 34.42, longitude: -119.86)
-        nearest = loc.nearbys(30)
+      #else
+        #loc = Location.new(latitude: 34.42, longitude: -119.86)
+        #nearest = loc.nearbys(30)
 
-        @nearbys = nearest.first(5)
+        #@nearbys = nearest.first(5)
+        #@nearbys = result.first(5)
 
-        allbest = nearest.sort_by { |a| (-a.infos.first.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
-        @bestnearbys = allbest.first(5)
-      end
+        #allbest = result.sort_by { |a| (-a.infos.first.swell_rating*(a.infos.first.size_max + a.infos.first.size_min)/2) }
+        #@bestnearbys = allbest.first(5)
+      #end
     else
-      loc = Location.new(latitude: 34.42, longitude: -119.86)
-      nearest = loc.nearbys(50)
-      @nearbys = nearest.first(5)
-      allbest = nearest.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.last.size_max+a.infos.last.size_min)/2) }
+      #loc = Location.new(latitude: 34.42, longitude: -119.86)
+      #nearest = loc.nearbys(50)
+      #@nearbys = nearest.first(5)
+      @nearbys = result.first(5)
+
+      allbest = result.sort_by { |a| (-a.infos.last.swell_rating*(a.infos.last.size_max+a.infos.last.size_min)/2) }
       @bestnearbys = allbest.first(5)
     end
     

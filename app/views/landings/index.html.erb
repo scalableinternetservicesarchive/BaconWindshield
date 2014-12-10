@@ -78,7 +78,7 @@
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 										<% end %>
-									<td><%= location.distance.round(2) %><small> miles</small></td>
+									<td> xxx <small> miles</small></td>
 								<% end %>								
 							<% end %>
 						</tr>
@@ -97,7 +97,7 @@
 					</thead>
 						
 					<tbody>
-						<% if @nearbys.empty? %>
+						<% if @bestnearbys.empty? %>
 						<tr>
 							<td>There are no surf spots within 30 miles of your location!</td>
 							<td></td>
@@ -139,7 +139,7 @@
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 										<%end%>
-									<td><%= location.distance.round(2) %><small> miles</small></td>
+									<td> xxx <small> miles</small></td>
 								<% end %>								
 							<% end %>
 
