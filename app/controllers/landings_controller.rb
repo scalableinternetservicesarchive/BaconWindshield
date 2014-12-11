@@ -2,6 +2,9 @@ class LandingsController < ApplicationController
   helper_method :cache_key_for_landings
   
   def index
+      result = Location.first(20)
+        @nearbys = result.first(5)
+        @bestnearbys = result.last(5)
 
     # begin
       # result = request.location

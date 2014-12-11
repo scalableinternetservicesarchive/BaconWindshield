@@ -38,10 +38,6 @@
 						<th><strong>Swell Rating </strong><a href="#aboutForecast" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a></th>
 						<th><strong>Wind Speed</strong></th>
 						<th><strong>Temperature</strong></th>
-						<th><strong>Weather</strong></th>
-						<th><strong>Swell Chart</strong></th>
-						<th><strong>Period Chart</strong></th>
-						<th><strong>Wind Chart</strong></th>
 					</thead>
 					<tbody>
 
@@ -67,79 +63,7 @@
 						<% else %>
 					<% end %> 
 					<td><%= wave.wind_speed%><small>mph</small></td>
-					<td><%= wave.temperature%><small>°F</small></td>
-					<td><img src="http://cdnimages.magicseaweed.com/30x30/<%= wave.weather%>.png" alt="" border=1 height=30 width=30></img></td>
-					<td>
-						<div id="myModal1<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-vertical-centered">
-								<div class="modal-content">
-									<div class="modal-header">
-						        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						        		<h4 class="modal-title">Swell chart for <%= @location.name %></h4>
-						        	</div>
-									<div class="modal-body">
-										<img src=<%= wave.chart_swell%> class="img-responsive">
-										<br/>
-										<%= image_tag("chart_swell_rating.png", :class => "img-responsive") %>
-										<br/>
-										<p>Swell height in feet</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<a href="#myModal1<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_swell%> alt="" border=1 height=30 width=30></img></a>
-					</td>
-					<td>
-						<div id="myModal2<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-vertical-centered">
-								<div class="modal-content">
-									<div class="modal-header">
-						        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						        		<h4 class="modal-title">Period chart for <%= @location.name %></h4>
-						        	</div>
-									<div class="modal-body">
-										<img src=<%= wave.chart_period%> class="img-responsive">
-										<br/>
-										<%= image_tag("chart_period_rating.png", :class => "img-responsive") %>
-										<br/>
-						        		<p>Number of seconds between each wave</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<a href="#myModal2<%=idx%>" data-toggle="modal"> <img src=<%= wave.chart_period%> alt="" border=1 height=30 width=30></img></a>
-						</td>
-					<td>
-						<div id="myModal3<%=idx%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-vertical-centered2">
-								<div class="modal-content">
-									<div class="modal-header">
-						        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						        		<h4 class="modal-title">Wind chart for <%= @location.name %></h4>
-						        	</div>
-									<div class="modal-body">
-										<img src=<%= wave.chart_wind%> class="img-responsive">
-										<br/>
-										<%= image_tag("chart_wind_rating.png", :class => "img-responsive") %>
-										<hr/>
-										<div class="row">
-											<div class="col-md-3 col-md-offset-3" style="text-align: left">
-											<% @windValues1.each do |w| %>
-												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
-											<% end %>
-											</div>
-											<div class="col-md-3" style="text-align: left">
-											<% @windValues2.each do |w| %>
-												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
-											<% end %>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<a href="#myModal3<%= idx%>" data-toggle="modal"><img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img></a>
-					</td>
+					<td><%= wave.temperature%><small>°F</small></td>							
 					</tr>
 						<%end%>
 						<%end%>
