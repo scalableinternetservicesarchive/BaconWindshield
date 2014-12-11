@@ -43,7 +43,7 @@ Location.find_each do |location|
   locid = location.id
   schart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-1.gif"
   pchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-2.gif"
-  wchart = "http:\/\/hist-2.msw.ms\/wave\/750\/12-1418083200-4.gif"
+  wchart = "http://cdn.magicseaweed.com/gfs/750/12-1418083200-4.gif"
   
   puts locid
   #wave_list = get_swell_json_with_spot_id(locid)
