@@ -8,16 +8,15 @@ gem 'sqlite3', group: :development
 gem 'mysql2', group: :production
 
 gem 'will_paginate'
-gem 'gon'
 gem "typhoeus"
-gem 'actionpack-page_caching'
-gem 'actionpack-action_caching'
+#gem 'actionpack-page_caching'
+#gem 'actionpack-action_caching'
 gem 'will_paginate-bootstrap'
-gem 'geocoder'
+#gem 'geocoder'
 gem "font-awesome-rails"
-gem "bullet", :group => "development"
+#gem "bullet", :group => "development"
 gem 'activerecord-import', '~> 0.6.0'
-gem 'rack-cache'
+#gem 'rack-cache'
 gem 'newrelic_rpm'
 
 # Use SCSS for stylesheets
