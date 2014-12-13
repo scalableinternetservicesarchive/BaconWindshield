@@ -13,6 +13,7 @@ gem "typhoeus"
 #gem 'actionpack-action_caching'
 gem 'will_paginate-bootstrap'
 #gem 'geocoder'
+gem 'gon'
 gem "font-awesome-rails"
 #gem "bullet", :group => "development"
 gem 'activerecord-import', '~> 0.6.0'
