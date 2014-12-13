@@ -3,8 +3,8 @@ class Location < ActiveRecord::Base
   has_many :favorites
   has_many :infos
 
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :geocode
+  #reverse_geocoded_by :latitude, :longitude
+  #after_validation :geocode
   
   def self.search(query)
     if query
