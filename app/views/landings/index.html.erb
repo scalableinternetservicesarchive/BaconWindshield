@@ -1,16 +1,15 @@
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
-				<!-- <% form_tag(controller: "landings", method: 'post') %>
-				<%= range_field_tag(:distance, params[:distance], in: 10..100, step: 1, id: "slider1") %>
-				<%= submit_tag "Update" %> -->
-				
 			<p class="col-md-6">
 				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement">Sort by best</button>
 				<button type="button" class="btn btn-xs btn-primary switchbtn switchelement" style="display: none">Sort by distance</button>
 			<a data-toggle="tooltip" title="within 30 miles of your location">
 		        <i class="glyphicon glyphicon-info-sign"></i>
 		    </a>
+		    <!-- <% form_tag(controller: "landings", method: 'post') %>
+				<%= range_field_tag(:distance, params[:distance], in: 10..100, step: 1, id: "slider1") %>
+				<%= submit_tag "Update" %> -->
 			</p>
 			<p class="col-md-6">
 				<% if defined?(Devise)%>
@@ -98,7 +97,7 @@
 					</thead>
 						
 					<tbody>
-						<% if @nearbys.empty? %>
+						<% if @bestnearbys.empty? %>
 						<tr>
 							<td>There are no surf spots within 30 miles of your location!</td>
 							<td></td>
