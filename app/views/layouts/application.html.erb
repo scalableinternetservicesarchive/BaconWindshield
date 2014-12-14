@@ -9,9 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	</head>
 	<body class='<%= controller.controller_name %>'>
-		<% cache ["navbar/", current_user, expires_in: 10.minutes] do %>
-			<%= render partial: "elements/navbar" %>
-		<% end %>
+		<%= render partial: "elements/navbar" %>
 		<%= bootstrap_flash %>
 
 		<%= yield %>

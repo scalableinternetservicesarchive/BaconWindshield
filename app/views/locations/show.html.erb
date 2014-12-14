@@ -21,7 +21,6 @@
 							<br><br>	 				
 						<% end %>
 					<% end %>
-					<%cache [@location, params[:page]] do %>
 					<% location_show %>
 
 					<canvas class="spot_forecast"
@@ -46,7 +45,6 @@
 					<tbody>
 
 				<% @waves.each_with_index do |wave,idx| %>
-					<% cache wave do %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
 					<td><%= wave.size_min%>-<%= wave.size_max%><small>ft</small></td>
@@ -142,7 +140,6 @@
 					</td>
 					</tr>
 						<%end%>
-						<%end%>
 					</tbody>
 				</table>	
 			</div>
@@ -197,5 +194,4 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-<%end%>
 <%end %>

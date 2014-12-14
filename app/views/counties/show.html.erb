@@ -2,7 +2,6 @@
 		<div class="row">
 			<div id="map-outer" class="col-md-12">
 				<div class="col-md-6 col-md-offset-3">
-					<% cache cache_key_for_counties do %>
 					<% counties_show %>
 						<table class="table table-striped">
 							<thead>
@@ -60,7 +59,6 @@
 						<%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
 					</div>
 				</div>
-				<% end %>
 
 			</div>
 		</div>

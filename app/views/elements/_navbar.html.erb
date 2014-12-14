@@ -2,7 +2,6 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<% cache do %>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span>
@@ -22,13 +21,11 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
-									<% cache "counties_nav" do %>
 										<% County.find_each do |county| %>
 										<li>
 											<%= link_to county.name, County.find(county.id) %>
 										</li>
 										<% end %>
-									<% end %>
 								</ul>
 							</li>
 					</ul>
@@ -41,7 +38,6 @@
 							<% end %>
 							</div>
 						</li>
-						<%end%>
 						<% if defined?(Devise) %>
 						<% if user_signed_in? %>
 						<li class="dropdown">
