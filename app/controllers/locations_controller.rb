@@ -6,13 +6,14 @@ class LocationsController < ApplicationController
   #caches_action :index, expires_in: 24.hour
 
   def index
-    #@locations = Location.all
+    @locations = Location.all
     if params[:search]
       @locations = Location.search(params[:search]).order("created_at ASC")
     else
       @locations = Location.all.order('created_at ASC')
     end
-    @entries = @locations.paginate(page: params[:page], per_page: 20)
+    #@entries = @locations.paginate(page: params[:page], per_page: 20)
+    @entries = @locations
 
     fresh_when(etag: [@entries, current_user])
 
