@@ -17,7 +17,7 @@ class LandingsController < ApplicationController
         @bestnearbys = allbest.first(5)
 
       else
-        loc = Location.new(latitude: 34.42, longitude: -119.86)
+        loc = Location.new(latitude: 34.42, longitude: -119.84)
         nearest = loc.nearbys(30)
 
         @nearbys = nearest.first(5)
@@ -26,7 +26,7 @@ class LandingsController < ApplicationController
         @bestnearbys = allbest.first(5)
       end
     else
-      loc = Location.new(latitude: 34.42, longitude: -119.86)
+      loc = Location.new(latitude: 34.42, longitude: -119.84)
       nearest = loc.nearbys(50)
       @nearbys = nearest.first(5)
       allbest = nearest.sort_by { |a| (-a.infos.first.swell_rating*(a.infos.first.size_max+a.infos.first.size_min)/2) }
