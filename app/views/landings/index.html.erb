@@ -77,7 +77,7 @@
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 										<% end %>
-									<td> xxx <small> miles</small></td>
+									<td> <%= location.distance.round(2) %> <small> miles</small></td>
 								<% end %>								
 							<% end %>
 						</tr>
@@ -138,7 +138,7 @@
 											</td>
 										<td><%=size_min%>-<%=size_max%><small> ft</small></td>
 										<%end%>
-									<td> xxx <small> miles</small></td>
+									<td> <%= location.distance.round(2) %> <small> miles</small></td>
 								<% end %>								
 							<% end %>
 
