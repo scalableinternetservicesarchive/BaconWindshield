@@ -1,8 +1,8 @@
 module LandingsHelper
   def landings_init
     #begin
-      #result = request.location
-      result = Location.first(30)
+      result = request.location
+      #result = Location.first(30)
     #rescue
       #result = [0,0]
     #end
