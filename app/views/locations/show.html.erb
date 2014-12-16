@@ -3,29 +3,28 @@
 		<%= image_tag "daisy.jpg" %>
 	</div>
 <% else %>
+	
 <div class="container">
 	<div class="row">
 		<div id="map-outer" class="col-md-12">
 			<div class="col-md-6">
 				<div align="center" style="padding: 2%">
+
 					<font size="5"><strong><%= @location.name %></strong></font>
 					<% if defined?(Devise)%>
 						<% if user_signed_in?%>
 							<% if !current_user.locations.include?(@location) %>
 								<%= button_to 'Add to favorites', favorites_path(location_id: @location.id), class: "btn btn-primary"%>
 							<%else%>
-							
 								<br><br>
 							<% end %>
 						<%else%>
 							<br><br>	 				
 						<% end %>
 					<% end %>
-					<%cache [@location, params[:page]] do %>
-					<% location_show %>
-
+					
 					<canvas class="spot_forecast"
-					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.first%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
+					id="1" data-location=<%= @location.id %>  data-longitude="<%= @location.longitude%>"data-page="<%= @waves.current_page%>" data-latitude="<%= @location.latitude%>" width="496" height="210"></canvas>
 				</div>
 			</div>
 			<div id="map-container" class="col-md-6"></div>
@@ -46,7 +45,6 @@
 					<tbody>
 
 				<% @waves.each_with_index do |wave,idx| %>
-					<% cache wave do %>
 				<tr>
 					<td><%= Time.at(wave.day.to_i).to_s.chomp("-0800")%></td>
 					<td><%= wave.size_min%>-<%= wave.size_max%><small>ft</small></td>
@@ -123,12 +121,12 @@
 										<%= image_tag("chart_wind_rating.png", :class => "img-responsive") %>
 										<hr/>
 										<div class="row">
-											<div class="col-md-3 col-md-offset-3" style="text-align: left">
+											<div class="col-md-3 col-md-offset-3 outline" style="text-align: left">
 											<% @windValues1.each do |w| %>
 												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
 											<% end %>
 											</div>
-											<div class="col-md-3" style="text-align: left">
+											<div class="col-md-3 outline" style="text-align: left">
 											<% @windValues2.each do |w| %>
 												<p style="color: <%= w[2] %>"><%= w[0] %>: <%= w[1] %></p>
 											<% end %>
@@ -141,7 +139,6 @@
 						<a href="#myModal3<%= idx%>" data-toggle="modal"><img src=<%= wave.chart_wind%> alt="" border=1 height=30 width=30></img></a>
 					</td>
 					</tr>
-						<%end%>
 						<%end%>
 					</tbody>
 				</table>	
@@ -178,7 +175,7 @@
 				<p>Don't go surfing, dude, it's not worth it!</p>
 				<hr/>
 				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
-				<p>Well I guess if you have nothing else to do&hellip;</p>
+				<p>Well, I guess if you have nothing else to do&hellip;</p>
 				<hr/>
 				<p><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span><span class="glyphicon glyphicon-star" style="color:#48A5F0"></span></p>
 				<p>Yeah okay, there are probably some good waves out there.</p>
@@ -197,5 +194,4 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARk-UZoJMXrtZU1dnuUDXysY1eRUYd6gg&sensor=false&callback=initialize2"></script>
 
 <script type="text/javascript" href="/app/assets/javascripts/google_maps_single.js"></script>
-<%end%>
-<%end %>
+<%end%>		
