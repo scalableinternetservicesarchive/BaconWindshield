@@ -2,6 +2,14 @@ try {
 	var infosList = gon.infos;
 } catch(err) {
 }
+
+
+
+
+//masse korrut kode..................................
+
+
+
 var ready = function() {
 
 	var sf = new Array();
